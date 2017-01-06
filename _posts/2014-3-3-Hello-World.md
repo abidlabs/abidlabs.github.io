@@ -1,6 +1,6 @@
 ---
 layout: post
-title: You're up and running!
+title: Can a Computer Classify Meccan and Madinan Surahs?
 published: true
 ---
 
