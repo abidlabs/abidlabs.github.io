@@ -24,6 +24,15 @@ We also need to know which surahs are meccan and which are medinan (and for whic
 
 **Word Vectors** Each verse is then converted to a vector using a standard word-vector technique. The code for a word-to-vector converter looks something like:
 
+**Training and Validation**
+
+**Binary Classifier**
+
+# Results
+
+So how do we do? Based on the training accuracy
+
+# Conclusion
 
 - First download all of the verses of the Quran (without harakaat), along with surah number and ayah number
 - Then download whether they are meccan or medinan
