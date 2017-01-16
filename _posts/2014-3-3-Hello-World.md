@@ -16,13 +16,11 @@ This made me think that it might be possible to build a binary classifier that c
 
 <http://tanzil.net/docs/download>
 
-The version without vowel marks and with verse numbers will work best for our work.
+The version without vowel marks and with verse numbers will work best for our work. We also need to know which surahs are meccan and which are medinan. Find this information at:
 
-We also need to know which surahs are meccan and which are medinan (and for which surahs there is scholarly disagreement). Find this information at:
+<http://tanzil.net/docs/revelation_order>
 
-<http://learnqurankareem.blogspot.com/2013/04/list-of-all-surah.html>
-
-**Word Vectors** Each verse is then converted to a vector using a standard word-vector technique. The code for a word-to-vector converter looks something like:
+**Word Vectors** Once we have the text of the Quran, we need to convert the text to a representation that can be fed to 
 
 **Training and Validation**
 
