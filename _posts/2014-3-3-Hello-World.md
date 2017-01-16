@@ -16,6 +16,13 @@ This made me think that it might be possible to build a binary classifier that c
 
 <http://tanzil.net/docs/download>
 
+The version without vowel marks and with verse numbers will work best for our work.
+
+**Downloading the Labels** We also need to know which surahs are meccan and which are medinan (and for which surahs there is scholarly disagreement). Find this information at:
+
+<http://learnqurankareem.blogspot.com/2013/04/list-of-all-surah.html>
+
+**Word Vectors** The  
 
 - First download all of the verses of the Quran (without harakaat), along with surah number and ayah number
 - Then download whether they are meccan or medinan
