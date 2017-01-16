@@ -8,9 +8,12 @@ One basic concept in Quranic studies is the difference between its **meccan** ch
 
 Knowing where a chapter was revelead helps scholars derive meaning from the text, and so a great deal of effort has been expended to finding narrations that mention when a particular verse or chapter was revealed. However, the location where a chapter was revealed is also manifested in the linguistic characteristics of the passage. For example, meccan chapters are characterized by poetic meter, a rhetorical urgency, and an emphasis on recognizing the Divine, while medinan chapters are more lengthy prose dedicated to explaining religious ritual. 
 
-This made me think that it might be possible to build a binary classifier that could use basic techniques from natural language processing to classify surahs as medinan or meccan. Here, I outline my methodology and share my results
+This made me think that it might be possible to build a binary classifier that could use basic techniques from natural language processing to classify surahs as medinan or meccan. Here, I outline my methodology and share my results.
 
-** Methodology **
+#Methodology
+
+
+
 - First download all of the verses of the Quran (without harakaat), along with surah number and ayah number
 - Then download whether they are meccan or medinan
 - Split the surah into 2 sets, training or test
