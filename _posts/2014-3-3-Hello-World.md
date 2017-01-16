@@ -28,7 +28,6 @@ As an example, let's say the words in our body of text are:
 
 |: ----------- :|: ----------- :| ----- |
 | Tables        | Are           | Cool  |
-|: ----------- :|: ----------- :|: --- :|
 
 **Training and Validation**
 
