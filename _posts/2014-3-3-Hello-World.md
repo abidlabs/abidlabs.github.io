@@ -4,7 +4,7 @@ title: Can a Machine Learn to Classify Meccan and Madinan Surahs?
 published: true
 ---
 
-One basic concept in Quranic studies is the difference between its **meccan** surahs/chapters (revealed before the Prophet migrated from trading city of Mecca to oasis town of Medina) and its **medinan** chapters (revealed after the migration). 
+A basic concept in Quranic studies is the difference between its **meccan** surahs/chapters (revealed before the Prophet migrated from trading city of Mecca to oasis town of Medina) and its **medinan** chapters (revealed after the migration). 
 
 Knowing where a chapter was revelead helps scholars derive meaning from the text, and so a great deal of effort has been expended to finding narrations that mention when a particular verse or chapter was revealed. However, the location where a chapter was revealed is also manifested in the linguistic characteristics of the passage. For example, meccan chapters are characterized by poetic meter, a rhetorical urgency, and an emphasis on recognizing the Divine, while medinan chapters are more lengthy prose dedicated to explaining religious ritual. 
 
@@ -18,11 +18,12 @@ This made me think that it might be possible to build a binary classifier that c
 
 The version without vowel marks and with verse numbers will work best for our work.
 
-**Downloading the Labels** We also need to know which surahs are meccan and which are medinan (and for which surahs there is scholarly disagreement). Find this information at:
+We also need to know which surahs are meccan and which are medinan (and for which surahs there is scholarly disagreement). Find this information at:
 
 <http://learnqurankareem.blogspot.com/2013/04/list-of-all-surah.html>
 
-**Word Vectors** The  
+**Word Vectors** Each verse is then converted to a vector using a standard word-vector technique. The code for a word-to-vector converter looks something like:
+
 
 - First download all of the verses of the Quran (without harakaat), along with surah number and ayah number
 - Then download whether they are meccan or medinan
