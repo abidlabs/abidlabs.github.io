@@ -26,7 +26,11 @@ There are a variety of ways to do this, but the simplest may be the [bag-of-word
 
 As an example, let's say the words in our body of text are:
 
-'إنا' 
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
 **Training and Validation**
 
