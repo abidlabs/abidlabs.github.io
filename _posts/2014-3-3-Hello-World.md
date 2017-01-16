@@ -10,7 +10,7 @@ Knowing where a chapter was revelead helps scholars derive meaning from the text
 
 This made me think that it might be possible to build a binary classifier that could use basic techniques from natural language processing to classify surahs as medinan or meccan. Here, I outline my methodology and share my results.
 
-#Methodology
+# Methodology
 
 
 
