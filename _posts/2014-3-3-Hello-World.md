@@ -12,7 +12,7 @@ This made me think that it might be possible to build a binary classifier that c
 
 # Methodology
 
-**Downloading the Dataset.** The first step is to download all of the text of the Quran. The standard text of the Quran can be downloaded from
+**Downloading the Dataset.** The first step is to download all of the text of the Quran. The standard text of the Quran can be downloaded from:
 
 <http://tanzil.net/docs/download>
 
