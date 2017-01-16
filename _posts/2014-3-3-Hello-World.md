@@ -12,7 +12,7 @@ This made me think that it might be possible to build a binary classifier that c
 
 # Methodology
 
-
+**Downloading the Dataset.** The first step is to download all of the text of the Quran. 
 
 - First download all of the verses of the Quran (without harakaat), along with surah number and ayah number
 - Then download whether they are meccan or medinan
