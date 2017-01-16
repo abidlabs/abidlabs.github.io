@@ -16,8 +16,6 @@ This made me think that it might be possible to build a binary classifier that c
 
 <http://tanzil.net/docs/download>
 
-```
-```
 
 - First download all of the verses of the Quran (without harakaat), along with surah number and ayah number
 - Then download whether they are meccan or medinan
