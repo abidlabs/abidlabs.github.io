@@ -7,7 +7,7 @@ image: https://upload.wikimedia.org/wikipedia/commons/e/e2/Kabaa.jpg
 
 A basic concept in Quranic studies is the difference between its **meccan** surahs/chapters (revealed before the Prophet migrated from trading city of Mecca to oasis town of Medina) and its **medinan** chapters (revealed after the migration). 
 
-Knowing where a chapter was revealed helps scholars derive meaning from the text, and so a great deal of effort has been expended to finding narrations that mention when a particular verse or chapter was revealed. However, the location where a chapter was revealed is also manifested in the linguistic characteristics of the passage. For example, meccan chapters are characterized by poetic meter, a rhetorical urgency, and an emphasis on recognizing the Oneness of God, while medinan chapters are more lengthy prose dedicated to explaining religious rituals.
+Knowing where a chapter was revealed helps scholars derive meaning from the text, and so a great deal of effort has been expended to finding historical narrations that mention when a particular verse or chapter was revealed. However, the location where a chapter was revealed is also manifested in the linguistic characteristics of the passage. For example, meccan chapters are characterized by poetic meter, a rhetorical urgency, and an emphasis on recognizing the Oneness of God, while medinan chapters are more lengthy prose dedicated to explaining religious rituals.
 
 This made me think that it might be possible to build a binary classifier that could use basic techniques from natural language processing to classify chapters as medinan or meccan. Here, I outline my methodology and share my results.
 
@@ -21,7 +21,7 @@ The version without vowel marks and with verse numbers will work best for our wo
 
 <http://tanzil.net/docs/revelation_order>
 
-Alternatively, a link to a github repository with the csv files (and all source code) is included at the end of this post.
+Alternatively, a link to a github repository with the `.csv` files (and all source code) is included at the end of this post.
 
 **Word Vectors** Once we have the text of the Quran, we need to convert the text to a standardized representation that can be fed to machine learning algorithms. Usually, these representations are in the form of numeric arrays or tensors.
 
