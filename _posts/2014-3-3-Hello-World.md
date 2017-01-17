@@ -86,7 +86,7 @@ I'll confess, I was a bit disappointed when I saw that this wasn't closer to 100
 | Surah Insaan (76)      |  meccan | 97% |
 | Surah Zilzaal (99)    |  meccan | 100% |
 
-When I took a closer look at these chapters, I was amazed to see that there is actually (scholarly disagreement)[http://learnqurankareem.blogspot.com/2013/04/list-of-all-surah.html] about all 6 of these chapters! Based solely on word usage, our classifier provides that a few of these, such as Surahs Rahman, Insaan, and Zilzaal might fall in the meccan camp! 
+When I took a closer look at these chapters, I was amazed to see that there is actually [scholarly disagreement](http://learnqurankareem.blogspot.com/2013/04/list-of-all-surah.html) about all 6 of these chapters! Based solely on word usage, our classifier provides that a few of these, such as Surahs Rahman, Insaan, and Zilzaal might fall in the meccan camp! 
 
 Finally, I was curious to see which Arabic words are the "most meccan" and the "most medinan." We can analyze this by looking at the weights that the model learns for each word. The top 10 meccan and medinan words are:
 
