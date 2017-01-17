@@ -4,7 +4,7 @@ title: Can a Machine Learn to Classify Meccan and Madinan Surahs?
 published: true
 ---
 
-*All the source code and data files for this project can be found and cloned from this (github repository)[https://github.com/abidlabs/classify-surahs]*
+*All the source code and data files for this project can be found and cloned from this (github repository)[https://github.com/abidlabs/classify-surahs].*
 
 A basic concept in Quranic studies is the difference between its **meccan** surahs/chapters (revealed before the Prophet migrated from trading city of Mecca to oasis town of Medina) and its **medinan** chapters (revealed after the migration). 
 
@@ -39,9 +39,13 @@ Then, we could represent these two verses as follows:
 
 If a word repeats more than once, the vector reflects that multiplicity, so a vector can have entries more than 1 as well.
 
+Code to produce these word vectors from the text of the verses would look like:
+
+
+
 **Training and Validation**
 
-Before feeding the 
+Before feeding the word vectors into a classifier, we need to partition our dataset into a training and validation set.
 
 **Logistic Regression**
 
