@@ -5,7 +5,7 @@ published: true
 image: https://upload.wikimedia.org/wikipedia/commons/e/e2/Kabaa.jpg
 ---
 
-A basic concept in Quranic studies is the difference between its **meccan** surahs/chapters (revealed before the Prophet migrated from trading city of Mecca to oasis town of Medina) and its **medinan** chapters (revealed after the migration). 
+A basic concept in Quranic studies is the difference between its **meccan** surahs/chapters (revealed before the Prophet Muhammad migrated from trading city of Mecca to oasis town of Medina) and its **medinan** chapters (revealed after the migration). 
 
 Knowing where a chapter was revealed helps scholars derive meaning from the text, and so a great deal of effort has been expended to finding historical narrations that mention when a particular verse or chapter was revealed. However, the location where a chapter was revealed is also manifested in the linguistic characteristics of the passage. For example, meccan chapters are characterized by poetic meter, a rhetorical urgency, and an emphasis on recognizing the Oneness of God, while medinan chapters are more lengthy prose dedicated to explaining religious rituals.
 
