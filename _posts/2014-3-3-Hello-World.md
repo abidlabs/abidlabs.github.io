@@ -104,13 +104,15 @@ Finally, I was curious to see which Arabic words are the "most meccan" and the "
 | تنزيل    | وجهرا|   
 
 
-Perhaps scholars of the Quran can enlighten me, but this didn't provide some me much insight. The words in the meccan column are mostly those words that are *rare*, but make an appearance in at least once meccan surah. For example, لنفد is found only in Surah Al-Kahf. The words in the medinan column are mostly *common* words in the Quran, which are overweighted in the medinan verses, which tend to be longer than meccan verses on average. So whil *والله* would appear in both kinds of surahs, it might appear multiple times in a medinan surahs.
+Perhaps those who have studied the Quran more can enlighten me, but these words don't seem to follow any significant trends. 
+
+I did notice that the words in the meccan column are mostly those words that are *rare*, but make an appearance in at least once meccan surah. For example, لنفد is found only in Surah Al-Kahf. The words in the medinan column are, in some cases, *common* words in the Quran, which are overweighted in the medinan verses, which tend to be longer than meccan verses on average. So whil *والله* would appear in both kinds of surahs, it might appear multiple times in a medinan surahs.
 
 With a deeper look into the weights, one might be able to identify trends as to why certain words are more "meccan" and why others are more "medinan," but the most strongly weighted words seem to result of technicalities associated with bag-of-word techniques. Perhaps *normalizing* vectors before feeding them into logistic regression would lead to a more interpretable model.
 
 # Conclusion
 
-The basic conclusion is that a machine can learn to classify meccan and medinan surahs based on a few examples! While its not clear the internal model it builds is particularly sophisticated or enlightening, we see that it performs quite well -- only incorrectly classifying 6 surahs, all of which are the subject of scholarly debate!
+The basic conclusion is that we can design an extremely simple algorithm to classify meccan and medinan surahs, based on a small set of training examples! While its not clear the internal model that the algorithm builds is particularly sophisticated or enlightening, we see that it performs quite well -- only incorrectly classifying 6 surahs, all of which are the subject of scholarly debate anyway!
 
 <hr>
 
