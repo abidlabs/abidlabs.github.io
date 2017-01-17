@@ -41,9 +41,17 @@ If a word repeats more than once, the vector reflects that multiplicity, so a ve
 
 **Training and Validation**
 
-Before feeding the word vectors into a classifier, we need to partition our dataset into a training and validation set.
+Before feeding the word vectors into a classifier, we need to partition our dataset into a training and validation set. To ensure that the validation set and training set are independent, the partitioning is done on a *chapter level*, not a verse level. This is because some chapter include repeating refrains (e.g. Surah Al-Rahman), it is unfair to include those verses in both the validation and training sets. 
+
+The partitioning was: Training: 40%, Validation: 60% (I chose a larger validation set to increase the meaningfulness of results, as will be discussed later). Because the partitioning was done on a chapter level, the number of verses in the training and validation set was not exactly 40/60.
 
 **Logistic Regression**
+
+The classifier I ended up choosing was logistic regression. Logistic regression works similarly to linear regression, as it assigns linear weights to the presence of each feature in our vector. But then it introduces a non-linearity -- by passing the result through the logistic function
+
+$$ f(x) = log{\frac{p}{1-p}} $$
+
+This provides a probability between 0 and 1 that verse belongs to a particular class -- in our case, the classes are meccan or medinan. We train the weights on our training set, and check how well it performs on the test set.
 
 # Results
 
