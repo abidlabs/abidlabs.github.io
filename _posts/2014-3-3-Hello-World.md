@@ -34,8 +34,8 @@ Then, we could represent these two verses as follows:
 
 | Verse         | Bag of Words Vector   |
 | ------------- |:---------------------:| 
-| انا الانسن لفى خسر  | [1, 1, 1, 1, 0, 0] |
-| انا اعطينك الكوثر     | [1, 0, 0, 0, 1, 1] |
+| إنا الانسن لفى خسر  | [1, 1, 1, 1, 0, 0] |
+| إنا اعطينك الكوثر     | [1, 0, 0, 0, 1, 1] |
 
 If a word repeats more than once, the vector reflects that multiplicity, so a vector can have entries more than 1 as well.
 
@@ -49,13 +49,22 @@ The partitioning was: Training: 40%, Validation: 60% (I chose a larger validatio
 
 The classifier I ended up choosing was logistic regression. Logistic regression works similarly to linear regression, as it assigns linear weights to the presence of each feature in our vector. But then it introduces a non-linearity -- by passing the result through the logistic function
 
-$$ f(x) = \log{\frac{p}{1-p}} $$
+$$ p(x) = \log{\frac{x}{1-x}} $$
 
 This provides a probability between 0 and 1 that verse belongs to a particular class -- in our case, the classes are meccan or medinan. We train the weights on our training set, and check how well it performs on the test set.
 
 # Results
 
-So how do we do? 
+So how did we do? The following table represents the training and validation accuracies on a typical run:
+
+| Round         | Accuracy   |
+| ------------- |:---------------------:| 
+| Training     |  98.68% |
+| Validation     | 86.26% | 
+
+The training accuracy is very high because we are over-fitting on our datasets. This not surprising because the number of parameters in our model -- or the number of unique words in the Quran -- is 14,870, far more than the number of verses in our training set.
+
+However, we do pretty decently on our validation set as well. The accuracy, 86%, needs to be taken 
 
 # Conclusion
 
