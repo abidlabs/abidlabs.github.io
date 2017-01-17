@@ -64,7 +64,31 @@ So how did we do? The following table represents the training and validation acc
 
 The training accuracy is very high because we are over-fitting on our datasets. This not surprising because the number of parameters in our model -- or the number of unique words in the Quran -- is 14,870, far more than the number of verses in our training set.
 
-However, we do pretty decently on our validation set as well. The accuracy, 86%, needs to be taken 
+However, we do pretty decently on our validation set as well. The accuracy, 86%, needs to be taken within context:
+
+* The dataset is unbalanced -- there are many more meccan chapters than medinan chapters, so if our classifier was just classifying every verse as meccan, it would get an accuracy of about 74%. Depending on the specific partitioning of the training and validation, we have an accuracy around 10 percentage points higher than that.
+* This is on a verse-by-verse level, under the assumption that every verse in a meccan surah is meccan, and same for medinan. This assumption is definitely not true, which affects both our training and evaluation of performance.
+
+A better indicator would be performance on a surah level. If we use a simply majority voting system (using all the verses in a chapter to "vote" for whether the surah is meccan or medinan), we get the following surah:
+
+| Round         | Accuracy   |
+| ------------- |:---------------------:| 
+| Overall surah-level     |  94.73% |
+
+I'll confess, I was a bit disappointed when I saw that this wasn't closer to 100%. Which surahs are misclassified? It turns out that there are 6 surahs that are misclassified:
+
+| Misclassified Surah         | Predicted type   | Confidence (votes) |
+| ------------- |:---------------------:|:----------------------------| 
+| Surah Ra'd (13)     |  meccan |  81% |     
+| Surah Hajj (22)     |  meccan |  63% |
+| Surah Muhammad (47)   |  meccan | 53% |
+| Surah Rahman (55)      |  meccan | 100% |
+| Surah Insaan (76)      |  meccan | 97% |
+| Surah Zilzaal (99)    |  meccan | 100% |
+
+When I took a closer look at these chapters, I was amazed to see that there is actually scholarly disagreement about all 6 of these chapters! Based solely on word usage, it would seem that a few of these, such as Surahs Rahman, Insaan, and Zilzaal seem to fall strongly in the meccan camp! 
+
+
 
 # Conclusion
 
