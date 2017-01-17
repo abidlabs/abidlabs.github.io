@@ -86,25 +86,31 @@ I'll confess, I was a bit disappointed when I saw that this wasn't closer to 100
 | Surah Insaan (76)      |  meccan | 97% |
 | Surah Zilzaal (99)    |  meccan | 100% |
 
-When I took a closer look at these chapters, I was amazed to see that there is actually scholarly disagreement about all 6 of these chapters! Based solely on word usage, it would seem that a few of these, such as Surahs Rahman, Insaan, and Zilzaal seem to fall strongly in the meccan camp! 
+When I took a closer look at these chapters, I was amazed to see that there is actually (scholarly disagreement)[http://learnqurankareem.blogspot.com/2013/04/list-of-all-surah.html] about all 6 of these chapters! Based solely on word usage, our classifier provides that a few of these, such as Surahs Rahman, Insaan, and Zilzaal might fall in the meccan camp! 
+
+Finally, I was curious to see which Arabic words are the "most meccan" and the "most medinan." We can analyze this by looking at the weights that the model learns for each word. The top 10 meccan and medinan words are:
+
+|Top Meccan Words|Top Medinan Words|
+|:-------------:|:--------------:|
+| بعهدكم   | تقتلني|   
+| وتقسطوا      | والله|   
+| العالمون     | أكلها|   
+| أولاهما      | وإذ|   
+| لتحصنكم      | وبكفرهم|   
+| العمى    | مبصرة|   
+| نور      | زلزلة|   
+| لمستقر   | بآية|   
+| لنفد     | سخرناها|   
+| تنزيل    | وجهرا|   
 
 
+Perhaps scholars of the Quran can enlighten me, but this didn't provide some me much insight. The words in the meccan column are mostly those words that are *rare*, but make an appearance in at least once meccan surah. For example, لنفد is found only in Surah Al-Kahf. The words in the medinan column are mostly *common* words in the Quran, which are overweighted in the medinan verses, which tend to be longer than meccan verses on average. So whil *والله* would appear in both kinds of surahs, it might appear multiple times in a medinan surahs.
+
+With a deeper look into the weights, one might be able to identify trends as to why certain words are more "meccan" and why others are more "medinan," but the most strongly weighted words seem to result of technicalities associated with bag-of-word techniques. Perhaps *normalizing* vectors before feeding them into logistic regression would lead to a more interpretable model.
 
 # Conclusion
 
-- First download all of the verses of the Quran (without harakaat), along with surah number and ayah number
-- Then download whether they are meccan or medinan
-- Split the surah into 2 sets, training or test
-- For each verse in each surah, look at the Arabic word, and make a vector of words representation (may require conversion to transliterated Arabic)
-
-- Create a matrix of all the verse-vectors, along with a vector of the labels
-- Build a linear regression system
-- Do performance on test set
-- Report accuracy on verses, as well as on "ensembles"
-- Show top "Meccan" words and top "Madinan" words
-
-- Conclusion
-This could be a tool to help scholars, those verses that are not totally clear
+The basic conclusion is that a machine can learn to classify meccan and medinan surahs based on a few examples! While its not clear the internal model it builds is particularly sophisticated or enlightening, we see that it performs quite well -- only incorrectly classifying 6 surahs, all of which are the subject of scholarly debate!
 
 <hr>
 
