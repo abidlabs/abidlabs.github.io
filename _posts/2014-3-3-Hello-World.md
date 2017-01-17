@@ -20,6 +20,8 @@ The version without vowel marks and with verse numbers will work best for our wo
 
 <http://tanzil.net/docs/revelation_order>
 
+Alternatively, a link to a github repository with the csv files (and all source code) is included at the end of this post.
+
 **Word Vectors** Once we have the text of the Quran, we need to convert the text to a standardized representation that can be fed to machine learning algorithms. Usually, these representations are in the form of numeric arrays or tensors.
 
 There are a variety of ways to do this, but the simplest may be the [bag-of-words technique](https://en.wikipedia.org/wiki/Bag-of-words_model), which represents a 'text' (in this case, we'll use each verse) as a vector, with each dimension representing the occurrence or frequency of a particular word.
@@ -31,7 +33,7 @@ As an example, let's say the words in our body of text are:
 Then, we could represent these two verses as follows:
 
 | Verse         | Bag of Words Vector   |
-| ------------- |*---------------------*| 
+| ------------- |:---------------------:| 
 | انا الانسن لفى خسر  | [1, 1, 1, 1, 0, 0] |
 | انا اعطينك الكوثر     | [1, 0, 0, 0, 1, 1] |
 
@@ -65,5 +67,4 @@ This could be a tool to help scholars, those verses that are not totally clear
 
 <hr>
 
-All the source code and data files for this project can be found and cloned from this (github repository)[https://github.com/abidlabs/classify-surahs].
-
+*All the source code and data files for this project can be found and cloned from this <a href="https://github.com/abidlabs/classify-surahs">github repository</a>.*
