@@ -28,22 +28,20 @@ There are a variety of ways to do this, but the simplest may be the [bag-of-word
 
 As an example, let's say the words in our body of text are:
 
-إنا     
-الإنسان     
-لفي     
-خسر     
-أعطينا      
-الكوثر
+إنا -- الإنسان -- لفي -- خسر -- أعطينا -- الكوثر
 
-Then, we could represent 
+Then, we could represent these two verses as follows:
 
 | Verse         | Bag of Words Vector   |
 | ------------- |---------------| 
-| الانسن لفى خسر      | [1, 1, 1, 1, 0, 0] |
+| انا الانسن لفى خسر      | [1, 1, 1, 1, 0, 0] |
 | انا اعطينك الكوثر     | [1, 0, 0, 0, 1, 1] |
 
+If a word repeats more than once, the vector reflects that multiplicity, so a vector can have entries more than 1 as well.
 
 **Training and Validation**
+
+Before feeding the 
 
 **Logistic Regression**
 
