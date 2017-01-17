@@ -1,12 +1,13 @@
 ---
 layout: post
-title: Can a Machine Learn to Classify Meccan and Madinan Surahs?
+title: Can a Machine Learn to Classify Meccan and Medinan Surahs?
 published: true
+image: https://upload.wikimedia.org/wikipedia/commons/e/e2/Kabaa.jpg
 ---
 
 A basic concept in Quranic studies is the difference between its **meccan** surahs/chapters (revealed before the Prophet migrated from trading city of Mecca to oasis town of Medina) and its **medinan** chapters (revealed after the migration). 
 
-Knowing where a chapter was revelead helps scholars derive meaning from the text, and so a great deal of effort has been expended to finding narrations that mention when a particular verse or chapter was revealed. However, the location where a chapter was revealed is also manifested in the linguistic characteristics of the passage. For example, meccan chapters are characterized by poetic meter, a rhetorical urgency, and an emphasis on recognizing the Oneness of God, while medinan chapters are more lengthy prose dedicated to explaining religious rituals.
+Knowing where a chapter was revealed helps scholars derive meaning from the text, and so a great deal of effort has been expended to finding narrations that mention when a particular verse or chapter was revealed. However, the location where a chapter was revealed is also manifested in the linguistic characteristics of the passage. For example, meccan chapters are characterized by poetic meter, a rhetorical urgency, and an emphasis on recognizing the Oneness of God, while medinan chapters are more lengthy prose dedicated to explaining religious rituals.
 
 This made me think that it might be possible to build a binary classifier that could use basic techniques from natural language processing to classify chapters as medinan or meccan. Here, I outline my methodology and share my results.
 
@@ -106,7 +107,7 @@ Finally, I was curious to see which Arabic words are the "most meccan" and the "
 
 Perhaps those who have studied the Quran more can enlighten me, but these words don't seem to follow any significant trends. 
 
-I did notice that the words in the meccan column are mostly those words that are *rare*, but make an appearance in at least once meccan surah. For example, لنفد is found only in Surah Al-Kahf. The words in the medinan column are sometimes also [hapaxes](https://en.wikipedia.org/wiki/Hapax_legomenon), but in other cases, *common* words in the Quran, which are overweighted in the medinan verses, which tend to be longer than meccan verses on average. So whil *والله* would appear in both kinds of surahs, it might appear multiple times in a medinan surahs. A further confounding factor is that our simple "bag of words" technique is unable to recognize any degree of similarity between related words -- *والله* is a separate word than *الله* internally -- making it more difficult to build complex insights.
+I did notice that the words in the meccan column are mostly those words that are *rare*, but make an appearance in at least once meccan surah. For example, لنفد is found only in Surah Al-Kahf. The words in the medinan column are sometimes also [hapaxes](https://en.wikipedia.org/wiki/Hapax_legomenon), but in other cases, *common* words in the Quran, which are overweighted in the medinan verses, which tend to be longer than meccan verses on average. So while *والله* would appear in both kinds of surahs, it might appear multiple times in a medinan surahs. A further confounding factor is that our simple "bag of words" technique is unable to recognize any degree of similarity between related words -- *والله* is a separate word than *الله* internally -- making it more difficult to build complex insights.
 
 With a deeper look into the weights, one might be able to identify trends as to why certain words are more "meccan" and why others are more "medinan," but the most strongly weighted words seem to result of technicalities associated with bag-of-word techniques. (Perhaps *normalizing* vectors before feeding them into logistic regression would lead to a more interpretable model?).
 
