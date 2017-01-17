@@ -33,15 +33,11 @@ As an example, let's say the words in our body of text are:
 Then, we could represent these two verses as follows:
 
 | Verse         | Bag of Words Vector   |
-| ------------- |---------------| 
+| ------------- |*---------------------*| 
 | انا الانسن لفى خسر      | [1, 1, 1, 1, 0, 0] |
 | انا اعطينك الكوثر     | [1, 0, 0, 0, 1, 1] |
 
 If a word repeats more than once, the vector reflects that multiplicity, so a vector can have entries more than 1 as well.
-
-Code to produce these word vectors from the text of the verses would look like:
-
-
 
 **Training and Validation**
 
