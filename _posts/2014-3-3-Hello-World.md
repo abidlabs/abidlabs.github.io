@@ -23,9 +23,9 @@ The version without vowel marks and with verse numbers will work best for our wo
 
 Alternatively, a link to a github repository with the `.csv` files (and all source code) is included at the end of this post.
 
-**Word Vectors** Once we have the text of the Quran, we need to convert the text to a standardized representation that can be fed to machine learning algorithms. Usually, these representations are in the form of numeric arrays or tensors.
+**Word Vectors** Once we have the text of the Quran, we need to convert the text to a standardized representation that can be fed to machine learning algorithms. Usually, these representations are in the form of numeric arrays, matrices, or tensors.
 
-There are a variety of ways to do this, but the simplest may be the [bag-of-words technique](https://en.wikipedia.org/wiki/Bag-of-words_model), which represents a 'text' (in this case, we'll use each verse) as a vector, with each dimension representing the occurrence or frequency of a particular word.
+There are a variety of ways to do this, but the simplest may be the [bag-of-words technique](https://en.wikipedia.org/wiki/Bag-of-words_model), which represents a 'text' (in this case, we'll use each verse as a text) as a vector, with each dimension representing the occurrence of a particular word.
 
 As an example, let's say the words in our body of text are:
 
@@ -44,7 +44,7 @@ If a word repeats more than once, the vector reflects that multiplicity, so a ve
 
 Before feeding the word vectors into a classifier, we need to partition our dataset into a training and validation set. To ensure that the validation set and training set are independent, the partitioning is done on a *chapter level*, not a verse level. This is because some chapter include repeating refrains (e.g. Surah Al-Rahman), it is unfair to include those verses in both the validation and training sets. 
 
-The partitioning was: Training: 40%, Validation: 60% (I chose a larger validation set to increase the meaningfulness of results, as will be discussed later). Because the partitioning was done on a chapter level, the number of verses in the training and validation set was not exactly 40/60.
+The partitioning I used was: Training: 40%, Validation: 60% (I chose a larger validation set to increase the meaningfulness of results, as will be discussed later). Because the partitioning was done on a chapter level, the number of verses in the training and validation set was not exactly 40/60.
 
 **Logistic Regression**
 
@@ -70,13 +70,13 @@ However, we do pretty decently on our validation set as well. The accuracy, 86%,
 * The dataset is unbalanced -- there are many more meccan chapters than medinan chapters, so if our classifier was just classifying every verse as meccan, it would get an accuracy of about 74%. Depending on the specific partitioning of the training and validation, we have an accuracy around 10 percentage points higher than that.
 * This is on a verse-by-verse level, under the assumption that every verse in a meccan surah is meccan, and same for medinan. This assumption is definitely not true, which affects both our training and evaluation of performance.
 
-A better indicator would be performance on a surah level. If we use a simply majority voting system (using all the verses in a chapter to "vote" for whether the surah is meccan or medinan), we get the following surah:
+A better indicator would be performance on a surah level. If we use a simply majority voting system (using all the verses in a chapter to "vote" for whether the surah is meccan or medinan), we get the following results:
 
 | Round         | Accuracy   |
 | ------------- |:---------------------:| 
 | Overall surah-level     |  94.73% |
 
-I'll confess, I was a bit disappointed when I saw that this wasn't closer to 100%. Which surahs are misclassified? It turns out that there are 6 surahs that are misclassified:
+I'll confess, I was a bit disappointed when I saw that this wasn't closer to 100%. Which surahs are misclassified? It turns out that there are 6 surahs that are misclassified in the validation set:
 
 | Misclassified Surah         | Predicted type   | Confidence (votes) |
 | ------------- |:---------------------:|:---------------------------:| 
@@ -87,7 +87,7 @@ I'll confess, I was a bit disappointed when I saw that this wasn't closer to 100
 | Surah Insaan (76)      |  meccan | 97% |
 | Surah Zilzaal (99)    |  meccan | 100% |
 
-When I took a closer look at these chapters, I was amazed to see that there is actually [scholarly disagreement](http://learnqurankareem.blogspot.com/2013/04/list-of-all-surah.html) about all 6 of these chapters! Based solely on word usage, our classifier provides that a few of these, such as Surahs Rahman, Insaan, and Zilzaal might fall in the meccan camp! 
+When I took a closer look at these chapters, I was amazed to see that there is actually [scholarly disagreement](http://learnqurankareem.blogspot.com/2013/04/list-of-all-surah.html) about all 6 of these chapters! Based solely on word usage, our classifier suggests that a few of these, such as Surahs Rahman, Insaan, and Zilzaal might fall in the meccan camp! 
 
 Finally, I was curious to see which Arabic words are the "most meccan" and the "most medinan." We can analyze this by looking at the weights that the model learns for each word. The top 10 meccan and medinan words are:
 
@@ -107,7 +107,7 @@ Finally, I was curious to see which Arabic words are the "most meccan" and the "
 
 Perhaps those who have studied the Quran more can enlighten me, but these words don't seem to follow any significant trends. 
 
-I did notice that the words in the meccan column are mostly those words that are *rare*, but make an appearance in at least once meccan surah. For example, لنفد is found only in Surah Al-Kahf. The words in the medinan column are sometimes also [hapaxes](https://en.wikipedia.org/wiki/Hapax_legomenon), but in other cases, *common* words in the Quran, which are overweighted in the medinan verses, which tend to be longer than meccan verses on average. So while *والله* would appear in both kinds of surahs, it might appear multiple times in a medinan surahs. A further confounding factor is that our simple "bag of words" technique is unable to recognize any degree of similarity between related words -- *والله* is a separate word than *الله* internally -- making it more difficult to build complex insights.
+I did notice that the words in the meccan column are mostly those words that are *rare*, but make an appearance in at least once meccan surah. For example, لنفد is found only in Surah Al-Kahf. The words in the medinan column are sometimes also [hapaxes](https://en.wikipedia.org/wiki/Hapax_legomenon), but in other cases, they are *common* words in the Quran, which are overweighted in the medinan verses, which tend to be longer than meccan verses on average. So while *والله* would appear in both kinds of surahs, it might appear multiple times within a medinan verse. A further confounding factor is that our simple "bag of words" technique is unable to recognize any degree of similarity between related words -- *والله* is a separate word than *الله* internally -- making it more difficult to build complex insights.
 
 With a deeper look into the weights, one might be able to identify trends as to why certain words are more "meccan" and why others are more "medinan," but the most strongly weighted words seem to result of technicalities associated with bag-of-word techniques. (Perhaps *normalizing* vectors before feeding them into logistic regression would lead to a more interpretable model?).
 
