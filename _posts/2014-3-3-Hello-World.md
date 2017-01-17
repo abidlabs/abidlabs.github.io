@@ -28,7 +28,12 @@ There are a variety of ways to do this, but the simplest may be the [bag-of-word
 
 As an example, let's say the words in our body of text are:
 
-إنا, الإنسان, لفي, خسر, أعطينا, الكوثر
+إنا     
+الإنسان     
+لفي     
+خسر     
+أعطينا      
+الكوثر
 
 Then, we could represent 
 
