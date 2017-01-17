@@ -78,7 +78,7 @@ A better indicator would be performance on a surah level. If we use a simply maj
 I'll confess, I was a bit disappointed when I saw that this wasn't closer to 100%. Which surahs are misclassified? It turns out that there are 6 surahs that are misclassified:
 
 | Misclassified Surah         | Predicted type   | Confidence (votes) |
-| ------------- |:---------------------:|:----------------------------| 
+| ------------- |:---------------------:|:---------------------------:| 
 | Surah Ra'd (13)     |  meccan |  81% |     
 | Surah Hajj (22)     |  meccan |  63% |
 | Surah Muhammad (47)   |  meccan | 53% |
