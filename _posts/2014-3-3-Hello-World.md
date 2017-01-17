@@ -4,6 +4,8 @@ title: Can a Machine Learn to Classify Meccan and Madinan Surahs?
 published: true
 ---
 
+*All the source code and data files for this project can be found and cloned from this (github repository)[https://github.com/abidlabs/classify-surahs]*
+
 A basic concept in Quranic studies is the difference between its **meccan** surahs/chapters (revealed before the Prophet migrated from trading city of Mecca to oasis town of Medina) and its **medinan** chapters (revealed after the migration). 
 
 Knowing where a chapter was revelead helps scholars derive meaning from the text, and so a great deal of effort has been expended to finding narrations that mention when a particular verse or chapter was revealed. However, the location where a chapter was revealed is also manifested in the linguistic characteristics of the passage. For example, meccan chapters are characterized by poetic meter, a rhetorical urgency, and an emphasis on recognizing the Oneness of God, while medinan chapters are more lengthy prose dedicated to explaining religious rituals.
@@ -26,7 +28,15 @@ There are a variety of ways to do this, but the simplest may be the [bag-of-word
 
 As an example, let's say the words in our body of text are:
 
-| Tables        | Are           | Cool  |
+إنا, الإنسان, لفي, خسر, أعطينا, الكوثر
+
+Then, we could represent 
+
+| Verse         | Bag of Words Vector   |
+| ------------- |---------------| 
+| الانسن لفى خسر      | [1, 1, 1, 1, 0, 0] |
+| انا اعطينك الكوثر      | [1, 0, 0, 0, 1, 1] |
+
 
 **Training and Validation**
 
