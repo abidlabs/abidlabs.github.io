@@ -106,9 +106,9 @@ Finally, I was curious to see which Arabic words are the "most meccan" and the "
 
 Perhaps those who have studied the Quran more can enlighten me, but these words don't seem to follow any significant trends. 
 
-I did notice that the words in the meccan column are mostly those words that are *rare*, but make an appearance in at least once meccan surah. For example, لنفد is found only in Surah Al-Kahf. The words in the medinan column are, in some cases, *common* words in the Quran, which are overweighted in the medinan verses, which tend to be longer than meccan verses on average. So whil *والله* would appear in both kinds of surahs, it might appear multiple times in a medinan surahs.
+I did notice that the words in the meccan column are mostly those words that are *rare*, but make an appearance in at least once meccan surah. For example, لنفد is found only in Surah Al-Kahf. The words in the medinan column are, in some cases, *common* words in the Quran, which are overweighted in the medinan verses, which tend to be longer than meccan verses on average. So whil *والله* would appear in both kinds of surahs, it might appear multiple times in a medinan surahs. A further confounding factor is that our simple "bag of words" technique is unable to recognize any degree of similarity between related words -- *والله* is a separate word than *الله* internally -- making it more difficult to build complex insights.
 
-With a deeper look into the weights, one might be able to identify trends as to why certain words are more "meccan" and why others are more "medinan," but the most strongly weighted words seem to result of technicalities associated with bag-of-word techniques. Perhaps *normalizing* vectors before feeding them into logistic regression would lead to a more interpretable model.
+With a deeper look into the weights, one might be able to identify trends as to why certain words are more "meccan" and why others are more "medinan," but the most strongly weighted words seem to result of technicalities associated with bag-of-word techniques. (Perhaps *normalizing* vectors before feeding them into logistic regression would lead to a more interpretable model?).
 
 # Conclusion
 
