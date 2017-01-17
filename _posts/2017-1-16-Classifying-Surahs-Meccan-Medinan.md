@@ -3,6 +3,7 @@ layout: post
 title: Can a Machine Learn to Classify Meccan and Medinan Surahs?
 published: true
 image: https://upload.wikimedia.org/wikipedia/commons/e/e2/Kabaa.jpg
+comments: true
 ---
 
 A basic concept in Quranic studies is the difference between its **meccan** surahs/chapters (revealed before the Prophet Muhammad migrated from trading city of Mecca to oasis town of Medina) and its **medinan** chapters (revealed after the migration). 
