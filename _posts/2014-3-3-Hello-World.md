@@ -49,13 +49,13 @@ The partitioning was: Training: 40%, Validation: 60% (I chose a larger validatio
 
 The classifier I ended up choosing was logistic regression. Logistic regression works similarly to linear regression, as it assigns linear weights to the presence of each feature in our vector. But then it introduces a non-linearity -- by passing the result through the logistic function
 
-$$ f(x) = log{\frac{p}{1-p}} $$
+$$ f(x) = \log{\frac{p}{1-p}} $$
 
 This provides a probability between 0 and 1 that verse belongs to a particular class -- in our case, the classes are meccan or medinan. We train the weights on our training set, and check how well it performs on the test set.
 
 # Results
 
-So how do we do? Based on the training accuracy
+So how do we do? 
 
 # Conclusion
 
