@@ -42,7 +42,7 @@ Given this dataset, how do we identify the motif (or motifs!) that the transcrip
 
 As a first pass, you might decide to frame this as a linear regression problem: given a matrix of 500 columns, where each column encodes 1 input sequence, and a vector of labels of length 500, where each label encodes the affinity of a sequence to the protein, what weight vector maps the input matrix to the output labels most closely? Such an approach is illustrated below (you can think of each base being represented by an integer: A=0, T=1, C=2, G=3, although there is a better way to encode categorical features):
 
-{% include image.html name="DLBM-gif1.gif"%}
+{% include image.html name="DLBM-gif1.png"%}
 
 The problem with this formulation is that does not take into account any non-linearities in the relationship between input sequences and binding affinity. In particular, we'd like the algorithm to identify motifs, such as "CCGGT" that cause the transcription factor to bind. However, linear techniques
 
@@ -52,11 +52,11 @@ So, how do we extend our model to include these nonlinear relationships? In the 
 
 However, this requires a lot of thought and domain expertise. In the framework of deep learning, we instead create a bunch of neurons, each of which takes as input a linear combination of the original features. Then, each of these neurons activate, meaning that they output a value that is a non-linear function of their input. (The particular choice of non-linear function can vary, and won't be discussed here). The output values can then be summed to produce a predicted label. This approach is shown here:
 
-slow2
+{% include image.html name="slow2.gif"%}
 
 A layer of neurons is known as a hidden layer, as it does not directly represent the input, nor the output, but is an intermediary between the two. You might ask -- what if we were to add another layer of intermediary neurons? Deep neural networks take this concept to heart, and can have many hidden layers of neurons that feed into each other before outputting a prediction value. Like this:
 
-dlbm-gif3
+{% include image.html name="DLBM-gif3.png"%}
 
 This allows them to capture more and more complex features. For example, the neurons in the first hidden layers might capture small motifs. The neurons in the second hidden layer might capture combinations of motifs, or global properties, like GC-content (although global properties could be captured in the first layer as well). And so on.
 
@@ -72,7 +72,7 @@ If we already expect the weights to take this form, why not use a neural network
 
 This kind of architecture is known as convolutional neural network, and a layer that enforces the constraint just described is known as a convolution layer. Again, the power of convolution layers is that they tend to pick the "right" patterns -- those that repeat throughout our input features -- all while having very few parameters that need to be learned. Here's an example of a convolutional layer that tries to learn a 5-base motif anywhere in our input sequence.
 
-slow4
+{% include image.html name="slow4.gif"%}
 
 You'll notice that the number of free parameters in the convolutional layer is just 5, instead of the significantly bigger number in the first hidden layer of the fully-connected neural network above. Even the fully-connected layer that follows the convolutional layer usually has a simple structure (in our cases it is uniform, because it responds uniformly to matched motifs anywhere in the DNA sequence), so we can simplify it using a max pooling layer, which further reduces the number of parameters in the model. ConvNets are in fact the architecture used by a recent paper in Nature for predicting protein-DNA interactions.
 
@@ -92,7 +92,7 @@ In the jargon of natural language processing, there is now a grammar to the DNA-
 
 A simple RNN is illustrated in the following graphic. There are two fundamental differences between this RNN and the feedforward neural nets we saw earlier. 1) We are training many DNA sequences, one after another, and there is a sequential relationship between each set of input features 2) a memory unit is introduced that stores the state of the RNN and which is updated at every step in the sequence.
 
-slow5
+{% include image.html name="slow5.gif"%}
 
 The architecture shown here is often described as a "vanilla RNN" because it is probably the simplest way you could incorporate memory into a neural network. It has some shortcomings, such as the fact that the RNN does not retain any long-term memory (the memory vector only affects the very next output). To address this shortcoming, the long short-term memory (LSTM) architecture is often used to improve accuracy and stability.
 
@@ -108,7 +108,7 @@ Many studies have noted that patients with ASD exhibit certain unusual variation
 
 Here are two fMRIs, one taken from a subject with ASD and one without, taken from the ABIDE dataset.
 
-slide1
+{% include image.html name="brain2.png"%}
 
 Classifying which fMRI belongs to which subject falls into the category of image recognition, and a ConvNet is well-suited to the task. However, there's a problem - each of these brain scans generally consists of over a million voxels. Yet, it hard to generate even a few hundred clean images to train our ConvNet. Because the number of features vastly outnumbers the number of training examples, we are likely to overfit our model, even with a convolutional neural network.
 
@@ -118,7 +118,7 @@ How do we know if we have a good mapping into a lower dimension? There are plent
 
 With this in mind, we can construct an autoencoder neural network that tries to minimize the difference between the original input image and one that has been compressed and then reconstructed:
 
-slide2
+{% include image.html name="slide2.png"%}
 
 Unlike other architectures above, this is an unsupervised neural network. Instead of trying to minimize the difference between predicted and actual labels, there are no labels at all, and instead, the difference between input images and reconstructed images.
 
