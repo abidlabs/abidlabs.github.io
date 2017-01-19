@@ -42,7 +42,10 @@ Given this dataset, how do we identify the motif (or motifs!) that the transcrip
 
 As a first pass, you might decide to frame this as a linear regression problem: given a matrix of 500 columns, where each column encodes 1 input sequence, and a vector of labels of length 500, where each label encodes the affinity of a sequence to the protein, what weight vector maps the input matrix to the output labels most closely? Such an approach is illustrated below (you can think of each base being represented by an integer: A=0, T=1, C=2, G=3, although there is a better way to encode categorical features):
 
-dlbm-gif1
+
+
+{% include image.html name="DLBM-gif1.gif"%}
+
 
 The problem with this formulation is that does not take into account any non-linearities in the relationship between input sequences and binding affinity. In particular, we'd like the algorithm to identify motifs, such as "CCGGT" that cause the transcription factor to bind. However, linear techniques
 
