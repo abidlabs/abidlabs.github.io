@@ -1,5 +1,4 @@
-x
-<!-- {% capture imagePath %}{{ page.date | date: "%Y-%m-%d" }}/{{ include.name }}{% endcapture %}
+{% capture imagePath %}{{ page.date | date: "%Y-%m-%d" }}/{{ include.name }}{% endcapture %}
 {% if include.caption %}
     <figure>
         <img src="/images/posts/{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} width="{{ include.width }}" {% endif %}/>
@@ -7,4 +6,4 @@ x
     </figure>
 {% else %}
     <img src="/images/posts/{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} width="{{ include.width }}" {% endif %}/>
-{% endif %} -->
+{% endif %}
