@@ -10,7 +10,7 @@ Over the last few years, researchers have applied deep learning to all sorts of 
 
 These results are somewhat surprising -- deep learning was inspired by the architecture of the human nervous system, which explains why it works so well on conventional, "human" tasks like image recognition and natural language processing. But what about tasks like sifting through large amounts of DNA sequences and identifying sites that bind to proteins -- why do neural networks perform so well?
 
-{% include image name="Brain.png" %}
+{% include image.html name="Brain.png" %}
 
 In this post, I examine 4 fundamental deep learning architectures, and consider why they are suited to solving problems in medicine and functional genomics. But before that, let's start with machine learning basics.
 
