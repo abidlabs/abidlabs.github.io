@@ -14,7 +14,7 @@ These results are somewhat surprising -- deep learning was inspired by the archi
 
 In this post, I examine 4 fundamental deep learning architectures, and consider why they are suited to solving problems in medicine and functional genomics. But before that, let's start with machine learning basics.
 
-Preliminaries
+# Preliminaries
 
 Machine learning is pattern recognition. Historically, the earliest patterns that computers were tasked to recognize were linear patterns that mapped input data, represented in the form of feature vectors, to output data, represented as discrete or continuous scalar labels. Linear models can only describe certain kinds of datasets, and so a long time ago, researchers found ways of transforming non-linear relationships into linear ones, which were then easily tackled by standard linear machine learning algorithms. However, these approaches required knowing (or guessing) the explicit non-linear relationships between the input data and output data, and "hand-engineering" features to remove these non-linearities.
 
@@ -26,7 +26,7 @@ So how do neural networks do it? Can neural networks really really find any poss
 
 Yet it turns out that most "real-world" non-linear datasets are characterized by certain properties that are well-suited to learning by deep neural nets, meaning that neural net-based algorithms are highly efficient in capturing patterns within those datasets. Although it is not necessary to know these properties to use neural nets, it is interesting to think about how these properties, such as locality and symmetry, connect to the fundamental physical processes that generate the data, as well as which properties are emphasized in each of the 4 architectures that we will discuss.
 
-1. Feedforward, Fully-Connected Neural Networks
+# 1. Feedforward, Fully-Connected Neural Networks
 
 Let's start by considering a classic problem in functional genomics.
 
@@ -62,7 +62,7 @@ This allows them to capture more and more complex features. For example, the neu
 
 As an aside, it is worth mentioning that the idea of having more than 1 layer only makes sense with a nonlinear activation function. If we restrict ourselves to dealing with linear activation functions, adding multiple layers offers no advantage, since a linear function of a linear combination is still a linear combination. However, linear combinations of non-linear functions can produce non-linear functions that are not part of the original set of functions.
 
-2. Convolutional Neural Networks
+# 2. Convolutional Neural Networks
 
 You'll notice something interesting in the 2-layer neural network that I illustrated above. The first hidden layer consists of 4 neurons, but the weights that feed into neurons 2, 3, and 4 follow a particular pattern. Each neuron has the same set of weights, but these weights are applied to different parts of the input sequence.
 
@@ -76,7 +76,7 @@ This kind of architecture is known as convolutional neural network, and a layer 
 
 You'll notice that the number of free parameters in the convolutional layer is just 5, instead of the significantly bigger number in the first hidden layer of the fully-connected neural network above. Even the fully-connected layer that follows the convolutional layer usually has a simple structure (in our cases it is uniform, because it responds uniformly to matched motifs anywhere in the DNA sequence), so we can simplify it using a max pooling layer, which further reduces the number of parameters in the model. ConvNets are in fact the architecture used by a recent paper in Nature for predicting protein-DNA interactions.
 
-3. Recurrent Neural Network
+# 3. Recurrent Neural Network
 
 Now, let's say your biologist friend comes along and tells you a little bit more about functional genomics.
 
@@ -98,7 +98,7 @@ The architecture shown here is often described as a "vanilla RNN" because it is 
 
 A recent paper in functional genomics used a combined CNN-RNN architecture with LSTM units to achieve breakthrough performance in protein-DNA binding prediction.
 
-4. Autoencoders
+# 4. Autoencoders
 
 Let's shift gears and look at a different problem: diagnosing autism based solely on brain scans.
 
@@ -124,6 +124,6 @@ Unlike other architectures above, this is an unsupervised neural network. Instea
 
 Once we have found a compressed representation, then we can feed that into a convolutional neural network to perform the classification between patients with autism and those without autism.
 
-Conclusion
+# Conclusion
 
 When analyzing datasets in medicine and biology there is surprisingly often a neural network architecture that is well-suited to the application. Although neural networks are often toted as "blind machine learning" -- in that they can be applied without any domain expertise -- we've seen how knowing something about the biology underlying a problem can help find the right architecture.
