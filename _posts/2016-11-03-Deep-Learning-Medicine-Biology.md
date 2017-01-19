@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Can a Machine Learn to Classify Meccan and Medinan Surahs?
+title: An Introduction to Deep Learning in Medicine and Biology
 published: true
 image: https://upload.wikimedia.org/wikipedia/commons/e/e2/Kabaa.jpg
 comments: true
@@ -10,9 +10,7 @@ Over the last few years, researchers have applied deep learning to all sorts of 
 
 These results are somewhat surprising -- deep learning was inspired by the architecture of the human nervous system, which explains why it works so well on conventional, "human" tasks like image recognition and natural language processing. But what about tasks like sifting through large amounts of DNA sequences and identifying sites that bind to proteins -- why do neural networks perform so well?
 
-slide1
-
-A convolutional neural network can take a look at this fMRI scan, and determine if it comes from a patient with Alzheimer's.
+{% include image name="Brain.png" caption="A convolutional neural network can take a look at this fMRI scan, and determine if it comes from a patient with Alzheimer's." %}
 
 In this post, I examine 4 fundamental deep learning architectures, and consider why they are suited to solving problems in medicine and functional genomics. But before that, let's start with machine learning basics.
 
