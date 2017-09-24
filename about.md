@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am a 1st year PhD student at Stanford studying machine learning.
+I am a 1st year PhD student at Stanford studying machine learning methods, especially with applications to medicine and biology. I am fortunate to have Professor James Zou as my advisor.
 
 ### My Story
 
