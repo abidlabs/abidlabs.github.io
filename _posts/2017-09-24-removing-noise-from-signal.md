@@ -5,12 +5,9 @@ comments: true
 published: true
 ---
 
-<div style="text-align: center; width:80%; margin-left:10%; margin-bottom:15px;">
-<center>
-<img src="/images/headphones.jpg" style="width:90%"><br>
-<em>Removing noise from data is an important first step in machine learning. What can data scientists learn from noise-canceling headphones?</em>
-</center>
-</div>
+
+{% include image.html name="headphones.jpg" caption="Removing noise from data is an important first step in machine learning. What can data scientists learn from noise-canceling headphones?" %}
+
 
 AS data scientists and researchers in machine learning, we usually don't think about how our data is collected. We focus on analysis, not measurement. While that abstraction is useful, it can be dangerous if we're dealing with noisy data. A dirty dataset can be a bottleneck that reduces the quality of the entire analysis pipeline.
 
@@ -62,8 +59,8 @@ The same kind of approach can be used to clean dirty datasets that contain signi
 
 Working with some colleagues, I have developed a technique to do this analysis in a principled way. The technique is called **Contrastive PCA**. Check out our paper on Arxiv for more details and experiments: https://arxiv.org/abs/1709.06716
 
-<br>&nbsp;</br>
-<br>&nbsp;</br>
+<br>&nbsp;
+<br>&nbsp;
 
 --
 
