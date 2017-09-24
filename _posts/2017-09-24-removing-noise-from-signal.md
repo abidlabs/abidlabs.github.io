@@ -3,7 +3,7 @@ layout: post
 title: "3 Ways to Remove Noise from Data/Signal"
 comments: true
 published: true
-image: https://abidlabs.github.io/images/posts/2017-09-24/headphones.jpg
+image: https://cdn.pixabay.com/photo/2014/07/31/23/38/headphones-407190_960_720.jpg
 ---
 
 
