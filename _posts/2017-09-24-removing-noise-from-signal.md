@@ -6,10 +6,9 @@ published: true
 ---
 
 
-{% include image.html name="headphones.jpg" caption="Removing noise from data is an important first step in machine learning. What can data scientists learn from noise-canceling headphones?" %}
+{% include image.html name="headphones.jpg" caption="Removing noise from data is an important first step in machine learning. What can data scientists learn from noise-canceling headphones?" width="88%"%}
 
-
-AS data scientists and researchers in machine learning, we usually don't think about how our data is collected. We focus on analysis, not measurement. While that abstraction is useful, it can be dangerous if we're dealing with noisy data. A dirty dataset can be a bottleneck that reduces the quality of the entire analysis pipeline.
+As data scientists and researchers in machine learning, we usually don't think about how our data is collected. We focus on analysis, not measurement. While that abstraction is useful, it can be dangerous if we're dealing with noisy data. A dirty dataset can be a bottleneck that reduces the quality of the entire analysis pipeline.
 
 In this post, I'm not going to talk about data collection. But I do want to talk about **what to do if you are given a dirty dataset.** Are there any steps you can easily take to improve the quality of your data? I will mention 3 high-level ideas to *denoise* data. As we'll see, each of these methods will have an analogue in signal processing, as electrical engineers have been thinking about similar problems for a long time!
 
