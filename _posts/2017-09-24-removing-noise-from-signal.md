@@ -56,7 +56,7 @@ To combat this problem (and make things like noise-canceling headphones possible
 
 The same kind of approach can be used to clean dirty datasets that contain significant background trends that are not of interest to the researcher. Imagine, for example, that we have genetic measurements from cancer patients of different ethnicities and sexes. If we directly apply SVD (or PCA) to this data, the top basis vectors will correspond to the demographic variations of the individuals instead of the subtypes of cancer because the genetic variations due to the former are likely to be larger than and overshadow the latter. But if we have a background dataset consisting of healthy patients that also contains the variation associated with demographic differences, but not the variation corresponding to subtypes of cancer, we can **search for the top basis vectors in our primary dataset that our absent from the background**.
 
-Working with some colleagues, I have developed a technique to do this analysis in a principled way. The technique is called **Contrastive PCA**. Check out our paper for more details and experiments: https://arxiv.org/abs/1709.06716
+Some colleagues and I have developed a technique to do this analysis in a principled way. The technique is called **Contrastive PCA**. Check out our paper for more details and experiments: https://arxiv.org/abs/1709.06716
 
 <br>&nbsp;
 <br>&nbsp;
