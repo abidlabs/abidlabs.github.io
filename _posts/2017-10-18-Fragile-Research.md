@@ -9,7 +9,9 @@ image: https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1BAAAAJGM1OWQzNmVjLTAxZTctN
 
 {% include image.html name="vase.jpg" caption="Many of us, conscious or subconsciously, treat our research as fragile, when in reality, we should be stress-testing it. Here, I share 3 ways to make the methods we develop more robust." width="64%"%}
 
-A few months into my PhD, I had my first original idea. The epiphany struck as I was biking down to my lab on a cold, sunny midmorning, and I remember almost shaking on my bike seat with excitement. As soon as I got to a computer, I opened up a python notebook and started typing. I pounded out the lines of code, nervously wondering whether the idea could really work. I generated some random data and simulated my method on the dataset.
+{: .text-justify}
+
+A few months into my PhD, I had my first original idea. The epiphany struck as I was biking down to my lab on a cold, sunny midmorning, and I remember almost shaking in my bike seat with excitement. As soon as I got to a computer, I opened up a python notebook and started typing. I pounded out the lines of code, nervously wondering whether the idea could really work. I generated some random data and simulated my method on the dataset.
 
 A few seconds later, the simulation finished running and the result appeared as an accuracy underneath my code: 93%. It looked great! I pressed shift-ENTER to rerun the simulation with a new randomly-generated dataset. This time around, the results looked a lot worse. I ran the simulations a few more times, and the results seemed to be all over the place. In order to make the results a little bit better, I changed how I generated the data, reducing the dimensionality of my data and making the problem more tractable. This time around, the accuracies seemed to improve, and so I tweaked the data again. After a few tweaks, I was getting consistently good results, and so I started daydreaming about how I would present this to my advisor.
 
