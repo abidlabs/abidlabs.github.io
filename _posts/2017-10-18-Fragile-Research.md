@@ -7,7 +7,7 @@ image: https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1BAAAAJGM1OWQzNmVjLTAxZTctN
 ---
 
 
-{% include image.html name="fragile.jpg" caption="Many of us, conscious or subconsciously, treat our research as fragile, when in reality, we should be stress-testing it. Here, I share three ways to do that." width="88%"%}
+{% include image.html name="vase.jpg" caption="Many of us, conscious or subconsciously, treat our research as fragile, when in reality, we should be stress-testing it. Here, I share three ways to make the methods and algorithms we develop more robust." width="88%"%}
 
 A few months into my PhD, I had my first original idea. The epiphany struck as I was biking down to my lab on a cold, sunny midmorning, and I remember almost shaking on my bike seat with excitement. As soon as I got to a computer, I opened up a python notebook and started typing. I pounded out the lines of code, nervously wondering whether the idea could really work. I generated some random data and simulated my method on the dataset.
 
