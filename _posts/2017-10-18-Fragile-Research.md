@@ -43,7 +43,7 @@ Do this from the very beginning: it may seem like extra work, but the payoff is 
 
 Let's say that you have invented a new clustering technique. You generate a bunch of datasets with two clusters of points. As you bring the clusters closer and closer together, you observe that existing clustering techniques are unable to resolve the clusters in the data, but your technique continues to work. Success? Not so fast! 
 
-What if you are accidentally feeding the labels into your clustering algorithm? (Embarrassingly, this happened to me once). To make sure your algorithm isn't using information it shouldn't have access to, or it isn't _too sensitive_, or some other silly mistake, generate a **negative control** dataset, for example by generating the two clusters with identical distributions or by randomly shuffling the labels on a classification task. 
+What if you are accidentally feeding the ground-truth labels into your clustering algorithm? (Embarrassingly, this happened to me once). To make sure your algorithm isn't using information it shouldn't have access to, or it isn't _too sensitive_, or some other silly mistake, generate a **negative control** dataset, for example by generating the two clusters with identical distributions or by randomly shuffling the labels on a classification task. 
 
 Is your method still working on the negative control? If so, you have a problem.
 
