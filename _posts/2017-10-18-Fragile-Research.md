@@ -25,7 +25,7 @@ When I first ran contrastive PCA on a dataset, I generated a bunch of plots by t
 
 In other words, don't just look for datasets or settings that make your method work. Stress-test your work. When does it fail? Why? By asking these questions, you'll have an unbiased understanding of the method. Over time, I've started doing certain things that I think have helped me get this clearer perspective. Here are three such things:
 
-1. Run At Least 10 Simulations At Once, and Only Look at the Aggregate Results
+## 1. Run At Least 10 Simulations At Once, and Only Look at the Aggregate Results
 
 The human mind is *really good* at finding patterns. Often times, we'll run just one simulation at a time, and we'll start to build a mental model of whether our method is working by looking at the results of the first few simulations or by a few simulations that are extremely good or dramatically bad. We might hallucinate patterns that really aren't there. This is especially the case if you're comparing your novel method with a standard baseline. If there's variation in the results, often times, it can seem that your method is *usually* working better than the baseline. 
 
@@ -35,7 +35,7 @@ If your method requires working with a real dataset that cannot be simulated, bo
 
 Do this from the very beginning: it may seem like extra work, but the payoff is that you won't go bumbling down the wrong path.
 
-2. Have a **Negative Control** Dataset
+## 2. Have a **Negative Control** Dataset
 
 Let's say that you have invented a new clustering technique. You generate a bunch of datasets with two clusters of points. As you bring the clusters closer and closer together, you observe that existing clustering techniques are unable to resolve the clusters in the data, but your technique continues to work. Success? Not so fast! 
 
@@ -43,7 +43,7 @@ What if you are accidentally feeding the labels into your clustering algorithm? 
 
 Is your method still working on the negative control? If so, you have a problem.
 
-3. Look Out for Free Parameters
+## 3. Look Out for Free Parameters
 
 As I mentioned earlier, you have to be particularly careful if your method has free (hyper)parameters. It's easy to fool yourself into adjusting the hyperparameter *just so* until your method is working perfectly on a particular dataset. Then, when you try your method on a very different dataset, the algorithm fails worse than an old guitar, as parameters need to be re-tuned. 
 
