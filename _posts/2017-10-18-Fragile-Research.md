@@ -54,4 +54,4 @@ To clarify, the mere presence of hyperparameters isn't a problem. If you find th
 
 In general, the point of this Rule is: get into an antagonistic mindset when you're doing research. At this risk of sounding extreme, try to get your method to *fail*. By finding the weak points of your algorithm or experiment, you'll be forced to find ways to strengthen it and develop a method that is actually useful in the wild -- that is, to other people who are using it outside the carefully curated conditions of your lab.
 
-* Not his real name
+\* Not his real name
