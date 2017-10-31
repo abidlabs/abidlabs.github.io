@@ -49,11 +49,11 @@ Is your method still working on the negative control? If so, you have a problem.
 
 ## 3. Look Out for Free Parameters
 
-As I mentioned earlier, you have to be particularly careful if your method has free (hyper)parameters. It's easy to fool yourself into adjusting the hyperparameter *just so* until your method is working perfectly on a particular dataset. Then, when you try your method on a very different dataset, the algorithm fails worse than an old guitar, as parameters need to be re-tuned. 
+As I mentioned earlier, you have to be particularly careful if your method has free (hyper)parameters. It's easy to fool yourself into adjusting the hyperparameter *just so* until your method is working perfectly on a particular dataset. Then, when you try your method on a very different dataset, the algorithm fails worse than an old guitar as parameters need to be re-tuned. 
 
-To clarify, the mere presence of hyperparameters isn't a problem. If you find that the algorithm isn't too sensitive to the choice of parameters, across its range of operation, then there's nothing to worry about. Even if the algorithm is sensitive to the parameters, but those parameters can be estimated automatically from properties of the dataset, then  
+To clarify, the mere *presence* of hyperparameters isn't a problem. If you find that the algorithm isn't too sensitive to the choice of parameters across its range of operation, then there's nothing to worry about (take a look at [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding), for example). Even if the algorithm *is* sensitive to the parameters, but those parameters can be estimated from properties of the dataset, then you can build a subroutine that automatically chooses suitable values for hyperparameters. This is what we ended up doing for contrastive PCA.    
 
 
-In general, the point of this Rule is: get into an antagonistic mindset when you're doing research. At this risk of sounding extreme, try to get your method to *fail*. By finding the weak points of your algorithm or experiment, you'll be forced to find ways to strengthen it and develop a method that is actually useful in the wild -- that is, to other people who are using it outside the carefully curated conditions of your lab.
+In general, the point of this Rule is: adopt an antagonistic mindset when you're doing research. At this risk of sounding extreme, try to get your method to *fail*. By finding the weak points of your algorithm or experiment, you'll be forced to find ways to strengthen it and develop a method that is actually useful in the wild -- that is, to other people who are using it outside the carefully curated conditions of your lab.
 
 \* Not his real name
