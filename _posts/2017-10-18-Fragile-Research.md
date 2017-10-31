@@ -19,7 +19,9 @@ I realized that I was making this mistake when I first showed my results to my c
 
 When I first ran contrastive PCA on a dataset, I generated a bunch of plots by tuning a parameter that I'll call "alpha". For *one* of the values of alpha, contrastive PCA found a projection of the data that beautifully separated the four clusters within the data. When I showed Zaid the figure, I thought he would be blown away. Instead, he skeptically waved his hands at my results. Here's why:
 
+<center>
 {% include image.html name="plot.png" width="88%"%}
+</center>
 
 "Why did you pick this value of alpha?" He asked, rightly pointing out that I had no _a priori_ reason for picking this value of alpha. For all I knew, I might have gotten lucky, by choosing a parameter that just happened to work for this dataset. Imagine if values of alpha allowed me to cycle through every possible projection. It wouldn't be a surprise if one of them happened to be the projection that separated the data points. Jamal also gave me some other advice: "Throw your research against the wall, because if you don't, someone else will."
 
