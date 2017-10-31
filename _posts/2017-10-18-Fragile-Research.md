@@ -25,15 +25,15 @@ When I first ran contrastive PCA on a dataset, I generated a bunch of plots by t
 {% include image.html name="plot.png" width="88%"%}
 </center>
 
-"Why did you pick this value of alpha?" He asked, rightly pointing out that I had no _a priori_ reason for picking this value of alpha. For all I knew, I might have gotten lucky, by choosing a parameter that just happened to work for this dataset. Imagine if values of alpha allowed me to cycle through every possible projection. It wouldn't be a surprise if one of them happened to be the projection that separated the data points. Jamal also gave me some other advice: "Throw your research against the wall, because if you don't, someone else will."
+"Why did you pick this value of alpha?" He asked, rightly pointing out that I had no _a priori_ reason for picking this value of alpha. For all we knew, I might have gotten lucky, by choosing a parameter that just happened to work for this dataset. Imagine if values of alpha allowed me to cycle through every possible projection. It wouldn't be a surprise if one of them happened to be the projection that separated the data points. Jamal also gave me some other advice: "Throw your research against the wall, because if you don't, someone else will."
 
 In other words, don't just look for datasets or settings that make your method work. Stress-test your work. When does it fail? Why? By asking these questions, you'll have an unbiased understanding of the method. Over time, I've started doing certain things that I think have helped me get this clearer perspective. Here are three such things:
 
 ## 1. Run At Least 10 Simulations At Once, and Only Look at the Aggregate Results
 
-The human mind is *really good* at finding patterns. Often times, we'll run just one simulation at a time, and we'll start to build a mental model of whether our method is working by looking at the results of the first few simulations or by a few simulations that are extremely good or dramatically bad. We might hallucinate patterns that really aren't there. This is especially the case if you're comparing your novel method with a standard baseline. If there's variation in the results, often times, it can seem that your method is *usually* working better than the baseline. 
+The human mind is *really good* at finding patterns. Often times, we'll run just one simulation at a time, and we'll start to build a mental model of whether our method is working by looking at the results of the first few simulations or by a few simulations that are extremely good or dramatically bad. We might hallucinate patterns that really aren't there. This is especially the case if you're comparing your novel method with a standard baseline. If there's variation in the results, often times, it can seem that your method is *usually* working better than the baseline when on average it isn't. 
 
-To avoid making imaginary inferences, generate lots of random, independent datasets and run your method with all of them. Display aggregate results (such as means and standard deviations), and ideally plot the results. Graphs lie less frequently than raw numbers. 
+To avoid making imaginary inferences, generate lots of random, independent datasets and run your method with all of them. Display aggregate results (such as means and standard deviations), and ideally plot the results. Graphs deceive less frequently than raw numbers. 
 
 If your method requires working with a real dataset that cannot be simulated, bootstrap your data: pick samples from your dataset (randomly, *with* replacement) to generate at least 10 new datasets of the same size as your original. Then, run the method across all bootstrapped data. 
 
