@@ -7,7 +7,7 @@ image: https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1BAAAAJGM1OWQzNmVjLTAxZTctN
 ---
 
 
-{% include image.html name="vase.jpg" caption="Many of us, conscious or subconsciously, treat our research as fragile, when in reality, we should be stress-testing it. Here, I share 3 ways to make the methods we develop more robust." width="64%"%}
+{% include image.html name="vase.jpg" caption="Many of us, consciously or subconsciously, treat our research as fragile, when in reality, we should be stress-testing it. Here, I share 3 ways to make the methods we develop more robust." width="64%"%}
 
 {: .text-justify}
 
