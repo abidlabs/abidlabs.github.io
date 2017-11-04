@@ -2,7 +2,7 @@
 layout: post
 title: "Rule 1: Stop Doing Fragile Research"
 comments: true
-published: true
+published: false
 image: https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1BAAAAJGM1OWQzNmVjLTAxZTctNGY5MS04NjdlLTc0NmJmMmM0MmE1YQ.jpg
 ---
 
@@ -19,7 +19,7 @@ This story is familiar to anyone who works with data, runs simulations, or condu
 
 I realized that I was making this mistake when I first showed my results to my colleague Jamal\*. Let me provide some context: We were working on a new way to find patterns in high-dimensional data. Because humans can't visualize high dimensions easily, pattern-finding techniques identify *a 2-dimensional projection* of the data and show the user that projection. The art (or the algorithm) is in finding the right projection, which reveals the clusters or other patterns hiding within the data. The simplest technique is known as [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis), and it selects as the projection the 2 dimensions with the most variation, since they are the most likely to contain patterns of interest. However, our insight was that we can choose a better projection by using information from a second, background dataset that does _not_ have the patterns we're looking for. We developed a method called **contrastive PCA** ([details](https://arxiv.org/abs/1709.06716)) to perform this analysis.
 
-When I first ran contrastive PCA on a dataset, I generated a bunch of plots by tuning a parameter that I'll call "alpha". For *one* of the values of alpha, contrastive PCA found a projection of the data that beautifully separated the four clusters within the data. When I showed Zaid the figure, I thought he would be blown away. Instead, he skeptically waved his hands at my results. Here's why:
+When I first ran contrastive PCA on a dataset, I generated a bunch of plots by tuning a parameter that I'll call "alpha". For *one* of the values of alpha, contrastive PCA found a projection of the data that beautifully separated the four clusters within the data. When I showed Jamal the figure, I thought he would be blown away. Instead, he skeptically waved his hands at my results. Here's why:
 
 <center>
 {% include image.html name="plot.png" width="88%"%}
