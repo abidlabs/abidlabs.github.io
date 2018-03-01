@@ -9,13 +9,14 @@ layout: default
     <article class="post">
 
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+    <div class="date">
+      Written on {{ post.date | date: "%B %e, %Y" }}
+    </div>
+  
       <div class="entry">
         {{ post.excerpt | strip_html | truncatewords: 60 }} <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
       </div>
 
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
-  </div>
       
     </article>
   {% endif %}
