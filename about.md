@@ -4,7 +4,12 @@ title: About
 permalink: /about/
 ---
 
-I am a 1st year PhD student at Stanford studying machine learning methods, especially with applications to medicine and biology. I am fortunate to have Professor James Zou as my advisor.
+I am a 2nd year PhD student at Stanford studying machine learning methods, especially with applications to medicine and biology. I am fortunate to have Professor James Zou as my advisor. I am currently thinking about the following kinds of problems:
+
+* How to leverage machine learning to discover biological mechanisms
+* How to find diseases that are more likely to occur in certain subpopulations
+* How to apply machine learning to shuffled data
+* How to to apply machine learning to ultrasound videos
 
 ### My Story
 
@@ -16,5 +21,5 @@ Reach me through my Stanford E-mail address, which you find by searching my name
 
 
 <blockquote>
-> "If you see something wrong, fix it with your hands. If you can’t do that, then speak out to correct it. If you can’t do that, then know in your heart that it is wrong – that is the very minimum of faith." – Prophet Muhammad (ﷺ)
+> "If you see something wrong, fix it with your hands. If you can’t do that, then speak out to correct it. If you can’t do that, then know in your heart that it is wrong – but that is the very minimum of faith." – Muhammad (ﷺ)
 </blockquote>
