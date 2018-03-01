@@ -1,6 +1,5 @@
 ---
 layout: default
-comments: false
 ---
 
 <div class="posts">
