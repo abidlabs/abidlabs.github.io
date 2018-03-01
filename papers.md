@@ -1,6 +1,6 @@
----<br>
-layout: default<br>
----<br>
+---
+layout: default
+---
 
   * **Interpretation of Neural Networks is Fragile [[PDF](https://openreview.net/pdf?id=H1xJjlbAZ)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, Amirata Ghorbani, James Zou. <br>
