@@ -2,9 +2,12 @@
 layout: default
 ---
 
-  * **Interpretation of Neural Networks is Fragile [[PDF](https://openreview.net/pdf?id=H1xJjlbAZ)]**
-  <span style="text-decoration: underline;">Abubakar Abid</span>, Amirata Ghorbani, James Zou. _Submitted to ICLR 2018_
-  * **Mutation-Convolution-Max Layers Enhance Deep Learning of DNA Motifs [[PDF](http://a12d.com/wp-content/uploads/2016/01/Mutation_Convolution_NIPS_Workshop-15.pdf)]** <span style="text-decoration: underline;">Abubakar Abid</span>, Amirata Ghorbani, James Zou. _NIPS Workshop on Computational Biology _**[Spotlight Talk, Acceptance Rate: 12%]**
+  * **Interpretation of Neural Networks is Fragile [[PDF](https://openreview.net/pdf?id=H1xJjlbAZ)]** <br>
+  <span style="text-decoration: underline;">Abubakar Abid</span>, Amirata Ghorbani, James Zou. <br>
+  _Submitted to ICLR 2018_
+  * **Mutation-Convolution-Max Layers Enhance Deep Learning of DNA Motifs [[PDF](http://a12d.com/wp-content/uploads/2016/01/Mutation_Convolution_NIPS_Workshop-15.pdf)]** <br>
+  <span style="text-decoration: underline;">Abubakar Abid</span>, Amirata Ghorbani, James Zou. <br>
+  _NIPS Workshop on Computational Biology _**[Spotlight Talk, Acceptance Rate: 12%]** <br>
   * **Contrastive Principal Component Analysis [[PDF](https://arxiv.org/pdf/1709.06716.pdf)]** <span style="text-decoration: underline;">Abubakar Abid</span>, Vivek Bagaria, Martin Zhang, James Zou. _ICML Workshop on Computational Biology _**[Top Paper Award]**
   * **Learning with Locally-Shuffled Labels  [[PDF](http://a12d.com/wp-content/uploads/2016/01/shuffled_regression_nips_weak_workshop-6.pdf)]** <span style="text-decoration: underline;">Abubakar Abid</span>, Ada Poon, James Zou. _Submitted to NIPS Workshop on Weak Supervision, 2017_
   * **Linear Regression with Shuffled Labels [[PDF](https://arxiv.org/pdf/1705.01342.pdf)]** <span style="text-decoration: underline;">Abubakar Abid</span>, Ada Poon, James Zou. _Arxiv Preprint, 2017 _
