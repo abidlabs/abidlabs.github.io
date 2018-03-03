@@ -7,7 +7,7 @@ layout: default
     <article class="post">
 
       <div class="entry">
-      On the advice of my professor, [as well as David Knuth](https://theorydish.blog/2018/02/26/donald-knuth-on-writing-up-research/), I'm going to start a **research journal**, where I communicate theoretical and conceptual ideas that I am exploring. 
+      On the advice of my professor, <a href="https://theorydish.blog/2018/02/26/donald-knuth-on-writing-up-research/">as well as David Knuth</a>, I'm going to start a <strong>research journal</strong>, where I communicate theoretical and conceptual ideas that I am exploring. 
 
       I appreciate feedback! Just click on the title of a journal entry to leave a comment.      
       </div>
