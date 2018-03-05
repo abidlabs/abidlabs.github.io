@@ -2,6 +2,7 @@
 layout: post
 title: Gently Building Up The EM Algorithm
 comments: true
+image: https://abidlabs.github.io/images/posts/2018-03-01/EM_Algorithm.png
 published: true
 ---
 
