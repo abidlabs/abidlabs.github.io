@@ -16,7 +16,7 @@ Suppose you have two friends, Ali and Bilal, each of whom have a **biased** coin
 
 So how might you approach this problem?
 
-(1) Well, if there was only one person, say Ali, writing down numbers, then this would be a very simple question. You would simply count the **number of heads** and divide it by the **total number of flips** of the coin. In the example above, if Ali generated all 6 slips, then the MLE estimate of \\(a\\) would be:
+(1) Well, if there was only one person, say Ali, writing down numbers, then this would be a very simple question. You would simply count the **number of heads** and divide it by the **total number of flips** of the coin. In the example above, if Ali generated all 6 slips, then your estimate of \\(a\\) would be:
 
 $$ \frac{(6+2+8+3+3+5)}{60} = 0.45 $$
 
