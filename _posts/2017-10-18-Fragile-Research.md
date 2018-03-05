@@ -2,7 +2,7 @@
 layout: post
 title: "Rule 1: Stop Doing Fragile Research"
 comments: true
-published: false
+published: true
 image: https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAA1BAAAAJGM1OWQzNmVjLTAxZTctNGY5MS04NjdlLTc0NmJmMmM0MmE1YQ.jpg
 ---
 
