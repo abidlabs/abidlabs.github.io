@@ -97,7 +97,7 @@ Once we have shown that this is true, we have proven that the EM algorithm can o
 
 * At each step of EM, the "delta" function is non-negative: \\(\\Delta(\\hat{\\theta}\_{n+1}\|\\hat{\\theta}\_n) \ge 0\\), 
 * If we had not changed the value of theta, then the value of the delta function, would be zero, as would the difference in the log-likelihoods: \\(\ln p(X\|\hat{\theta}\_{n+1}) - \ln p(X\|\hat{\theta}_n)\\)
-* The difference in the log-likelihoods is greater than or equal to the "delta" function
+* For all possible \\(\\hat{\\theta}\_{n+1}\\), the difference in the log-likelihoods is greater than or equal to the "delta" function
 
 ... therefore, the difference in the log-likelihoods must always be non-negative. This is the key step in the proof, so it's worth taking a minute to make sure that's you're convinced. The picture below illustrates this point:
 
