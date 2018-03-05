@@ -38,14 +38,14 @@ This is the basic idea behind the **Expectation-Maximization (EM)** aglorithm. I
 
 **E-step:** Compute the expected value of your "hidden variables" (in this case, the assignment of slips to people), based on the current values of the parameters. 
 
-**M-step:** Recompute the most likely value of your parameters based on the value of the hidden parameters. 
+**M-step:** Recompute the most likely value of your parameters based on the value of the hidden parameters and the observed data. 
 
 **Implicit in this formulation is that the "hidden variables" should be chosen so that the M-step can be performed easily**. This seems like a reasonable strategy, but there are important two questions that are unanswered:
 
 * Question 1: Is this process of iterative improvement guaranteed to improve the likelihood? In other worse, can we be sure end up that by reassigning the labels and recalculating \\(a\\) and \\(b\\), we _never_ reach values that are _less likely_ to produce the observed data?
 * Question 2: Is this process guaranteed to eventually reach the estimate with the highest likelihood (the global MLE)?
 
-We answer these questions in Pass 2 and Pass 3 respectively. It turns out that the answer to the first is "yes", while the second is "no", meaning that EM guarantees convergence to local optima, but not global optima.
+We answer these questions in Pass 2 and Pass 3 respectively. It turns out that the answer to the first is "yes", while the second is "no", meaning that EM guarantees convergence, but not necessarily to the global optima.
 
 **Pass 2: Math**: 
 
