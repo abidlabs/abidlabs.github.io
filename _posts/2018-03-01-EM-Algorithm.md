@@ -127,7 +127,7 @@ $$
 \end{align*} 
 $$ 
 
-The inequality on the fifth line follows from the fact that the natural log of a weighted sum of numbers is greater than the weighted sum of the natural log of those numbers, a consequence of [Jensen's inequality](https://en.wikipedia.org/wiki/Jensen%27s_inequality), and the fact that the natural log is a concave function.
+The inequality on the fifth line follows from the fact that the natural log of a weighted sum of numbers is greater than the weighted sum of the natural log of those numbers, a consequence of [Jensen's inequality](https://en.wikipedia.org/wiki/Jensen%27s_inequality) and the fact that the natural log is a concave function.
 
 <!-- The maximum likelihood estimate of our parameters are given by:
 
@@ -145,12 +145,12 @@ Perhaps the easiest way to see this is to do a simulation to visualize how the p
 
 {% include image.html name="EM_Algorithm.png" caption="Here is a plot of how successive EM iterations (plotted in green) improve the log-likelihood. With the initial value (0.05, 0.2), the algorithm converges to a global optimum, but with the initial value (0.1, 0.1), it does not." width="74%"%}
 
-The parameters improve, or at least stay the same, at every iteration of EM. However, EM does not guarantee that the globally optimal value of  \\(\theta\\) is reached.
+We see that the parameters improve, or at least stay the same, at every iteration of EM. However, EM does not guarantee that the globally optimal value of  \\(\theta\\) is reached.
 
 In practice, people perform the EM algorithm with multiple initial values, and hope that one of them will reach the globally optimal value, which usually works quite well!
 
 ------
 
-Credit: adapted from [a nice tutorial](https://www.cs.utah.edu/~piyush/teaching/EM_algorithm.pdf) from the CS Department at the University of Utah.
+Credit: loosely adapted from [a nice tutorial](https://www.cs.utah.edu/~piyush/teaching/EM_algorithm.pdf) from the CS Department at the University of Utah.
 
 ** **  
