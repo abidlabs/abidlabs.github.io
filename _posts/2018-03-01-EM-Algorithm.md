@@ -84,7 +84,7 @@ $$
 \end{align*} 
 $$ 
 
-Here, we are allowed to go from the first line to the second, since we have introduced a term that is independent of \\(\\theta\\), so it doesn't change the result of \\(\\arg \\max\\). Of course, that doesn't explain _why_ it would be a good idea to do this particular algebraic manipulation. To motivate that, notice that this new function that we have defined has a special property, namely:
+Here, we are allowed to go from the first line to the second, since we have only introduced a term that is independent of \\(\\theta\\), so it doesn't change the result of \\(\\arg \\max\\). Of course, that doesn't explain _why_ it would be a good idea to do this particular algebraic manipulation. To motivate that, notice that this new function that we have defined has a special property, namely:
 
 $$\Delta(\hat{\theta}_n|\hat{\theta}_n) = 0, \tag{4}\label{eq:4} $$
 
