@@ -47,7 +47,9 @@ This is the basic idea behind the **Expectation-Maximization (EM)** aglorithm. I
 
 **M-step:** Recompute the most likely value of your parameters based on the value of the hidden parameters and the observed data. 
 
-**Implicit in this formulation is that the "hidden variables" should be chosen in a problem-specific manner so that the M-step can be performed easily**. This seems like a reasonable strategy, but there are important two questions that are unanswered:
+**Implicit in this formulation is that the "hidden variables" should be chosen in a problem-specific manner so that the M-step can be performed easily**. 
+
+OK so this may seem like a reasonable strategy, but there are two important questions that need to be answered:
 
 * Question 1: Is this process of iterative improvement guaranteed to improve the likelihood? In other worse, can we be sure end up that by reassigning the labels and recalculating \\(a\\) and \\(b\\), we _never_ reach values that are _less likely_ to produce the observed data?
 * Question 2: Is this process guaranteed to eventually reach the estimate with the highest likelihood (the global MLE)?
