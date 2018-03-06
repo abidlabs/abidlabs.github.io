@@ -137,7 +137,7 @@ Again, all this means is that we would like to determine the values of the param
 
 
 
-**Pass 3: Simulation**: 
+**Pass 3: Simulation** 
 
 We've shown that successive iterations in the EM algorithm can never decrease the log-likelihood of the parameter estimates. This means that EM will eventually converge to a particular value of the estimates, call it \\(\\theta^{\*}\\). Is \\(\\theta^{\*}\\) guaranteed to be maximum likelihood estimate of \\(\\theta\\)? The answer is generally **no**.
 
@@ -147,10 +147,10 @@ Perhaps the easiest way to see this is to do a simulation to visualize how the p
 
 We see that the parameters improve, or at least stay the same, at every iteration of EM. However, EM does not guarantee that the globally optimal value of  \\(\theta\\) is reached.
 
-In practice, people perform the EM algorithm with multiple initial values, and hope that one of them will reach the globally optimal value, which usually works quite well!
+In practice, people perform the EM algorithm with multiple initial values, and hope that one of them will reach the globally optimal value, which usually works well!
 
 ------
 
-Credit: loosely adapted from [a nice tutorial](https://www.cs.utah.edu/~piyush/teaching/EM_algorithm.pdf) from the CS Department at the University of Utah.
+Credit: adapted from [a nice tutorial](https://www.cs.utah.edu/~piyush/teaching/EM_algorithm.pdf) from the CS Department at the University of Utah.
 
 ** **  
