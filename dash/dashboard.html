@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
+    <meta http-equiv="Refresh" content="20000">
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashddboard by Creative Tim</title>
+	<title>PhD Dashboard</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -30,21 +31,24 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <style>
+    </style>
 </head>
 <body>
 
 <div class="wrapper">
     <div class="main-panel">
-        <nav class="navbar navbar-default navbar-fixed">
-            <div class="container-fluid">
+<!--         <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid" >
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">The Weekly PhD Dashboard</a>
+                    <a class="navbar-brand" href="#"><strong>The Ph.D. Dashboard</strong></a>
                 </div>
                 <div class="collapse navbar-collapse">
                 </div>
             </div>
         </nav>
-
+ -->
 
         <div class="content">
             <div class="container-fluid">
@@ -53,9 +57,21 @@
 
                     <div class="col-md-4">
                         <div class="card" id="papers-card">
-                            <div class="header">
-                                <h4 class="title">Papers Read This Week</h4>
-                                <p class="category"></p>
+                         <div class="header"> 
+                                <h4 class="title">
+                                <button type="button" style="font-size: 1em" class="btn btn-default btn-sm" id="papers-plus">
+                                  &#9733;
+                                </button>&nbsp;
+
+                                Papers Read&nbsp;
+                                <button type="button" style="font-size: 1em" class="btn btn-default btn-sm" id="papers-minus">
+                                  &mdash;
+                                </button>
+
+
+                                </h4>
+
+
                             </div>
                             <div class="content">
                                 <p class="counter"><span id="papers-counter">?</span>/5</p>
@@ -71,9 +87,22 @@
                     </div>
 
                     <div class="col-md-4">
-                        <div class="card" id="milestones-card">
-                            <div class="header">
-                                <h4 class="title">Research Milestones</h4>
+                        <div class="card">
+                            <div class="header"> 
+                                <h4 class="title">
+                                <button type="button" style="font-size: 1em" class="btn btn-default btn-sm" id="milestones-plus">
+                                  &#9733;
+                                </button>&nbsp;
+
+                                Research Milestones&nbsp;
+                                <button type="button" style="font-size: 1em" class="btn btn-default btn-sm" id="milestones-minus">
+                                  &mdash;
+                                </button>
+
+
+                                </h4>
+
+
                             </div>
                             <div class="content">
                                 <p class="counter"><span id="milestones-counter">?</span>/5</p>
@@ -91,7 +120,18 @@
                     <div class="col-md-4">
                         <div class="card" id="posts-card">
                             <div class="header">
-                                <h4 class="title">Pages/Posts Written</h4>
+                                <h4 class="title">
+                                <button type="button" style="font-size: 1em" class="btn btn-default btn-sm" id="posts-plus">
+                                  &#9733;
+                                </button>&nbsp;
+
+                                Pages/Posts Written&nbsp;
+                                <button type="button" style="font-size: 1em" class="btn btn-default btn-sm" id="posts-minus">
+                                  &mdash;
+                                </button>
+
+
+                                </h4>
                             </div>
                             <div class="content">
                                 <p class="counter"><span id="posts-counter">?</span>/5</p>
@@ -111,20 +151,15 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
+                                <h4 class="title">Weekly Performance</h4>
                             </div>
                             <div class="content">
                                 <div id="chartHours" class="ct-chart"></div>
                                 <div class="footer">
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Click Second Time
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                                        <i class="fa fa-circle text-info"></i> Papers
+                                        <i class="fa fa-circle text-danger"></i> Milestones
+                                        <i class="fa fa-circle text-warning"></i> Pages/Posts
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +177,7 @@
         <footer class="footer">
             <div class="container-fluid">
                 <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> Made by Abubakar Abid, with HTML template adapted from <a href="http://www.creative-tim.com">Creative Tim</a>.
+                    &copy; <script>document.write(new Date().getFullYear())</script> Made by Abubakar Abid, with HTML template adapted from Creative Tim.
                 </p>
             </div>
         </footer>
@@ -164,7 +199,7 @@
 	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
+	<!-- <script src="assets/js/demo.js"></script> -->
 
 
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
@@ -186,68 +221,178 @@
       var ref_milestones = database.ref("milestones")
       var ref_posts = database.ref("posts")
 
-      var count_papers = 0
-      var count_milestones = 0
-      var count_posts = 0
+      var papers_timestamps = []
+      var milestones_timestamps = []
+      var posts_timestamps = []
 
-      document.oncontextmenu = function() {return false;};
+      function sum(a,b){
+        var s = []
+        for (var i = 0; i < a.length; i++){
+            s.push(a[i] + b[i])
+        }
+        return s
+      }
+
+      // document.oncontextmenu = function() {return false;};
+
+      function get_num_timestamps_from_until(timestamps, end_time, start_time){
+        console.log(start_time, end_time, end_time-start_time)
+        console.log(new Date(start_time), new Date(end_time))
+        var count = 0
+        console.log(timestamps.length)
+        for (var i = timestamps.length - 1; i >= 0; --i){
+            console.log(timestamps[i])
+            if (timestamps[i]>start_timestamp && timestamps[i]<end_time)
+                count++;
+            else if (timestamps[i]<start_timestamp && timestamps[i]<end_time) { // don't need to go all the way to the beginning of the array
+                break
+            }
+        }
+        return count
+      }
+
+      function set_graph(){
+
+
+        function get_time_series_count(){
+            papers_counts = []
+            posts_counts = []
+            milestones_counts = []
+            end_time = new Date().getTime()
+            for (var i=0; i<10; i++){
+                start_time = getPreviousMonday(end_time-1)
+                count = get_num_timestamps_from_until(papers_timestamps,end_time,start_time)
+                papers_counts.push(count)
+                count = get_num_timestamps_from_until(posts_timestamps,end_time,start_time)
+                posts_counts.push(count)
+                count = get_num_timestamps_from_until(milestones_timestamps,end_time,start_time)
+                milestones_counts.push(count)
+                end_time = start_time
+            }
+            return [papers_counts.reverse(), milestones_counts.reverse(), posts_counts.reverse()]
+        }
+
+            counts = get_time_series_count()
+            console.log(counts)
+
+            var dataSales = {
+              labels: ['-9', '-8', '-7', '-6', '-5', '-4', '-3', '-2','-1','0'],
+              series: [
+                 sum(sum(counts[1],counts[0]),counts[2]),
+                 sum(counts[1],counts[2]),
+                 counts[2]
+              ]
+            };
+
+            var optionsSales = {
+              lineSmooth: false,
+              low: 0,
+              high: 18,
+              showArea: true,
+              height: "245px",
+              axisX: {
+                showGrid: false,
+              },
+              lineSmooth: Chartist.Interpolation.simple({
+                divisor: 3
+              }),
+              showLine: false,
+              showPoint: false,
+            };
+
+            var responsiveSales = [
+              ['screen and (max-width: 640px)', {
+                axisX: {
+                  labelInterpolationFnc: function (value) {
+                    return value[0];
+                  }
+                }
+              }]
+            ];
+
+            Chartist.Line('#chartHours', dataSales, optionsSales, responsiveSales);
+      
+      }
+
+
+
+        function getPreviousMonday(date = new Date().getTime())
+        {
+            var prevMonday = new Date(date);
+            prevMonday.setDate(prevMonday.getDate() - (prevMonday.getDay() + 6) % 7);
+            prevMonday.setHours(0,0,0,0);
+            return prevMonday.getTime();
+        }
+
+
+
+      function get_num_timestamps_since_monday(timestamps){
+        start_timestamp = getPreviousMonday()
+        count = 0
+        for (var i = timestamps.length - 1; i >= 0; --i){
+            if (timestamps[i]>start_timestamp)
+                count++;
+            else
+                break // no need to go through the whole array
+        }
+        return count
+      }
+
+      function increment(array, ref){
+        var timestamp = new Date().getTime();
+        array.push(timestamp)
+        ref.set(array)       
+      }
+
+      function decrement(array, ref){
+        if (get_num_timestamps_since_monday(array)>0) {
+            array.pop()
+            ref.set(array)            
+        }
+      }
 
       ref_papers.on("value", function(data) {
-        count_papers = data.val()
+        papers_timestamps = data.val()
+        count_papers = get_num_timestamps_since_monday(papers_timestamps)
         $('#papers-counter').html(count_papers)
+        set_graph()
       });
       ref_milestones.on("value", function(data) {
-        count_milestones = data.val()
+        milestones_timestamps = data.val()
+        count_milestones = get_num_timestamps_since_monday(milestones_timestamps)
         $('#milestones-counter').html(count_milestones)
-      });
-      
+        set_graph()
+      });    
       ref_posts.on("value", function(data) {
-        count_posts = data.val()
+        posts_timestamps = data.val()
+        count_posts = get_num_timestamps_since_monday(posts_timestamps)
         $('#posts-counter').html(count_posts)
+        set_graph()
       });
 
-      $('#papers-card').mousedown(function(e){
-        if( e.button == 2 ) 
-            count_papers -= 1;
-        else
-            count_papers += 1;            
-        ref_papers.set(count_papers)
+      $('#papers-plus').click(function(e){
+        increment(papers_timestamps, ref_papers)
       })
 
-      $('#milestones-card').mousedown(function(e){
-        if( e.button == 2 ) 
-            count_milestones -= 1;
-        else
-            count_milestones += 1;            
-        ref_milestones.set(count_milestones)
+      $('#papers-minus').click(function(e){
+        decrement(papers_timestamps, ref_papers)
       })
 
-      $('#posts-card').mousedown(function(e){
-        if( e.button == 2 ) 
-            count_posts -= 1;
-        else
-            count_posts += 1;  
-        console.log(count_posts)          
-        ref_posts.set(count_posts)
+      $('#milestones-plus').click(function(e){
+        increment(milestones_timestamps, ref_milestones)
       })
+      $('#milestones-minus').click(function(e){
+        decrement(milestones_timestamps, ref_milestones)
+      })
+
+      $('#posts-plus').click(function(e){
+        increment(posts_timestamps, ref_posts)
+      })
+
+      $('#posts-minus').click(function(e){
+        decrement(posts_timestamps, ref_posts)
+      })      
 
     </script>
-
-	<script type="text/javascript">
-    	$(document).ready(function(){
-        
-        	demo.initChartist();
-
-        	// $.notify({
-         //    	icon: 'pe-7s-gift',
-         //    	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-
-         //    },{
-         //        type: 'info',
-         //        timer: 4000
-         //    });
-
-    	});
-	</script>
 
 </html>
