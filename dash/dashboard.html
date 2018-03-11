@@ -236,10 +236,7 @@
       // document.oncontextmenu = function() {return false;};
 
       function get_num_timestamps_from_until(timestamps, end_time, start_time){
-        console.log(start_time, end_time, end_time-start_time)
-        console.log(new Date(start_time), new Date(end_time))
         var count = 0
-        console.log(timestamps.length)
         for (var i = timestamps.length - 1; i >= 0; --i){
             console.log(timestamps[i])
             if (timestamps[i]>start_timestamp && timestamps[i]<end_time)
