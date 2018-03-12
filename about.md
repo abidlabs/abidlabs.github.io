@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am a 2nd year PhD student at Stanford studying machine learning methods, especially with applications to medicine and biology. I am fortunate to have Professor James Zou as my advisor. I am currently thinking about the following kinds of problems:
+I am a 2nd year PhD student at Stanford developing machine learning methods, particularly those with applications to medicine and biology. I am fortunate to have Professor James Zou as my advisor. I am currently thinking about the following kinds of problems:
 
 * How to leverage machine learning to discover biological mechanisms
 * How to find diseases that are more likely to occur in certain subpopulations

@@ -151,7 +151,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Weekly Performance</h4>
+                                <h4 class="title">Historicaly Weekly Performance</h4>
                             </div>
                             <div class="content">
                                 <div id="chartHours" class="ct-chart"></div>
@@ -225,6 +225,7 @@
       var milestones_timestamps = []
       var posts_timestamps = []
 
+      // Helper function to sum two arrays
       function sum(a,b){
         var s = []
         for (var i = 0; i < a.length; i++){
@@ -233,20 +234,43 @@
         return s
       }
 
-      // document.oncontextmenu = function() {return false;};
+      // Function that gets the start of the week from a given date (by default the current date)      
+      function getPreviousMonday(date = new Date().getTime())
+      {
+          var prevMonday = new Date(date);
+          prevMonday.setDate(prevMonday.getDate() - (prevMonday.getDay() + 6) % 7);
+          prevMonday.setHours(0,0,0,0);
+          return prevMonday.getTime();
+      }
 
+
+
+      // Function that calculates the number of timestamps from a given start_time to an end_time
       function get_num_timestamps_from_until(timestamps, end_time, start_time){
         var count = 0
         for (var i = timestamps.length - 1; i >= 0; --i){
-            console.log(timestamps[i])
-            if (timestamps[i]>start_timestamp && timestamps[i]<end_time)
+            if (timestamps[i]>start_time && timestamps[i]<end_time)
                 count++;
-            else if (timestamps[i]<start_timestamp && timestamps[i]<end_time) { // don't need to go all the way to the beginning of the array
+            else if (timestamps[i]<start_time && timestamps[i]<end_time) { // no need to go through the whole array
                 break
             }
         }
         return count
       }
+
+      // A more specific case of the previous function
+      function get_num_timestamps_since_monday(timestamps){
+        var start_time = getPreviousMonday()
+        count = 0
+        for (var i = timestamps.length - 1; i >= 0; --i){
+            if (timestamps[i]>start_time)
+                count++;
+            else
+                break // no need to go through the whole array
+        }
+        return count
+      }
+
 
       function set_graph(){
 
@@ -258,6 +282,7 @@
             end_time = new Date().getTime()
             for (var i=0; i<10; i++){
                 start_time = getPreviousMonday(end_time-1)
+                console.log(start_time, end_time)
                 count = get_num_timestamps_from_until(papers_timestamps,end_time,start_time)
                 papers_counts.push(count)
                 count = get_num_timestamps_from_until(posts_timestamps,end_time,start_time)
@@ -270,9 +295,10 @@
         }
 
             counts = get_time_series_count()
+            console.log(counts)
 
             var dataSales = {
-              labels: ['-9', '-8', '-7', '-6', '-5', '-4', '-3', '-2','-1','0'],
+              labels: ['9', '8', '7', '6', '5', '4', '3', '2','1','0'],
               series: [
                  sum(sum(counts[1],counts[0]),counts[2]),
                  sum(counts[1],counts[2]),
@@ -311,29 +337,6 @@
       }
 
 
-
-        function getPreviousMonday(date = new Date().getTime())
-        {
-            var prevMonday = new Date(date);
-            prevMonday.setDate(prevMonday.getDate() - (prevMonday.getDay() + 6) % 7);
-            prevMonday.setHours(0,0,0,0);
-            return prevMonday.getTime();
-        }
-
-
-
-      function get_num_timestamps_since_monday(timestamps){
-        start_timestamp = getPreviousMonday()
-        count = 0
-        for (var i = timestamps.length - 1; i >= 0; --i){
-            if (timestamps[i]>start_timestamp)
-                count++;
-            else
-                break // no need to go through the whole array
-        }
-        return count
-      }
-
       function increment(array, ref){
         var timestamp = new Date().getTime();
         array.push(timestamp)
@@ -347,6 +350,8 @@
         }
       }
 
+
+      ///// Event handlers for database
       ref_papers.on("value", function(data) {
         papers_timestamps = data.val()
         count_papers = get_num_timestamps_since_monday(papers_timestamps)
@@ -365,7 +370,10 @@
         $('#posts-counter').html(count_posts)
         set_graph()
       });
+      ///////////////
 
+
+      // Event handlers for buttons
       $('#papers-plus').click(function(e){
         increment(papers_timestamps, ref_papers)
       })
@@ -388,6 +396,7 @@
       $('#posts-minus').click(function(e){
         decrement(posts_timestamps, ref_posts)
       })      
+      ///////////////
 
     </script>
 

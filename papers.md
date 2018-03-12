@@ -2,14 +2,24 @@
 layout: default
 ---
 
+<style> 
+li{
+padding-bottom: 10px;
+} 
+</style>
+
+ I'm interested in developing machine learning techniques that are inspired by questions in biology and medicine. Here are some papers that I have written.  An asterisk (\*) means equal contribution.
+
+ ----
+
   * **Interpretation of Neural Networks is Fragile [[PDF](https://openreview.net/pdf?id=H1xJjlbAZ)]** <br>
-  <span style="text-decoration: underline;">Abubakar Abid</span>, Amirata Ghorbani, James Zou.  <br>
+  <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _Submitted to ICLR 2018_ <br>
   * **Mutation-Convolution-Max Layers Enhance Deep Learning of DNA Motifs [[PDF](http://a12d.com/wp-content/uploads/2016/01/Mutation_Convolution_NIPS_Workshop-15.pdf)]** <br>
-  <span style="text-decoration: underline;">Abubakar Abid</span>, Amirata Ghorbani, James Zou.  <br>
+  <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _NIPS Workshop on Computational Biology _**[Spotlight Talk, Acceptance Rate: 12%]** <br> 
   * **Contrastive Principal Component Analysis [[PDF](https://arxiv.org/pdf/1709.06716.pdf)]** <br>
-  <span style="text-decoration: underline;">Abubakar Abid</span>, Vivek Bagaria, Martin Zhang, James Zou.<br> 
+  <span style="text-decoration: underline;">Abubakar Abid\*</span>, Martin Zhang\*, Vivek Bagaria, James Zou.<br> 
   _ICML Workshop on Computational Biology_ **[Top Paper Award]** <br> 
   * **Learning with Locally-Shuffled Labels  [[PDF](http://a12d.com/wp-content/uploads/2016/01/shuffled_regression_nips_weak_workshop-6.pdf)]** <br> 
   <span style="text-decoration: underline;">Abubakar Abid</span>, Ada Poon, James Zou.<br> 
@@ -33,4 +43,4 @@ layout: default
   _MIT EECScon Undergraduate Research Conference, 2014._ **[2nd place award]** <br> 
   * **Toxin Detection Using Nanofabricated Silicon Nitride Microrings at Visible Wavelength** 
   <br> Farshid Ghasemi, Ali Eftekhar, <span style="text-decoration: underline;">Abubakar Abid</span>, _et al_.
-  <br> _GT^2 Symposium at Georgia Tech, 2013_. **[3rd place award]** <br>
+  <br> _GT² Symposium at Georgia Tech, 2013_. **[3rd place award]** <br>
