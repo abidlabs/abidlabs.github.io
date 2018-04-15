@@ -1,0 +1,160 @@
+---
+layout: default
+---
+
+<div class="posts" id="main-container">
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDcXdptk7hKRqFHgIUwWGGbXOq4VMA-5eQ",
+        authDomain: "dashboard-ac304.firebaseapp.com",
+        databaseURL: "https://dashboard-ac304.firebaseio.com",
+        projectId: "dashboard-ac304",
+        storageBucket: "dashboard-ac304.appspot.com",
+        messagingSenderId: "498876987209"
+      };
+      firebase.initializeApp(config);
+
+      var database = firebase.database();
+      
+      var ref_papers = database.ref("papers")
+      var ref_papers_names = database.ref("papers_names")
+      var ref_milestones = database.ref("milestones")
+      var ref_milestones_names = database.ref("milestones_names")
+      var ref_posts = database.ref("posts")
+      var ref_posts_names = database.ref("posts_names")
+
+      var papers_timestamps = []
+      var milestones_timestamps = []
+      var posts_timestamps = []
+      var papers_names = {}
+      var milestones_names = {}
+      var posts_names = {}
+
+      // Function that gets the start of the week from a given date (by default the current date)      
+      function getPreviousMonday(date = new Date().getTime())
+      {
+          var prevMonday = new Date(date);
+          prevMonday.setDate(prevMonday.getDate() - (prevMonday.getDay() + 6) % 7);
+          prevMonday.setHours(0,0,0,0);
+          return prevMonday.getTime();
+      }
+
+
+
+      // Function that calculates the number of timestamps from a given start_time to an end_time
+      function get_num_timestamps_from_until(timestamps, end_time, start_time){
+        var count = 0
+        for (var i = timestamps.length - 1; i >= 0; --i){
+            console.log(i)
+            if (timestamps[i]>start_time && timestamps[i]<end_time)
+                count++;
+            else if (timestamps[i]<start_time && timestamps[i]<end_time) { // no need to go through the whole array
+                break
+            }
+        }
+        return count
+      }
+
+      // Function that gets the names of the timestamps from a given start_time to an end_time
+      function get_names_from_until(timestamps, ref_names, end_time, start_time){
+        var names = []
+        for (var i = timestamps.length - 1; i >= 0; --i){
+            if (timestamps[i]>start_time && timestamps[i]<end_time) {
+                if (timestamps[i] in ref_names){
+                  names.push(ref_names[timestamps[i]])
+                } 
+            }
+            else if (timestamps[i]<start_time && timestamps[i]<end_time) { // no need to go through the whole array
+                break
+            }
+        }
+        return names
+      }
+
+
+      function fillArray(ul_id, array, prefix){
+        for (var i = 0; i < array.length; i++){
+          var li = "<li><em>" + prefix + ":</em> " + array[i] + "</li>"
+          $('#' + ul_id).append(li)
+        }
+      }
+
+
+        function create_body(){
+            papers_counts = []
+            posts_counts = []
+            milestones_counts = []
+            end_time = new Date().getTime()
+            $('#main-container').html('')
+
+            for (var i=0; i<1; i++){
+                start_time = getPreviousMonday(end_time-1)
+
+                var monthArray=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                var date = new Date(start_time)
+                var day = date.getDate();
+                var monthIndex = date.getMonth();
+                var year = date.getFullYear();
+
+                var entry = '<article class="post"><h1>Week of '+ monthArray[monthIndex] + ' ' +day + ', ' + year +'</h1><div class="entry"><ul id=ul-' +i+ '></ul></div></article>'
+
+                $('#main-container').append(entry)
+
+                names = get_names_from_until(papers_timestamps, papers_names, end_time, start_time)
+                fillArray('ul-'+i,names,"Paper")
+                count = get_num_timestamps_from_until(papers_timestamps,end_time,start_time)
+
+                names = get_names_from_until(milestones_timestamps, milestones_names, end_time, start_time)
+                fillArray('ul-'+i,names,"Milestones")
+                count = get_num_timestamps_from_until(papers_timestamps,end_time,start_time)
+
+                names = get_names_from_until(posts_timestamps, posts_names, end_time, start_time)
+                fillArray('ul-'+i,names,"Writing")
+                count = get_num_timestamps_from_until(posts_timestamps,end_time,start_time)
+
+
+            }
+        }
+
+
+      ///// Event handlers for database
+      ref_papers.on("value", function(data) {
+        papers_timestamps = data.val()
+        create_body()
+      });
+
+      ref_papers_names.on("value", function(data) {
+        papers_names = data.val()
+        create_body()
+      });
+
+      ref_milestones.on("value", function(data) {
+        milestones_timestamps = data.val()
+        create_body()
+      });    
+
+      ref_milestones_names.on("value", function(data) {
+        milestones_names = data.val()
+        create_body()
+      });
+
+      ref_posts.on("value", function(data) {
+        posts_timestamps = data.val()
+        create_body()
+      });
+
+      ref_posts_names.on("value", function(data) {
+        posts_names = data.val()
+        create_body()
+      });      
+      ///////////////
+
+
+
+    </script>

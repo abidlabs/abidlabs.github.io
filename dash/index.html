@@ -73,12 +73,14 @@
 
                             </div>
                             <div class="content">
-                                <p class="counter"><span id="papers-counter">?</span>/5</p>
+                                <p class="counter"><span id="papers-counter">?</span>/3</p>
 
                                 <div class="footer">
                                     <hr>
                                     <div class="stats">
                                         The paper should be read thoroughly
+                                        <ul id="papers-list">
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -109,6 +111,8 @@
                                     <hr>
                                     <div class="stats">
                                         Theorem proved or a simulation completed 
+                                        <ul id="milestones-list">
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -133,12 +137,14 @@
                                 </h4>
                             </div>
                             <div class="content">
-                                <p class="counter"><span id="posts-counter">?</span>/5</p>
+                                <p class="counter"><span id="posts-counter">?</span>/2</p>
 
                                 <div class="footer">
                                     <hr>
                                     <div class="stats">
                                         A blog post or page of a paper
+                                        <ul id="posts-list">
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +156,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Historicaly Weekly Performance</h4>
+                                <h4 class="title">Historical Weekly Performance</h4>
                             </div>
                             <div class="content">
                                 <div id="chartHours" class="ct-chart"></div>
@@ -217,8 +223,11 @@
       var database = firebase.database();
       
       var ref_papers = database.ref("papers")
+      var ref_papers_names = database.ref("papers_names")
       var ref_milestones = database.ref("milestones")
+      var ref_milestones_names = database.ref("milestones_names")
       var ref_posts = database.ref("posts")
+      var ref_posts_names = database.ref("posts_names")
 
       var papers_timestamps = []
       var milestones_timestamps = []
@@ -270,6 +279,24 @@
         return count
       }
 
+      // Function that gets the names of the timestamps since last Monday
+      function get_names_since_monday(timestamps, ref_names){
+        var start_time = getPreviousMonday()
+        var names = []
+        console.log(ref_names)
+        for (var i = timestamps.length - 1; i >= 0; --i){
+            if (timestamps[i]>start_time) {
+                if (timestamps[i] in ref_names) {
+                  names.push(ref_names[timestamps[i]])
+                }             
+            }
+            else {              
+                break // no need to go through the whole array
+            }
+        }
+        return names
+      }      
+
 
       function set_graph(){
 
@@ -281,7 +308,6 @@
             end_time = new Date().getTime()
             for (var i=0; i<10; i++){
                 start_time = getPreviousMonday(end_time-1)
-                console.log(start_time, end_time)
                 count = get_num_timestamps_from_until(papers_timestamps,end_time,start_time)
                 papers_counts.push(count)
                 count = get_num_timestamps_from_until(posts_timestamps,end_time,start_time)
@@ -308,7 +334,7 @@
             var optionsSales = {
               lineSmooth: false,
               low: 0,
-              high: 18,
+              high: 12,
               showArea: true,
               height: "245px",
               axisX: {
@@ -336,16 +362,38 @@
       }
 
 
+      function increment_with_name(array, ref, ref_name){
+        var name = prompt("Please enter the name of the paper/milestone/post:");
+          if (name === null) {
+            return; //break out of the function early
+          }
+
+        var timestamp = new Date().getTime();
+        array.push(timestamp)
+        ref.set(array)
+        var obj = {}
+        obj[timestamp] =  name    
+        ref_name.update(obj)
+      }
+
       function increment(array, ref){
         var timestamp = new Date().getTime();
         array.push(timestamp)
         ref.set(array)       
       }
 
+
       function decrement(array, ref){
         if (get_num_timestamps_since_monday(array)>0) {
             array.pop()
             ref.set(array)            
+        }
+      }
+
+      function fillArray(ul_id, array){
+        for (var i = 0; i < array.length; i++){
+          var li = "<li>" + array[i] + "</li>"
+          $('#' + ul_id).append(li)
         }
       }
 
@@ -355,20 +403,38 @@
         papers_timestamps = data.val()
         count_papers = get_num_timestamps_since_monday(papers_timestamps)
         $('#papers-counter').html(count_papers)
+
         set_graph()
       });
+
+      ref_papers_names.on("value", function(data) {
+        names_papers = get_names_since_monday(papers_timestamps, data.val())
+        fillArray('papers-list',names_papers)
+      });
+
       ref_milestones.on("value", function(data) {
         milestones_timestamps = data.val()
         count_milestones = get_num_timestamps_since_monday(milestones_timestamps)
         $('#milestones-counter').html(count_milestones)
         set_graph()
       });    
+
+      ref_milestones_names.on("value", function(data) {
+        names_milestones = get_names_since_monday(milestones_timestamps, data.val())
+        fillArray('milestones-list',names_milestones)
+      });
+
       ref_posts.on("value", function(data) {
         posts_timestamps = data.val()
         count_posts = get_num_timestamps_since_monday(posts_timestamps)
         $('#posts-counter').html(count_posts)
         set_graph()
       });
+
+      ref_posts_names.on("value", function(data) {
+        names_posts = get_names_since_monday(posts_timestamps, data.val())
+        fillArray('posts-list',names_posts)
+      });      
       ///////////////
 
 
@@ -376,13 +442,21 @@
       $('#papers-plus').click(function(e){
         increment(papers_timestamps, ref_papers)
       })
-
+      $('#papers-plus').contextmenu(function(e){
+        increment_with_name(papers_timestamps, ref_papers, ref_papers_names)
+        return false;
+      })
       $('#papers-minus').click(function(e){
         decrement(papers_timestamps, ref_papers)
       })
 
+
       $('#milestones-plus').click(function(e){
         increment(milestones_timestamps, ref_milestones)
+      })
+      $('#milestones-plus').contextmenu(function(e){
+        increment_with_name(milestones_timestamps, ref_milestones, ref_milestones_names)
+        return false;
       })
       $('#milestones-minus').click(function(e){
         decrement(milestones_timestamps, ref_milestones)
@@ -391,10 +465,14 @@
       $('#posts-plus').click(function(e){
         increment(posts_timestamps, ref_posts)
       })
-
+      $('#posts-plus').contextmenu(function(e){
+        increment_with_name(posts_timestamps, ref_posts, ref_posts_names)
+        return false;
+      })      
       $('#posts-minus').click(function(e){
         decrement(posts_timestamps, ref_posts)
-      })      
+      })
+
       ///////////////
 
     </script>
