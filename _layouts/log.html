@@ -93,7 +93,7 @@ layout: default
             end_time = new Date().getTime()
             $('#main-container').html('')
 
-            for (var i=0; i<1; i++){
+            for (var i=0; i<52; i++){
                 start_time = getPreviousMonday(end_time-1)
 
                 var monthArray=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -104,20 +104,24 @@ layout: default
 
                 var entry = '<article class="post"><h1>Week of '+ monthArray[monthIndex] + ' ' +day + ', ' + year +'</h1><div class="entry"><ul id=ul-' +i+ '></ul></div></article>'
 
-                $('#main-container').append(entry)
 
-                names = get_names_from_until(papers_timestamps, papers_names, end_time, start_time)
-                fillArray('ul-'+i,names,"Paper")
-                count = get_num_timestamps_from_until(papers_timestamps,end_time,start_time)
+                paper_names_array = get_names_from_until(papers_timestamps, papers_names, end_time, start_time)
+                milestones_names_array = get_names_from_until(milestones_timestamps, milestones_names, end_time, start_time)
+                posts_names_array = get_names_from_until(posts_timestamps, posts_names, end_time, start_time)
 
-                names = get_names_from_until(milestones_timestamps, milestones_names, end_time, start_time)
-                fillArray('ul-'+i,names,"Milestones")
-                count = get_num_timestamps_from_until(papers_timestamps,end_time,start_time)
+                if (paper_names_array.length + milestones_names_array.length + posts_names_array.length>0){
+                    $('#main-container').append(entry)
+                    fillArray('ul-'+i,paper_names_array,"Paper")
+                    // count = get_num_timestamps_from_until(papers_timestamps,end_time,start_time)
 
-                names = get_names_from_until(posts_timestamps, posts_names, end_time, start_time)
-                fillArray('ul-'+i,names,"Writing")
-                count = get_num_timestamps_from_until(posts_timestamps,end_time,start_time)
+                    fillArray('ul-'+i,milestones_names_array,"Milestones")
+                    // count = get_num_timestamps_from_until(papers_timestamps,end_time,start_time)
 
+                    fillArray('ul-'+i,posts_names_array,"Writing")
+                    // count = get_num_timestamps_from_until(posts_timestamps,end_time,start_time)
+                }
+
+                end_time = start_time
 
             }
         }
