@@ -9,6 +9,16 @@ layout: default
 .output_subarea{
 	max-width: 100% !important;
 }
+
+div.input{
+  font-family: monospace;
+}
+div.output_prompt{
+  font-family: monospace;
+}
+a.anchor-link{
+  display:none;
+}
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js">
@@ -40,6 +50,7 @@ MathJax.Hub.Config({
 
 <article class="post">
   <div class="entry" id="entry-main">
+    Loading notebook as Markdown...<hr>
     {{ content }}
   </div>
 
@@ -51,3 +62,10 @@ MathJax.Hub.Config({
   </div>
   {% include disqus.html %}
 </article>
+
+<!--
+  To include a notebook, 
+    1. convert using nbconvert to HTML
+    2. Remove <html>, <head> and <body> tags, as well as everything inside of <head>
+    3. Add an excerpt and an image in the YAML header
+  -->

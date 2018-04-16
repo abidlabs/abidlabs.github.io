@@ -1,0 +1,5724 @@
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Which-Machine-Learning-Classifier-Is-the-Best-on-18-UCI-Datasets?">Which Machine Learning Classifier Is the Best on 18 UCI Datasets?<a class="anchor-link" href="#Which-Machine-Learning-Classifier-Is-the-Best-on-18-UCI-Datasets?">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We all know that deep neural networks (DNNs) are great for image recognition and speech processing. What about good ol' structured/numerical datasets? I compared DNNs to other standard ML algorithms on many public <em>classification</em> datasets from the UCI ML repository, and here are the results. I divided each dataset into a training and test set (80-20 split), and report test accuracies (averaged over 3 random test-train splits) below. The specific classifiers that I tried were:</p>
+<ul>
+<li>Support Vector</li>
+<li>Naive Bayes</li>
+<li>Decision Tree</li>
+<li>Random Forests</li>
+<li>1-layer NN with 100 hidden units</li>
+<li>2-layer NN with 100 hidden units in each layer</li>
+<li>3-layer NN with 100 hidden units in each layer</li>
+</ul>
+<p>All techniques use the standard implementations in the <code>sklearn</code> library, and did not do any hyper-parameter tuning. The goal was to see which model is best if you want good off-the-shelf performance. A short description of each dataset (taken from the UCI website) is included. Conclusions are listed at the end.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="k">import</span> <span class="n">Timer</span>
+<span class="kn">from</span> <span class="nn">uci_utils</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+
+<span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Adult-Income">Adult Income<a class="anchor-link" href="#Adult-Income">&#182;</a></h3><p>Predict whether income exceeds $50K/yr based on census data.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">adult</span><span class="p">()</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (26048, 108), Test set size: (6513, 108), # of classes: 2</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 1630.932 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>Random Forests</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_920cb7e2_3964_11e8_ae4d_985fd3c9006drow0_col3 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_920cb7e2_3964_11e8_ae4d_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_920cb7e2_3964_11e8_ae4d_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_920cb7e2_3964_11e8_ae4d_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.753
+                
+                
+                
+                <td id="T_920cb7e2_3964_11e8_ae4d_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.799
+                
+                
+                
+                <td id="T_920cb7e2_3964_11e8_ae4d_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.817
+                
+                
+                
+                <td id="T_920cb7e2_3964_11e8_ae4d_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.847
+                
+                
+                
+                <td id="T_920cb7e2_3964_11e8_ae4d_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.605
+                
+                
+                
+                <td id="T_920cb7e2_3964_11e8_ae4d_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.599
+                
+                
+                
+                <td id="T_920cb7e2_3964_11e8_ae4d_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.784
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Car-Evaluation">Car Evaluation<a class="anchor-link" href="#Car-Evaluation">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The database evaluates cars according to the following concepts: car acceptability, overall price, buying price, price of the maintenance, number of doors, capacity in terms of persons to carry, the size of luggage boot, and estimated safety of the car.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">car</span><span class="p">()</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (1382, 21), Test set size: (346, 21), # of classes: 4</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 12.962 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>2-layer NN</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_99dcdd10_3964_11e8_a84f_985fd3c9006drow0_col5 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_99dcdd10_3964_11e8_a84f_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_99dcdd10_3964_11e8_a84f_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_99dcdd10_3964_11e8_a84f_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.906
+                
+                
+                
+                <td id="T_99dcdd10_3964_11e8_a84f_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.799
+                
+                
+                
+                <td id="T_99dcdd10_3964_11e8_a84f_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.962
+                
+                
+                
+                <td id="T_99dcdd10_3964_11e8_a84f_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.935
+                
+                
+                
+                <td id="T_99dcdd10_3964_11e8_a84f_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.993
+                
+                
+                
+                <td id="T_99dcdd10_3964_11e8_a84f_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.999
+                
+                
+                
+                <td id="T_99dcdd10_3964_11e8_a84f_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.997
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Credit-Default">Credit Default<a class="anchor-link" href="#Credit-Default">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This research aimed at the case of customers' default payments in Taiwan and compares the predictive accuracy of probability of default among six data mining methods.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">credit_default</span><span class="p">()</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (24000, 24), Test set size: (6000, 24), # of classes: 2</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 697.384 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>Random Forests</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_39a121d2_3966_11e8_ba30_985fd3c9006drow0_col3 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_39a121d2_3966_11e8_ba30_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_39a121d2_3966_11e8_ba30_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_39a121d2_3966_11e8_ba30_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.774
+                
+                
+                
+                <td id="T_39a121d2_3966_11e8_ba30_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.372
+                
+                
+                
+                <td id="T_39a121d2_3966_11e8_ba30_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.723
+                
+                
+                
+                <td id="T_39a121d2_3966_11e8_ba30_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.804
+                
+                
+                
+                <td id="T_39a121d2_3966_11e8_ba30_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.664
+                
+                
+                
+                <td id="T_39a121d2_3966_11e8_ba30_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.662
+                
+                
+                
+                <td id="T_39a121d2_3966_11e8_ba30_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.714
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dermatology">Dermatology<a class="anchor-link" href="#Dermatology">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The differential diagnosis of erythemato-squamous diseases is a real problem in dermatology. They all share the clinical features of erythema and scaling, with very little differences. TPatients were first evaluated clinically with 12 features. Afterwards, skin samples were taken for the evaluation of 22 histopathological features. The values of the histopathological features are determined by an analysis of the samples under a microscope.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">dermatology</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (292, 94), Test set size: (74, 94), # of classes: 4</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 8.086 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>Support Vector</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_3e88d318_3966_11e8_a7bd_985fd3c9006drow0_col0 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_3e88d318_3966_11e8_a7bd_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_3e88d318_3966_11e8_a7bd_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_3e88d318_3966_11e8_a7bd_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.622
+                
+                
+                
+                <td id="T_3e88d318_3966_11e8_a7bd_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.189
+                
+                
+                
+                <td id="T_3e88d318_3966_11e8_a7bd_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.559
+                
+                
+                
+                <td id="T_3e88d318_3966_11e8_a7bd_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.527
+                
+                
+                
+                <td id="T_3e88d318_3966_11e8_a7bd_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.482
+                
+                
+                
+                <td id="T_3e88d318_3966_11e8_a7bd_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.486
+                
+                
+                
+                <td id="T_3e88d318_3966_11e8_a7bd_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.491
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Diabetic-Retinopathy">Diabetic Retinopathy<a class="anchor-link" href="#Diabetic-Retinopathy">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This dataset contains features extracted from the Messidor image set to predict whether an image contains signs of diabetic retinopathy or not. All features represent either a detected lesion, a descriptive feature of a anatomical part or an image-level descriptor.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">diabetic_retinopathy</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (920, 19), Test set size: (231, 19), # of classes: 2</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 3.1 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>1-layer NN</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_4079042e_3966_11e8_8217_985fd3c9006drow0_col4 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_4079042e_3966_11e8_8217_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_4079042e_3966_11e8_8217_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_4079042e_3966_11e8_8217_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.561
+                
+                
+                
+                <td id="T_4079042e_3966_11e8_8217_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.613
+                
+                
+                
+                <td id="T_4079042e_3966_11e8_8217_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.625
+                
+                
+                
+                <td id="T_4079042e_3966_11e8_8217_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.635
+                
+                
+                
+                <td id="T_4079042e_3966_11e8_8217_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.723
+                
+                
+                
+                <td id="T_4079042e_3966_11e8_8217_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.701
+                
+                
+                
+                <td id="T_4079042e_3966_11e8_8217_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.683
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="E.-coli">E. coli<a class="anchor-link" href="#E.-coli">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Predict which kind of E. coli you have based on a number of cellular features.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">ecoli</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (268, 7), Test set size: (68, 7), # of classes: 8</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 4.664 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>3-layer NN</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_43597922_3966_11e8_84b5_985fd3c9006drow0_col6 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_43597922_3966_11e8_84b5_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_43597922_3966_11e8_84b5_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_43597922_3966_11e8_84b5_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.721
+                
+                
+                
+                <td id="T_43597922_3966_11e8_84b5_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.76
+                
+                
+                
+                <td id="T_43597922_3966_11e8_84b5_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.814
+                
+                
+                
+                <td id="T_43597922_3966_11e8_84b5_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.843
+                
+                
+                
+                <td id="T_43597922_3966_11e8_84b5_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.76
+                
+                
+                
+                <td id="T_43597922_3966_11e8_84b5_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.907
+                
+                
+                
+                <td id="T_43597922_3966_11e8_84b5_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.912
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="EEG-to-Predict-Eye-State">EEG to Predict Eye State<a class="anchor-link" href="#EEG-to-Predict-Eye-State">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>All data is from one continuous EEG measurement with the Emotiv EEG Neuroheadset. The duration of the measurement was 117 seconds. The eye state was detected via a camera during the EEG measurement and added later manually to the file after analysing the video frames. '1' indicates the eye-closed and '0' the eye-open state. All values are in chronological order with the first measured value at the top of the data.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">eeg_eyes</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (11984, 14), Test set size: (2996, 14), # of classes: 2</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 89.296 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>Random Forests</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_78b03dec_3966_11e8_8875_985fd3c9006drow0_col3 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_78b03dec_3966_11e8_8875_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_78b03dec_3966_11e8_8875_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_78b03dec_3966_11e8_8875_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.561
+                
+                
+                
+                <td id="T_78b03dec_3966_11e8_8875_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.486
+                
+                
+                
+                <td id="T_78b03dec_3966_11e8_8875_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.832
+                
+                
+                
+                <td id="T_78b03dec_3966_11e8_8875_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.898
+                
+                
+                
+                <td id="T_78b03dec_3966_11e8_8875_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.504
+                
+                
+                
+                <td id="T_78b03dec_3966_11e8_8875_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.445
+                
+                
+                
+                <td id="T_78b03dec_3966_11e8_8875_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.491
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Haberman's-Breast-Cancer-Survival">Haberman's Breast Cancer Survival<a class="anchor-link" href="#Haberman's-Breast-Cancer-Survival">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The dataset contains cases from a study that was conducted between 1958 and 1970 at the University of Chicago's Billings Hospital on the survival of patients who had undergone surgery for breast cancer.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">haberman</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (244, 3), Test set size: (62, 3), # of classes: 2</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 0.577 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>Naive Bayes, 2-layer NN</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_79219a92_3966_11e8_a752_985fd3c9006drow0_col1 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_79219a92_3966_11e8_a752_985fd3c9006drow0_col5 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_79219a92_3966_11e8_a752_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_79219a92_3966_11e8_a752_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_79219a92_3966_11e8_a752_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.699
+                
+                
+                
+                <td id="T_79219a92_3966_11e8_a752_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.747
+                
+                
+                
+                <td id="T_79219a92_3966_11e8_a752_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.634
+                
+                
+                
+                <td id="T_79219a92_3966_11e8_a752_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.661
+                
+                
+                
+                <td id="T_79219a92_3966_11e8_a752_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.586
+                
+                
+                
+                <td id="T_79219a92_3966_11e8_a752_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.747
+                
+                
+                
+                <td id="T_79219a92_3966_11e8_a752_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.737
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ionosphere-Radar-Returns">Ionosphere Radar Returns<a class="anchor-link" href="#Ionosphere-Radar-Returns">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Classification of radar returns from the ionosphere</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">ionosphere</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (280, 34), Test set size: (71, 34), # of classes: 2</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 4.164 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>3-layer NN</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_7bb2fc86_3966_11e8_87ad_985fd3c9006drow0_col6 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_7bb2fc86_3966_11e8_87ad_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_7bb2fc86_3966_11e8_87ad_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_7bb2fc86_3966_11e8_87ad_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.897
+                
+                
+                
+                <td id="T_7bb2fc86_3966_11e8_87ad_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.864
+                
+                
+                
+                <td id="T_7bb2fc86_3966_11e8_87ad_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.869
+                
+                
+                
+                <td id="T_7bb2fc86_3966_11e8_87ad_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.906
+                
+                
+                
+                <td id="T_7bb2fc86_3966_11e8_87ad_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.897
+                
+                
+                
+                <td id="T_7bb2fc86_3966_11e8_87ad_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.911
+                
+                
+                
+                <td id="T_7bb2fc86_3966_11e8_87ad_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.925
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Mice-Protein-Expression">Mice Protein Expression<a class="anchor-link" href="#Mice-Protein-Expression">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The data set consists of the expression levels of 77 proteins/protein modifications that produced detectable signals in the nuclear fraction of cortex. There are 38 control mice and 34 trisomic mice (Down syndrome), for a total of 72 mice.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">mice_protein</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (864, 77), Test set size: (216, 77), # of classes: 8</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 15.947 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>3-layer NN</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_8549f894_3966_11e8_9a9f_985fd3c9006drow0_col6 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_8549f894_3966_11e8_9a9f_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_8549f894_3966_11e8_9a9f_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_8549f894_3966_11e8_9a9f_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.696
+                
+                
+                
+                <td id="T_8549f894_3966_11e8_9a9f_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.79
+                
+                
+                
+                <td id="T_8549f894_3966_11e8_9a9f_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.818
+                
+                
+                
+                <td id="T_8549f894_3966_11e8_9a9f_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.937
+                
+                
+                
+                <td id="T_8549f894_3966_11e8_9a9f_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.963
+                
+                
+                
+                <td id="T_8549f894_3966_11e8_9a9f_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.952
+                
+                
+                
+                <td id="T_8549f894_3966_11e8_9a9f_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.968
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Nursery-Admittance">Nursery Admittance<a class="anchor-link" href="#Nursery-Admittance">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nursery Database was derived from a hierarchical decision model originally developed to rank applications for nursery schools. It was used during several years in 1980's when there was excessive enrollment to these schools in Ljubljana, Slovenia, and the rejected applications frequently needed an objective explanation. The final decision depended on three subproblems: occupation of parents and child's nursery, family structure and financial standing, and social and health picture of the family.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">nursery</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (10367, 27), Test set size: (2592, 27), # of classes: 5</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 49.664 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>1-layer NN, 2-layer NN, 3-layer NN</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_a2f9dbcc_3966_11e8_88da_985fd3c9006drow0_col4 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_a2f9dbcc_3966_11e8_88da_985fd3c9006drow0_col5 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_a2f9dbcc_3966_11e8_88da_985fd3c9006drow0_col6 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_a2f9dbcc_3966_11e8_88da_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_a2f9dbcc_3966_11e8_88da_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_a2f9dbcc_3966_11e8_88da_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.972
+                
+                
+                
+                <td id="T_a2f9dbcc_3966_11e8_88da_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.836
+                
+                
+                
+                <td id="T_a2f9dbcc_3966_11e8_88da_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.996
+                
+                
+                
+                <td id="T_a2f9dbcc_3966_11e8_88da_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.983
+                
+                
+                
+                <td id="T_a2f9dbcc_3966_11e8_88da_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    1
+                
+                
+                
+                <td id="T_a2f9dbcc_3966_11e8_88da_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    1
+                
+                
+                
+                <td id="T_a2f9dbcc_3966_11e8_88da_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    1
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Seed-Classification">Seed Classification<a class="anchor-link" href="#Seed-Classification">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The examined group comprised kernels belonging to three different varieties of wheat: Kama, Rosa and Canadian, 70 elements each, randomly selected for 
+the experiment. High quality visualization of the internal kernel structure was detected using a soft X-ray technique. It is non-destructive and considerably cheaper than other more sophisticated imaging techniques like scanning microscopy or laser technology. The images were recorded on 13x18 cm X-ray KODAK plates. Studies were conducted using combine harvested wheat grain originating from experimental fields, explored at the Institute of Agrophysics of the Polish Academy of Sciences in Lublin.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">seeds</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (167, 7), Test set size: (42, 7), # of classes: 3</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 0.853 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>Support Vector, Naive Bayes, Random Forests</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_a3949ea6_3966_11e8_a36c_985fd3c9006drow0_col0 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_a3949ea6_3966_11e8_a36c_985fd3c9006drow0_col1 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_a3949ea6_3966_11e8_a36c_985fd3c9006drow0_col3 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_a3949ea6_3966_11e8_a36c_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_a3949ea6_3966_11e8_a36c_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_a3949ea6_3966_11e8_a36c_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.929
+                
+                
+                
+                <td id="T_a3949ea6_3966_11e8_a36c_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.929
+                
+                
+                
+                <td id="T_a3949ea6_3966_11e8_a36c_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.905
+                
+                
+                
+                <td id="T_a3949ea6_3966_11e8_a36c_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.929
+                
+                
+                
+                <td id="T_a3949ea6_3966_11e8_a36c_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.421
+                
+                
+                
+                <td id="T_a3949ea6_3966_11e8_a36c_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.278
+                
+                
+                
+                <td id="T_a3949ea6_3966_11e8_a36c_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.603
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Seismic-Mining">Seismic Mining<a class="anchor-link" href="#Seismic-Mining">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Mining activity was and is always connected with the occurrence of dangers which are commonly called 
+mining hazards. In this case, the goal is to predict hazardous seismic activity</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">seismic</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (2066, 24), Test set size: (517, 24), # of classes: 2</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 3.042 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>Support Vector</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_a57bc252_3966_11e8_a796_985fd3c9006drow0_col0 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_a57bc252_3966_11e8_a796_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_a57bc252_3966_11e8_a796_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_a57bc252_3966_11e8_a796_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.942
+                
+                
+                
+                <td id="T_a57bc252_3966_11e8_a796_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.911
+                
+                
+                
+                <td id="T_a57bc252_3966_11e8_a796_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.885
+                
+                
+                
+                <td id="T_a57bc252_3966_11e8_a796_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.937
+                
+                
+                
+                <td id="T_a57bc252_3966_11e8_a796_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.663
+                
+                
+                
+                <td id="T_a57bc252_3966_11e8_a796_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.734
+                
+                
+                
+                <td id="T_a57bc252_3966_11e8_a796_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.471
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Soybean">Soybean<a class="anchor-link" href="#Soybean">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>"Learning by being told and learning from examples: an experimental comparison of the two methodes of knowledge acquisition in the context of developing an expert system for soybean desease diagnoiss"</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">soybean</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (36, 35), Test set size: (10, 35), # of classes: 4</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 1.271 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>Support Vector, Naive Bayes, Decision Tree, Random Forests, 1-layer NN, 2-layer NN, 3-layer NN</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col0 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col1 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col2 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col3 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col4 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col5 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col6 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_a6530f94_3966_11e8_ac0c_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_a6530f94_3966_11e8_ac0c_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    1
+                
+                
+                
+                <td id="T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    1
+                
+                
+                
+                <td id="T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    1
+                
+                
+                
+                <td id="T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    1
+                
+                
+                
+                <td id="T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    1
+                
+                
+                
+                <td id="T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    1
+                
+                
+                
+                <td id="T_a6530f94_3966_11e8_ac0c_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    1
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Teaching-Assistant-Evaluation">Teaching Assistant Evaluation<a class="anchor-link" href="#Teaching-Assistant-Evaluation">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The data consist of evaluations of teaching performance over three regular semesters and two summer semesters of 151 teaching assistant (TA) assignments at the Statistics Department of the University of Wisconsin-Madison. The scores were divided into 3 roughly equal-sized categories ("low", "medium", and "high") to form the class variable.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">teaching_assistant</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (120, 5), Test set size: (30, 5), # of classes: 3</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 0.47 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>Decision Tree</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_a6b0fe8c_3966_11e8_8ea4_985fd3c9006drow0_col2 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_a6b0fe8c_3966_11e8_8ea4_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_a6b0fe8c_3966_11e8_8ea4_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_a6b0fe8c_3966_11e8_8ea4_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.422
+                
+                
+                
+                <td id="T_a6b0fe8c_3966_11e8_8ea4_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.533
+                
+                
+                
+                <td id="T_a6b0fe8c_3966_11e8_8ea4_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.556
+                
+                
+                
+                <td id="T_a6b0fe8c_3966_11e8_8ea4_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.533
+                
+                
+                
+                <td id="T_a6b0fe8c_3966_11e8_8ea4_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.344
+                
+                
+                
+                <td id="T_a6b0fe8c_3966_11e8_8ea4_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.4
+                
+                
+                
+                <td id="T_a6b0fe8c_3966_11e8_8ea4_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.3
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Tic-Tac-Toe-Endgame">Tic Tac Toe Endgame<a class="anchor-link" href="#Tic-Tac-Toe-Endgame">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This database encodes the complete set of possible board configurations at the end of tic-tac-toe games, where "x" is assumed to have played first. The target concept is "win for x" (i.e., true when "x" has one of 8 possible ways to create a "three-in-a-row").</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">tic_tac_toe</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (765, 27), Test set size: (192, 27), # of classes: 2</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 7.827 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>2-layer NN</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[17]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_ab70611a_3966_11e8_80eb_985fd3c9006drow0_col5 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_ab70611a_3966_11e8_80eb_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_ab70611a_3966_11e8_80eb_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_ab70611a_3966_11e8_80eb_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.852
+                
+                
+                
+                <td id="T_ab70611a_3966_11e8_80eb_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.639
+                
+                
+                
+                <td id="T_ab70611a_3966_11e8_80eb_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.938
+                
+                
+                
+                <td id="T_ab70611a_3966_11e8_80eb_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.951
+                
+                
+                
+                <td id="T_ab70611a_3966_11e8_80eb_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.976
+                
+                
+                
+                <td id="T_ab70611a_3966_11e8_80eb_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.979
+                
+                
+                
+                <td id="T_ab70611a_3966_11e8_80eb_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.967
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Website-Phishing">Website Phishing<a class="anchor-link" href="#Website-Phishing">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have identified different features related to legitimate and phishy websites and collected 1353 different websites from difference sources.Phishing websites were collected from Phishtank data archive, which is a free community site where users can submit, verify, track and share phishing data.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">website_phishing</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (1082, 9), Test set size: (271, 9), # of classes: 3</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 11.575 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>2-layer NN</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[18]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_b270a7a2_3966_11e8_bb6b_985fd3c9006drow0_col5 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_b270a7a2_3966_11e8_bb6b_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_b270a7a2_3966_11e8_bb6b_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_b270a7a2_3966_11e8_bb6b_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.866
+                
+                
+                
+                <td id="T_b270a7a2_3966_11e8_bb6b_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.838
+                
+                
+                
+                <td id="T_b270a7a2_3966_11e8_bb6b_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.893
+                
+                
+                
+                <td id="T_b270a7a2_3966_11e8_bb6b_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.895
+                
+                
+                
+                <td id="T_b270a7a2_3966_11e8_bb6b_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.889
+                
+                
+                
+                <td id="T_b270a7a2_3966_11e8_bb6b_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.904
+                
+                
+                
+                <td id="T_b270a7a2_3966_11e8_bb6b_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.893
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Wholesale-Customer-Region">Wholesale Customer Region<a class="anchor-link" href="#Wholesale-Customer-Region">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The data set refers to clients of a wholesale distributor. It includes the annual spending in monetary units (m.u.) on diverse product categories. Can we predict what region/country a customer is from based on how they spend?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">UCI_Dataset_Loader</span><span class="o">.</span><span class="n">wholesale_customers</span><span class="p">()</span> <span class="c1"># &lt;-- change this line for different experiments</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">compute_test_accuracies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">end_and_md_print</span><span class="p">()</span>
+<span class="n">print_best</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test Accuracy&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Training set size: (352, 6), Test set size: (88, 6), # of classes: 3</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Time needed to run experiment: 0.527 s</p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Best classifier: <strong>Support Vector</strong></p>
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[19]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_b2d7db08_3966_11e8_8900_985fd3c9006drow0_col0 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_b2d7db08_3966_11e8_8900_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_b2d7db08_3966_11e8_8900_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Test Accuracy
+                
+                
+                
+                <td id="T_b2d7db08_3966_11e8_8900_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.758
+                
+                
+                
+                <td id="T_b2d7db08_3966_11e8_8900_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    0.485
+                
+                
+                
+                <td id="T_b2d7db08_3966_11e8_8900_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    0.542
+                
+                
+                
+                <td id="T_b2d7db08_3966_11e8_8900_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.682
+                
+                
+                
+                <td id="T_b2d7db08_3966_11e8_8900_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.5
+                
+                
+                
+                <td id="T_b2d7db08_3966_11e8_8900_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.655
+                
+                
+                
+                <td id="T_b2d7db08_3966_11e8_8900_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.61
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Aggregated-Results">Aggregated Results<a class="anchor-link" href="#Aggregated-Results">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">all_data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+<span class="n">all_data_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;# of Points&#39;</span><span class="p">,</span><span class="s1">&#39;Dimensionality&#39;</span><span class="p">,</span><span class="s1">&#39;# of Classes&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">names</span>
+<span class="n">all_data_df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max_excluding_first_three</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[27]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col6 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col8 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col6 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col7 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col9 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col6 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col4 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col8 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col9 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col9 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col7 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col8 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col9 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col4 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col6 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col4 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col5 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col6 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col7 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col8 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col9 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col5 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col8 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col8 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_41b68d38_39ae_11e8_8922_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  # of Points
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Dimensionality
+                
+                
+                
+                <th class="col_heading level0 col2" colspan=1>
+                  # of Classes
+                
+                
+                
+                <th class="col_heading level0 col3" colspan=1>
+                  Support Vector
+                
+                
+                
+                <th class="col_heading level0 col4" colspan=1>
+                  Naive Bayes
+                
+                
+                
+                <th class="col_heading level0 col5" colspan=1>
+                  Decision Tree
+                
+                
+                
+                <th class="col_heading level0 col6" colspan=1>
+                  Random Forests
+                
+                
+                
+                <th class="col_heading level0 col7" colspan=1>
+                  1-layer NN
+                
+                
+                
+                <th class="col_heading level0 col8" colspan=1>
+                  2-layer NN
+                
+                
+                
+                <th class="col_heading level0 col9" colspan=1>
+                  3-layer NN
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    0
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    3.26e+04
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    108
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col2"
+                 class="data row0 col2" >
+                    2
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col3"
+                 class="data row0 col3" >
+                    0.753
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col4"
+                 class="data row0 col4" >
+                    0.799
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col5"
+                 class="data row0 col5" >
+                    0.817
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col6"
+                 class="data row0 col6" >
+                    0.847
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col7"
+                 class="data row0 col7" >
+                    0.605
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col8"
+                 class="data row0 col8" >
+                    0.599
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow0_col9"
+                 class="data row0 col9" >
+                    0.784
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row1" rowspan=1>
+                    1
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col0"
+                 class="data row1 col0" >
+                    1.73e+03
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col1"
+                 class="data row1 col1" >
+                    21
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col2"
+                 class="data row1 col2" >
+                    4
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col3"
+                 class="data row1 col3" >
+                    0.906
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col4"
+                 class="data row1 col4" >
+                    0.799
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col5"
+                 class="data row1 col5" >
+                    0.962
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col6"
+                 class="data row1 col6" >
+                    0.935
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col7"
+                 class="data row1 col7" >
+                    0.993
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col8"
+                 class="data row1 col8" >
+                    0.999
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow1_col9"
+                 class="data row1 col9" >
+                    0.997
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row2" rowspan=1>
+                    2
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col0"
+                 class="data row2 col0" >
+                    3e+04
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col1"
+                 class="data row2 col1" >
+                    24
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col2"
+                 class="data row2 col2" >
+                    2
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col3"
+                 class="data row2 col3" >
+                    0.774
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col4"
+                 class="data row2 col4" >
+                    0.372
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col5"
+                 class="data row2 col5" >
+                    0.723
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col6"
+                 class="data row2 col6" >
+                    0.804
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col7"
+                 class="data row2 col7" >
+                    0.664
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col8"
+                 class="data row2 col8" >
+                    0.662
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow2_col9"
+                 class="data row2 col9" >
+                    0.714
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row3" rowspan=1>
+                    3
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow3_col0"
+                 class="data row3 col0" >
+                    366
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow3_col1"
+                 class="data row3 col1" >
+                    94
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow3_col2"
+                 class="data row3 col2" >
+                    4
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow3_col3"
+                 class="data row3 col3" >
+                    0.622
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow3_col4"
+                 class="data row3 col4" >
+                    0.189
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow3_col5"
+                 class="data row3 col5" >
+                    0.559
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow3_col6"
+                 class="data row3 col6" >
+                    0.527
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow3_col7"
+                 class="data row3 col7" >
+                    0.482
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow3_col8"
+                 class="data row3 col8" >
+                    0.486
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow3_col9"
+                 class="data row3 col9" >
+                    0.491
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row4" rowspan=1>
+                    4
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col0"
+                 class="data row4 col0" >
+                    1.15e+03
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col1"
+                 class="data row4 col1" >
+                    19
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col2"
+                 class="data row4 col2" >
+                    2
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col3"
+                 class="data row4 col3" >
+                    0.561
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col4"
+                 class="data row4 col4" >
+                    0.613
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col5"
+                 class="data row4 col5" >
+                    0.625
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col6"
+                 class="data row4 col6" >
+                    0.635
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col7"
+                 class="data row4 col7" >
+                    0.723
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col8"
+                 class="data row4 col8" >
+                    0.701
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow4_col9"
+                 class="data row4 col9" >
+                    0.683
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row5" rowspan=1>
+                    5
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col0"
+                 class="data row5 col0" >
+                    336
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col1"
+                 class="data row5 col1" >
+                    7
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col2"
+                 class="data row5 col2" >
+                    8
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col3"
+                 class="data row5 col3" >
+                    0.721
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col4"
+                 class="data row5 col4" >
+                    0.76
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col5"
+                 class="data row5 col5" >
+                    0.814
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col6"
+                 class="data row5 col6" >
+                    0.843
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col7"
+                 class="data row5 col7" >
+                    0.76
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col8"
+                 class="data row5 col8" >
+                    0.907
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow5_col9"
+                 class="data row5 col9" >
+                    0.912
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row6" rowspan=1>
+                    6
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col0"
+                 class="data row6 col0" >
+                    1.5e+04
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col1"
+                 class="data row6 col1" >
+                    14
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col2"
+                 class="data row6 col2" >
+                    2
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col3"
+                 class="data row6 col3" >
+                    0.561
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col4"
+                 class="data row6 col4" >
+                    0.486
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col5"
+                 class="data row6 col5" >
+                    0.832
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col6"
+                 class="data row6 col6" >
+                    0.898
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col7"
+                 class="data row6 col7" >
+                    0.504
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col8"
+                 class="data row6 col8" >
+                    0.445
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow6_col9"
+                 class="data row6 col9" >
+                    0.491
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row7" rowspan=1>
+                    7
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col0"
+                 class="data row7 col0" >
+                    306
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col1"
+                 class="data row7 col1" >
+                    3
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col2"
+                 class="data row7 col2" >
+                    2
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col3"
+                 class="data row7 col3" >
+                    0.699
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col4"
+                 class="data row7 col4" >
+                    0.747
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col5"
+                 class="data row7 col5" >
+                    0.634
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col6"
+                 class="data row7 col6" >
+                    0.661
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col7"
+                 class="data row7 col7" >
+                    0.586
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col8"
+                 class="data row7 col8" >
+                    0.747
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow7_col9"
+                 class="data row7 col9" >
+                    0.737
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row8" rowspan=1>
+                    8
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col0"
+                 class="data row8 col0" >
+                    351
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col1"
+                 class="data row8 col1" >
+                    34
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col2"
+                 class="data row8 col2" >
+                    2
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col3"
+                 class="data row8 col3" >
+                    0.897
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col4"
+                 class="data row8 col4" >
+                    0.864
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col5"
+                 class="data row8 col5" >
+                    0.869
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col6"
+                 class="data row8 col6" >
+                    0.906
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col7"
+                 class="data row8 col7" >
+                    0.897
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col8"
+                 class="data row8 col8" >
+                    0.911
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow8_col9"
+                 class="data row8 col9" >
+                    0.925
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row9" rowspan=1>
+                    9
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col0"
+                 class="data row9 col0" >
+                    1.08e+03
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col1"
+                 class="data row9 col1" >
+                    77
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col2"
+                 class="data row9 col2" >
+                    8
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col3"
+                 class="data row9 col3" >
+                    0.696
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col4"
+                 class="data row9 col4" >
+                    0.79
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col5"
+                 class="data row9 col5" >
+                    0.818
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col6"
+                 class="data row9 col6" >
+                    0.937
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col7"
+                 class="data row9 col7" >
+                    0.963
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col8"
+                 class="data row9 col8" >
+                    0.952
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow9_col9"
+                 class="data row9 col9" >
+                    0.968
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row10" rowspan=1>
+                    10
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col0"
+                 class="data row10 col0" >
+                    1.3e+04
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col1"
+                 class="data row10 col1" >
+                    27
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col2"
+                 class="data row10 col2" >
+                    5
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col3"
+                 class="data row10 col3" >
+                    0.972
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col4"
+                 class="data row10 col4" >
+                    0.836
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col5"
+                 class="data row10 col5" >
+                    0.996
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col6"
+                 class="data row10 col6" >
+                    0.983
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col7"
+                 class="data row10 col7" >
+                    1
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col8"
+                 class="data row10 col8" >
+                    1
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow10_col9"
+                 class="data row10 col9" >
+                    1
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row11" rowspan=1>
+                    11
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col0"
+                 class="data row11 col0" >
+                    209
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col1"
+                 class="data row11 col1" >
+                    7
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col2"
+                 class="data row11 col2" >
+                    3
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col3"
+                 class="data row11 col3" >
+                    0.929
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col4"
+                 class="data row11 col4" >
+                    0.929
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col5"
+                 class="data row11 col5" >
+                    0.905
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col6"
+                 class="data row11 col6" >
+                    0.929
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col7"
+                 class="data row11 col7" >
+                    0.421
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col8"
+                 class="data row11 col8" >
+                    0.278
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow11_col9"
+                 class="data row11 col9" >
+                    0.603
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row12" rowspan=1>
+                    12
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow12_col0"
+                 class="data row12 col0" >
+                    2.58e+03
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow12_col1"
+                 class="data row12 col1" >
+                    24
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow12_col2"
+                 class="data row12 col2" >
+                    2
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow12_col3"
+                 class="data row12 col3" >
+                    0.942
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow12_col4"
+                 class="data row12 col4" >
+                    0.911
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow12_col5"
+                 class="data row12 col5" >
+                    0.885
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow12_col6"
+                 class="data row12 col6" >
+                    0.937
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow12_col7"
+                 class="data row12 col7" >
+                    0.663
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow12_col8"
+                 class="data row12 col8" >
+                    0.734
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow12_col9"
+                 class="data row12 col9" >
+                    0.471
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row13" rowspan=1>
+                    13
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col0"
+                 class="data row13 col0" >
+                    46
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col1"
+                 class="data row13 col1" >
+                    35
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col2"
+                 class="data row13 col2" >
+                    4
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col3"
+                 class="data row13 col3" >
+                    1
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col4"
+                 class="data row13 col4" >
+                    1
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col5"
+                 class="data row13 col5" >
+                    1
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col6"
+                 class="data row13 col6" >
+                    1
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col7"
+                 class="data row13 col7" >
+                    1
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col8"
+                 class="data row13 col8" >
+                    1
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow13_col9"
+                 class="data row13 col9" >
+                    1
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row14" rowspan=1>
+                    14
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col0"
+                 class="data row14 col0" >
+                    150
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col1"
+                 class="data row14 col1" >
+                    5
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col2"
+                 class="data row14 col2" >
+                    3
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col3"
+                 class="data row14 col3" >
+                    0.422
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col4"
+                 class="data row14 col4" >
+                    0.533
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col5"
+                 class="data row14 col5" >
+                    0.556
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col6"
+                 class="data row14 col6" >
+                    0.533
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col7"
+                 class="data row14 col7" >
+                    0.344
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col8"
+                 class="data row14 col8" >
+                    0.4
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow14_col9"
+                 class="data row14 col9" >
+                    0.3
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row15" rowspan=1>
+                    15
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col0"
+                 class="data row15 col0" >
+                    957
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col1"
+                 class="data row15 col1" >
+                    27
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col2"
+                 class="data row15 col2" >
+                    2
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col3"
+                 class="data row15 col3" >
+                    0.852
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col4"
+                 class="data row15 col4" >
+                    0.639
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col5"
+                 class="data row15 col5" >
+                    0.938
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col6"
+                 class="data row15 col6" >
+                    0.951
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col7"
+                 class="data row15 col7" >
+                    0.976
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col8"
+                 class="data row15 col8" >
+                    0.979
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow15_col9"
+                 class="data row15 col9" >
+                    0.967
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row16" rowspan=1>
+                    16
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col0"
+                 class="data row16 col0" >
+                    1.35e+03
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col1"
+                 class="data row16 col1" >
+                    9
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col2"
+                 class="data row16 col2" >
+                    3
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col3"
+                 class="data row16 col3" >
+                    0.866
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col4"
+                 class="data row16 col4" >
+                    0.838
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col5"
+                 class="data row16 col5" >
+                    0.893
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col6"
+                 class="data row16 col6" >
+                    0.895
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col7"
+                 class="data row16 col7" >
+                    0.889
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col8"
+                 class="data row16 col8" >
+                    0.904
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow16_col9"
+                 class="data row16 col9" >
+                    0.893
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_41b68d38_39ae_11e8_8922_985fd3c9006d"
+                 class="row_heading level0 row17" rowspan=1>
+                    17
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow17_col0"
+                 class="data row17 col0" >
+                    440
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow17_col1"
+                 class="data row17 col1" >
+                    6
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow17_col2"
+                 class="data row17 col2" >
+                    3
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow17_col3"
+                 class="data row17 col3" >
+                    0.758
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow17_col4"
+                 class="data row17 col4" >
+                    0.485
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow17_col5"
+                 class="data row17 col5" >
+                    0.542
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow17_col6"
+                 class="data row17 col6" >
+                    0.682
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow17_col7"
+                 class="data row17 col7" >
+                    0.5
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow17_col8"
+                 class="data row17 col8" >
+                    0.655
+                
+                
+                
+                <td id="T_41b68d38_39ae_11e8_8922_985fd3c9006drow17_col9"
+                 class="data row17 col9" >
+                    0.61
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Mean-Accuracy-and-Rank">Mean Accuracy and Rank<a class="anchor-link" href="#Mean-Accuracy-and-Rank">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_mean</span> <span class="o">=</span> <span class="n">all_data_df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">3</span><span class="p">:]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">df_mean</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Average Accuracy&#39;</span><span class="p">]</span>
+
+<span class="n">df_rank</span> <span class="o">=</span> <span class="n">all_data_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">3</span><span class="p">:]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">df_rank</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Average Rank (higher better)&#39;</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_mean</span><span class="p">,</span> <span class="n">df_rank</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[21]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <style  type="text/css" >
+        
+        
+            #T_b30bf708_3966_11e8_927f_985fd3c9006drow3_col0 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+            #T_b30bf708_3966_11e8_927f_985fd3c9006drow3_col1 {
+            
+                background-color:  #5fba7d;
+            
+            }
+        
+        </style>
+
+        <table id="T_b30bf708_3966_11e8_927f_985fd3c9006d" None>
+        
+
+        <thead>
+            
+            <tr>
+                
+                
+                <th class="blank level0" >
+                  
+                
+                
+                
+                <th class="col_heading level0 col0" colspan=1>
+                  Average Accuracy
+                
+                
+                
+                <th class="col_heading level0 col1" colspan=1>
+                  Average Rank (higher better)
+                
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                
+                <th id="T_b30bf708_3966_11e8_927f_985fd3c9006d"
+                 class="row_heading level0 row0" rowspan=1>
+                    Support Vector
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow0_col0"
+                 class="data row0 col0" >
+                    0.774
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow0_col1"
+                 class="data row0 col1" >
+                    3.5
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_b30bf708_3966_11e8_927f_985fd3c9006d"
+                 class="row_heading level0 row1" rowspan=1>
+                    Naive Bayes
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow1_col0"
+                 class="data row1 col0" >
+                    0.699
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow1_col1"
+                 class="data row1 col1" >
+                    2.39
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_b30bf708_3966_11e8_927f_985fd3c9006d"
+                 class="row_heading level0 row2" rowspan=1>
+                    Decision Tree
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow2_col0"
+                 class="data row2 col0" >
+                    0.798
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow2_col1"
+                 class="data row2 col1" >
+                    3.94
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_b30bf708_3966_11e8_927f_985fd3c9006d"
+                 class="row_heading level0 row3" rowspan=1>
+                    Random Forests
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow3_col0"
+                 class="data row3 col0" >
+                    0.828
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow3_col1"
+                 class="data row3 col1" >
+                    4.78
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_b30bf708_3966_11e8_927f_985fd3c9006d"
+                 class="row_heading level0 row4" rowspan=1>
+                    1-layer NN
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow4_col0"
+                 class="data row4 col0" >
+                    0.721
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow4_col1"
+                 class="data row4 col1" >
+                    3.22
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_b30bf708_3966_11e8_927f_985fd3c9006d"
+                 class="row_heading level0 row5" rowspan=1>
+                    2-layer NN
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow5_col0"
+                 class="data row5 col0" >
+                    0.742
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow5_col1"
+                 class="data row5 col1" >
+                    4.22
+                
+                
+            </tr>
+            
+            <tr>
+                
+                
+                <th id="T_b30bf708_3966_11e8_927f_985fd3c9006d"
+                 class="row_heading level0 row6" rowspan=1>
+                    3-layer NN
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow6_col0"
+                 class="data row6 col0" >
+                    0.752
+                
+                
+                
+                <td id="T_b30bf708_3966_11e8_927f_985fd3c9006drow6_col1"
+                 class="data row6 col1" >
+                    4.28
+                
+                
+            </tr>
+            
+        </tbody>
+        </table>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Overall-Recommendation">Overall Recommendation<a class="anchor-link" href="#Overall-Recommendation">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Based on these results, if you'd like to use a machine learning off-the-shelf to classify your numerical dataset, a good choice to use is a:</p>
+<p><strong>Random Forest</strong>, as it seems to work quite well on datasets of many different sizes and dimensionalities. In several datasets, 2- or 3-layer neural networks (NNs) offer some improvement to Random Forests, but for some datasets (particularly those with a small number of data points), NNs perform a lot worse, bringing down their overall accuracy. Perhaps NNs could be regularized to improve performance, but with off-the-shelf hyper-parameters, Random Forests are your best bet.</p>
+<p>In a similar manner, SVMs achieved the top accuracy on only a few datasets, but had a very respectable average accuracy, in part because they did not fail terribly on any dataset. Compare this to for example Naive Bayes, which had the top performance on a couple of small datasets, but had the worst average performance overall in part because they had very poor performance on some datasets. Naive Bayes would not seem to be a good method to use generally. Of course, all of these considerations are based only on test accuracy. if you have other considerations besides test accuracy (e.g. interpretability), then some of the simpler methods may make sense. In particular, Decision Trees (though rarely a top performer) had quite good overall average accuracy and may be a good choice if interpretability is a key concern.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> <em>If this notebook was helpful in your research, please cite it using bibtex entry below:</em> </strong></p>
+
+<pre><code>@misc{abid2018atomic,
+  title={Which Machine Learning Classifier Is the Best on 18 UCI Datasets?},
+  author={Abid, Abubakar},
+  year={2018},
+  publisher={GitHub},
+  howpublished={\url{https://github.com/abidlabs/AtomsOfDeepLearning}},
+}</code></pre>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>

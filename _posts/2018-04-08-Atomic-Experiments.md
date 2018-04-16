@@ -8,6 +8,6 @@ excerpt: Deep learning remains somewhat of a mysterious art even for frequent pr
 ---
 
 <script>
-$('#entry-main').load("/atomic.html");
+$('#entry-main').load("/assets/notebooks/atomic.html");
 MathJax.Hub.Queue(["Typeset",MathJax.Hub,"entry-main"]);
 </script>
