@@ -15,17 +15,13 @@ Featured papers:
 * **Exploring Patterns Enriched in a Dataset with Contrastive Principal Component Analysis [[PDF](https://www.nature.com/articles/s41467-018-04608-8.pdf)]** <br>
 <span style="text-decoration: underline;">Abubakar Abid\*</span>, Martin Zhang\*, Vivek Bagaria, James Zou.<br> 
 _Nature Communications, 2018_ <br> 
-
 * **Model-Based Estimation of Respiratory Parameters from Capnography, with Application to Diagnosing Obstructive Lung Disease [[PDF](http://a12d.com/wp-content/uploads/2016/01/07915749.pdf)]** <br> 
   <span style="text-decoration: underline;">Abubakar Abid</span><b>,</b> Rebecca Mieloszyk, George Verghese, Baruch Krauss.<br> 
   _IEEE Transactions on Biomedical Engineering, 2017_ <br>
-
  * **Interpretation of Neural Networks is Fragile [[PDF](https://openreview.net/pdf?id=H1xJjlbAZ)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _Submitted to NIPS 2018_ <br>
  
-<br>
-<br>
 Other papers:
 ----
  
