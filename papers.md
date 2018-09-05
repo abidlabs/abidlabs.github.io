@@ -32,7 +32,7 @@ Other papers:
   _To appear in Neural Information Processing Systems, 2018_ <br>
   * **Mutation-Convolution-Max Layers Enhance Deep Learning of DNA Motifs [[PDF](http://a12d.com/wp-content/uploads/2016/01/Mutation_Convolution_NIPS_Workshop-15.pdf)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
-  _NIPS Workshop on Computational Biology, 2017 _**[Spotlight Talk]** <br> 
+  _NIPS Workshop on Computational Biology, 2017_ **[Spotlight Talk]** <br> 
 
 _Linear Regression with Shuffled Labels_
 
