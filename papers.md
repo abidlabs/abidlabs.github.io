@@ -30,27 +30,36 @@ Other papers:
   * **Learning a Warping Distance from Unlabeled Time Series Using Sequence Autoencoders** <br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou <br>
   _To appear in Neural Information Processing Systems, 2018_ <br>
-  * **Stochastic Expectation-Maximization Approach to Shuffled Linear Regression**<br>
-  <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
-  _To appear in the Allerton Conference, 2018_ <br>
-  * **An Enhanced Mechanistic Model for Capnography, with Application to CHF-COPD Discrimination** <br>
-  Ekin Karasan, <span style="text-decoration: underline;">Abubakar Abid</span>, Rebecca Mieloszyk, Baruch Krauss, Thomas Heldt, George Verghese. <br>
-  IEEE Engineering in Medicine and Biology Conference, 2018 <br>
   * **Mutation-Convolution-Max Layers Enhance Deep Learning of DNA Motifs [[PDF](http://a12d.com/wp-content/uploads/2016/01/Mutation_Convolution_NIPS_Workshop-15.pdf)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _NIPS Workshop on Computational Biology, 2017 _**[Spotlight Talk, Acceptance Rate: 12%]** <br> 
+
+_Linear Regression with Shuffled Labels_
+
+  * **Stochastic Expectation-Maximization Approach to Shuffled Linear Regression**<br>
+  <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
+  _To appear in the Allerton Conference, 2018_ <br>
   * **Linear Regression with Shuffled Labels [[PDF](https://arxiv.org/pdf/1705.01342.pdf)]** <br> 
   <span style="text-decoration: underline;">Abubakar Abid</span>, Ada Poon, James Zou.<br> 
-  _Arxiv Preprint, 2017 _ <br>
+  _Arxiv Preprint, 2017_ <br>
+
+_Modeling Capnography_
+
+  * **An Enhanced Mechanistic Model for Capnography, with Application to CHF-COPD Discrimination** <br>
+  Ekin Karasan, <span style="text-decoration: underline;">Abubakar Abid</span>, Rebecca Mieloszyk, Baruch Krauss, Thomas Heldt, George Verghese. <br>
+  _IEEE Engineering in Medicine and Biology Conference, 2018_  <br>  
   * **Clinical Applications of Respiratory Modeling Via Quantitative Capnography** <br>
   Thomas Heldt, Rebecca Mieloszyk, <span style="text-decoration: underline;">Abubakar Abid</span>, George Verghese, Baruch Krauss.<br> 
   _IEEE Engineering in Medicine and Biology Conference, 2017_ <br>
   * **Model-Based Estimation of Pulmonary Compliance and Resistance Parameters from Time-Based Capnography [[PDF](http://a12d.com/wp-content/uploads/2016/01/07318701.pdf)]** <br> 
   <span style="text-decoration: underline;">Abubakar Abid</span><b>,</b> Rebecca Mieloszyk, George Verghese, Baruch Krauss.
   <br> _IEEE Engineering in Medicine and Biology Conference, 2015_ <br>
+
+_Resident Medical Devices_
+
   * **3D Printed Gastric Resident Electronics** <br>
 Yong Lin Kong, Xingyu Zou, Caitlin A. McCandler, Shen Ning, Ameya R. Kirtane, Jianlin Zhou, Abubakar Abid, _et al._ <br>
-*Submitted to Advanced Materials*
+*Submitted to Advanced Materials in 2018*
   * **Wireless Power Transfer to Millimeter-Sized Gastrointestinal Electronics Validated in a Swine Model [[PDF](http://a12d.com/wp-content/uploads/2016/01/srep46745.pdf)]** <br>
    <span style="text-decoration: underline;">Abubakar Abid</span>, Jonathan M. O’Brien, Taylor Bensel, _et al._ <br>
 _Scientific Reports, 2017_ <br>
