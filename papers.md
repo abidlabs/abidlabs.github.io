@@ -24,7 +24,7 @@ _Nature Communications, 2018_ <br>
  
 Other papers:
 ----
-  * **A primer of deep learning in genomics** <br>
+  * **A Primer of Deep Learning in Genomics** <br>
   James Zou, Mikael Huss, <span style="text-decoration: underline;">Abubakar Abid</span>, Pejman Mohammadi, Ali Torkamani, Amalio Telenti. <br>
   _To appear in Nature Genetics 2018_ <br>
   * **Learning a Warping Distance from Unlabeled Time Series Using Sequence Autoencoders** <br>
@@ -58,7 +58,7 @@ _Modeling Capnography_
 _Resident Medical Devices_
 
   * **3D Printed Gastric Resident Electronics** <br>
-Yong Lin Kong, Xingyu Zou, Caitlin A. McCandler, Shen Ning, Ameya R. Kirtane, Jianlin Zhou, Abubakar Abid, _et al._ <br>
+Yong Lin Kong, Xingyu Zou, Caitlin A. McCandler, Shen Ning, Ameya R. Kirtane, Jianlin Zhou, <span style="text-decoration: underline;">Abubakar Abid\*</span>, _et al._ <br>
 *Submitted to Advanced Materials in 2018*
   * **Wireless Power Transfer to Millimeter-Sized Gastrointestinal Electronics Validated in a Swine Model [[PDF](http://a12d.com/wp-content/uploads/2016/01/srep46745.pdf)]** <br>
    <span style="text-decoration: underline;">Abubakar Abid</span>, Jonathan M. O’Brien, Taylor Bensel, _et al._ <br>
