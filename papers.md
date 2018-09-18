@@ -33,6 +33,10 @@ Other papers:
   * **Mutation-Convolution-Max Layers Enhance Deep Learning of DNA Motifs [[PDF](http://a12d.com/wp-content/uploads/2016/01/Mutation_Convolution_NIPS_Workshop-15.pdf)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _NIPS Workshop on Computational Biology, 2017_ **[Spotlight Talk]** <br> 
+  * **Using AI for Fatwas: A Turing Test for Legal Reasoning [[Slides](https://docs.google.com/presentation/d/1VAccjabgqKGM5kUHlZJBfhWZJCboWjbeDDEPXgeGct4/edit?usp=sharing)]** <br>
+  <span style="text-decoration: underline;">Abubakar Abid\*</span>, Mehmet Efe Akengin\*.  <br>
+  _Cambridge Religion & Science Conference, 2018_<br> 
+  
 
 _Linear Regression with Shuffled Labels_
 
