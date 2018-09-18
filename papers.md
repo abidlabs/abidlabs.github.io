@@ -15,13 +15,21 @@ Featured papers:
 * **Exploring Patterns Enriched in a Dataset with Contrastive Principal Component Analysis [[PDF](https://www.nature.com/articles/s41467-018-04608-8.pdf)]** <br>
 <span style="text-decoration: underline;">Abubakar Abid\*</span>, Martin Zhang\*, Vivek Bagaria, James Zou.<br> 
 _Nature Communications, 2018_ <br> 
+
+![Contrastive PCA](https://lh3.googleusercontent.com/zIY91AweMdg0L3m7NbVeKu3llaEsLso2hahPy8l392d4pTBwa_OhQM8VgFDpwThrPGr7tQIN40ldtICBetEIacdeRXFXBSVmqW1GlZDAqO7h4e_3hyBDFuyRClFff95uFYSBkfVfTakJ_0zxTLSudNQ9-xmI6plccI3jeopCx13utmzqzIXCNNf_BzpmZCHaICHAv3LIvLt1UYVJpbD0LSsbzQyZiaLETXhmR9E-SUJ7yulunCfEj-Z3vTRGavBUFzw55pqBJAzFbuUgzMPcuqDAEvpZ5Ke6uWSPiKN843GGA42zdXfVhZN17J5C_MES2h_JRrHASFQejJeqCj_0yHe4hbE24fIxrYdZfmZTbW-_anahS95CPU23jGlTlAPvYMr1_Y5YWZcFmeG_wapKGeo1JaXSzaWwtF1q2KFw3QcgekixGwnXoH5d0BM8RNP-00-XkiPrICE_tIotFK_9yDf4f3yypbne5MYqomvq1OYuSiBxsVHJbka7xgMvNbyoc1xqbKHoEMEzLuvh2vIbkHnc9CQhBSt_EWSkUKwLpRkIB_EmFO9mVNEzmNLHI0eq_txj7lSVVOr2U4mRhQiYGm3Zs66Mg6TSO3e531Vcdv1VSuXw1ttzIKXFHwLLUKEy=w1852-h1047-no)
+
 * **Model-Based Estimation of Respiratory Parameters from Capnography, with Application to Diagnosing Obstructive Lung Disease [[PDF](http://a12d.com/wp-content/uploads/2016/01/07915749.pdf)]** <br> 
   <span style="text-decoration: underline;">Abubakar Abid</span><b>,</b> Rebecca Mieloszyk, George Verghese, Baruch Krauss.<br> 
   _IEEE Transactions on Biomedical Engineering, 2017_ <br>
+  
+![Capnography](https://lh3.googleusercontent.com/Nqz5GpgddUybXG5bjX4Mx0fzYMhkj3Ropaa80NXslPD7HhqAtxMz_2v43E-bAtv86D47d7shZNWeQ45tUFdAv-Z5ONy8SO9zUSTlKJi0vkPBSgeSNCQa8vwWhfRBUfPJe1vXvjbnfnRLmBziW8Lu6xkJgbc_QzilEPczj9Vk_Behct1-FhOzjaLw09Z8TqW7SOHhC2e9MLk--sKA9g8GDEiJEVmV2g54xu0KOiyVywkpWXPXV_2pTXYJ6vyV-p6ZiefNn6p2-Rc5trYOmM8nNWz6Fit5c56zjbAcIkMcuKq8OdJPrWYfwQtkLCxzZBBTHPuL5SAriVxx21t1r5SbQK09MHqaVYfhZWkkM6MrbJ9z4w58TvymRCfURk5iBzJHyVnjYYrGpynJE_NY-ciM00ZhcMyzntaSmd7dPWYIf0ggkhWoonj9zurcT0E9v0wGWiHQ-bDrufg59psjLplqP5dQluQyqM3h3VIuNUCmxpWmpHVhdIh_N9H3Z3vTUIX68P9U7EvnMvNyvHi5xHWdw76TKkm-6EI8J9SD8idfdrzXiZkykUUc7v8wje7iolvx8YX5YnCuXuzsd65kz7BsqRo6oQDs-IkxKGLQ4xx1MyQ7z4tOKsmwqRFLZtOXmZPB=w2519-h1397-no)
+
  * **Interpretation of Neural Networks is Fragile [[PDF](https://openreview.net/pdf?id=H1xJjlbAZ)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _Submitted to AAAI 2019_ <br>
- 
+
+![Interpretation of Neural Networks](https://lh3.googleusercontent.com/Ysj1rYj_o8PZ-2ot1PO89QzYkC2gcwkqOa5ftYjKI7_xFwT6zIV-5NLJ39bNa2ZTx3bN3nH_hKwmnnJczrOJj-X2ED0ITLdXfvO5r4y4UKVrJQlXq1rPu7We2T5BRzHQjwPdKwCODUIUmeM_ahSa8tzuOkwAzaWfRGwchUxFJO64nIp11vK_FaxLaHnCOEMwAiuyAw8n95XjG-_XaFl1QjBkwgVUHn0q6Nuy5pWvGFN9ze5Ix5Hn1nTsOVWbQHZ8eoBnomWpuGI9zGM-STLHJcHpp5CEbHdD5pfa1KRh21thEa9uvaoCmYjd16ihZkYL0R6ifF1fzz4Ti7t2FvORr8YeXT6N6ZtEz8UEdBRF3km2IqDe_r1pmWngDuAXiDFHXDlfDzxL4c2v0gD9a2j1nrNpdWnFoNjXKHMT2yISxt5moeukbBM6oA1uCTwxumfMMaZSVJVSbF50xV1ibykgRKmGoK4BhfasAQZE181G1wVs86fm2yU0pVnYqZj5uuFm3BHaANVL354Pp6txnRVYLU9ous9x_sFFKABWEQQPLSC4zLDXRdemig89Iqx0_6suFzYBZ3j_B_WuUFtZWejhLQIE_NHUvl0awNu8x4HM8_yxMdo_Lgr8aGH6D7Ta0SCa=w2067-h719-no)
+
 Other papers:
 ----
   * **A Primer of Deep Learning in Genomics** <br>
