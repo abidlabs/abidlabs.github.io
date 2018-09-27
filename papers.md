@@ -37,7 +37,7 @@ Other papers and presentations (13):
   _To appear in Nature Genetics 2018_ <br>
   * **Learning a Warping Distance from Unlabeled Time Series Using Sequence Autoencoders** <br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
-  _To appear in Neural Information Processing Systems, 2018_ <br>
+  _To appear in Neural Information Processing Systems (NIPS), 2018_ <br>
   * **Mutation-Convolution-Max Layers Enhance Deep Learning of DNA Motifs [[PDF](http://a12d.com/wp-content/uploads/2016/01/Mutation_Convolution_NIPS_Workshop-15.pdf)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _NIPS Workshop on Computational Biology, 2017_ **[Spotlight Talk]** <br> 
