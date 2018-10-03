@@ -12,7 +12,7 @@ padding-bottom: 10px;
 
 Featured papers (3):
 ----
-* **Exploring Patterns Enriched in a Dataset with Contrastive Principal Component Analysis [[PDF](https://www.nature.com/articles/s41467-018-04608-8.pdf)]** <br>
+* **Exploring Patterns Enriched in a Dataset with Contrastive Principal Component Analysis [[PDF](https://www.nature.com/articles/s41467-018-04608-8.pdf), [Code](https://github.com/abidlabs/contrastive)]** <br>
 <span style="text-decoration: underline;">Abubakar Abid\*</span>, Martin Zhang\*, Vivek Bagaria, James Zou.<br> 
 _Nature Communications, 2018_ <br> 
 
@@ -24,7 +24,7 @@ _Nature Communications, 2018_ <br>
   
 ![Capnography](https://lh3.googleusercontent.com/Nqz5GpgddUybXG5bjX4Mx0fzYMhkj3Ropaa80NXslPD7HhqAtxMz_2v43E-bAtv86D47d7shZNWeQ45tUFdAv-Z5ONy8SO9zUSTlKJi0vkPBSgeSNCQa8vwWhfRBUfPJe1vXvjbnfnRLmBziW8Lu6xkJgbc_QzilEPczj9Vk_Behct1-FhOzjaLw09Z8TqW7SOHhC2e9MLk--sKA9g8GDEiJEVmV2g54xu0KOiyVywkpWXPXV_2pTXYJ6vyV-p6ZiefNn6p2-Rc5trYOmM8nNWz6Fit5c56zjbAcIkMcuKq8OdJPrWYfwQtkLCxzZBBTHPuL5SAriVxx21t1r5SbQK09MHqaVYfhZWkkM6MrbJ9z4w58TvymRCfURk5iBzJHyVnjYYrGpynJE_NY-ciM00ZhcMyzntaSmd7dPWYIf0ggkhWoonj9zurcT0E9v0wGWiHQ-bDrufg59psjLplqP5dQluQyqM3h3VIuNUCmxpWmpHVhdIh_N9H3Z3vTUIX68P9U7EvnMvNyvHi5xHWdw76TKkm-6EI8J9SD8idfdrzXiZkykUUc7v8wje7iolvx8YX5YnCuXuzsd65kz7BsqRo6oQDs-IkxKGLQ4xx1MyQ7z4tOKsmwqRFLZtOXmZPB=w2519-h1397-no)
 
- * **Interpretation of Neural Networks is Fragile [[PDF](https://openreview.net/pdf?id=H1xJjlbAZ)]** <br>
+ * **Interpretation of Neural Networks is Fragile [[PDF](https://openreview.net/pdf?id=H1xJjlbAZ), [Code](https://github.com/amiratag/InterpretationFragility)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _Submitted to AAAI 2019_ <br>
 
@@ -48,7 +48,8 @@ Other papers and presentations (13):
 
 _Linear Regression with Shuffled Labels_
 
-  * **Stochastic Expectation-Maximization Approach to Shuffled Linear Regression**<br>
+  * **Stochastic Expectation-Maximization Approach to Shuffled Linear Regression [[Slides](https://docs.google.com/presentation/d/1sg7mEl3TNNaWcSijGcmsReGzcLWYNBrx2-iN7sz77qo/edit?usp=sharing), [Code](https://github.com/abidlabs/stochastic-em-shuffled-regression
+)]**<br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
   _To appear in the Allerton Conference, 2018_ <br>
   * **Linear Regression with Shuffled Labels [[PDF](https://arxiv.org/pdf/1705.01342.pdf)]** <br> 
