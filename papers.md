@@ -37,7 +37,7 @@ Other papers and presentations (14):
   _To appear in Nature Genetics 2018_ <br>
   * **Learning a Warping Distance from Unlabeled Time Series Using Sequence Autoencoders** <br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
-  _To appear in Neural Information Processing Systems (NIPS), 2018_ <br>
+  _Neural Information Processing Systems (NIPS), 2018_ <br>
   * **Mutation-Convolution-Max Layers Enhance Deep Learning of DNA Motifs [[PDF](http://a12d.com/wp-content/uploads/2016/01/Mutation_Convolution_NIPS_Workshop-15.pdf)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _NIPS Workshop on Computational Biology, 2017_ **[Spotlight Talk]** <br> 
@@ -51,7 +51,7 @@ _Linear Regression with Shuffled Labels_
   * **Stochastic Expectation-Maximization Approach to Shuffled Linear Regression [[Slides](https://docs.google.com/presentation/d/1sg7mEl3TNNaWcSijGcmsReGzcLWYNBrx2-iN7sz77qo/edit?usp=sharing), [Code](https://github.com/abidlabs/stochastic-em-shuffled-regression
 )]**<br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
-  _To appear in the Allerton Conference, 2018_ <br>
+  _Allerton Conference, 2018_ <br>
   * **Linear Regression with Shuffled Labels [[PDF](https://arxiv.org/pdf/1705.01342.pdf)]** <br> 
   <span style="text-decoration: underline;">Abubakar Abid</span>, Ada Poon, James Zou.<br> 
   _Arxiv Preprint, 2017_ <br>
