@@ -10,7 +10,7 @@ padding-bottom: 10px;
 
  I'm interested in developing machine learning techniques that are inspired by questions in biology and medicine. Here are some papers that I have written.  An asterisk (\*) means equal contribution.
 
-Featured papers (3):
+Featured papers:
 ----
 * **Exploring Patterns Enriched in a Dataset with Contrastive Principal Component Analysis [[PDF](https://www.nature.com/articles/s41467-018-04608-8.pdf), [Code](https://github.com/abidlabs/contrastive)]** <br>
 <span style="text-decoration: underline;">Abubakar Abid\*</span>, Martin Zhang\*, Vivek Bagaria, James Zou.<br> 
