@@ -26,7 +26,7 @@ _Nature Communications, 2018_ <br>
 
  * **Interpretation of Neural Networks is Fragile [[PDF](https://openreview.net/pdf?id=H1xJjlbAZ), [Code](https://github.com/amiratag/InterpretationFragility)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
-  _Submitted to AAAI 2019_ <br>
+  _To Appear in AAAI 2019_ <br>
 
 ![Interpretation of Neural Networks](https://lh3.googleusercontent.com/Ysj1rYj_o8PZ-2ot1PO89QzYkC2gcwkqOa5ftYjKI7_xFwT6zIV-5NLJ39bNa2ZTx3bN3nH_hKwmnnJczrOJj-X2ED0ITLdXfvO5r4y4UKVrJQlXq1rPu7We2T5BRzHQjwPdKwCODUIUmeM_ahSa8tzuOkwAzaWfRGwchUxFJO64nIp11vK_FaxLaHnCOEMwAiuyAw8n95XjG-_XaFl1QjBkwgVUHn0q6Nuy5pWvGFN9ze5Ix5Hn1nTsOVWbQHZ8eoBnomWpuGI9zGM-STLHJcHpp5CEbHdD5pfa1KRh21thEa9uvaoCmYjd16ihZkYL0R6ifF1fzz4Ti7t2FvORr8YeXT6N6ZtEz8UEdBRF3km2IqDe_r1pmWngDuAXiDFHXDlfDzxL4c2v0gD9a2j1nrNpdWnFoNjXKHMT2yISxt5moeukbBM6oA1uCTwxumfMMaZSVJVSbF50xV1ibykgRKmGoK4BhfasAQZE181G1wVs86fm2yU0pVnYqZj5uuFm3BHaANVL354Pp6txnRVYLU9ous9x_sFFKABWEQQPLSC4zLDXRdemig89Iqx0_6suFzYBZ3j_B_WuUFtZWejhLQIE_NHUvl0awNu8x4HM8_yxMdo_Lgr8aGH6D7Ta0SCa=w2067-h719-no)
 
