@@ -33,7 +33,7 @@ _Nature Communications, 2018_ <br>
 Other papers and presentations (15):
 ----
 _Machine Learning with Time Series_
-  * **Learning a Warping Distance from Unlabeled Time Series Using Sequence Autoencoders** <br>
+  * **Learning a Warping Distance from Unlabeled Time Series Using Sequence Autoencoders [[PDF](https://arxiv.org/pdf/1810.10107.pdf)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
   _Neural Information Processing Systems (NIPS), 2018_ <br>
   * **Contrastive Multivariate Singular Spectrum Analysis [[PDF](https://arxiv.org/pdf/1810.13317.pdf)]** <br>
@@ -50,7 +50,7 @@ _Deep Learning and Genomics_
 
 _Linear Regression with Shuffled Labels_
 
-  * **Stochastic Expectation-Maximization Approach to Shuffled Linear Regression [[Slides](https://docs.google.com/presentation/d/1sg7mEl3TNNaWcSijGcmsReGzcLWYNBrx2-iN7sz77qo/edit?usp=sharing), [Code](https://github.com/abidlabs/stochastic-em-shuffled-regression
+  * **Stochastic Expectation-Maximization Approach to Shuffled Linear Regression [[PDF](https://arxiv.org/pdf/1804.00681.pdf), [Slides](https://docs.google.com/presentation/d/1sg7mEl3TNNaWcSijGcmsReGzcLWYNBrx2-iN7sz77qo/edit?usp=sharing), [Code](https://github.com/abidlabs/stochastic-em-shuffled-regression
 )]**<br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
   _Allerton Conference, 2018_ <br>
@@ -63,7 +63,7 @@ _Linear Regression with Shuffled Labels_
  
 
 _Mathematical Modeling of Capnography_
-  * **An Enhanced Mechanistic Model for Capnography, with Application to CHF-COPD Discrimination** <br>
+  * **An Enhanced Mechanistic Model for Capnography, with Application to CHF-COPD Discrimination [[PDF](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8513420)]** <br>
   Ekin Karasan, <span style="text-decoration: underline;">Abubakar Abid</span>, Rebecca Mieloszyk, Baruch Krauss, Thomas Heldt, George Verghese. <br>
   _IEEE Engineering in Medicine and Biology Conference, 2018_  <br>  
   * **Clinical Applications of Respiratory Modeling Via Quantitative Capnography** <br>
