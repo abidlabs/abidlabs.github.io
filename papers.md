@@ -30,21 +30,23 @@ _Nature Communications, 2018_ <br>
 
 ![Interpretation of Neural Networks](https://lh3.googleusercontent.com/Ysj1rYj_o8PZ-2ot1PO89QzYkC2gcwkqOa5ftYjKI7_xFwT6zIV-5NLJ39bNa2ZTx3bN3nH_hKwmnnJczrOJj-X2ED0ITLdXfvO5r4y4UKVrJQlXq1rPu7We2T5BRzHQjwPdKwCODUIUmeM_ahSa8tzuOkwAzaWfRGwchUxFJO64nIp11vK_FaxLaHnCOEMwAiuyAw8n95XjG-_XaFl1QjBkwgVUHn0q6Nuy5pWvGFN9ze5Ix5Hn1nTsOVWbQHZ8eoBnomWpuGI9zGM-STLHJcHpp5CEbHdD5pfa1KRh21thEa9uvaoCmYjd16ihZkYL0R6ifF1fzz4Ti7t2FvORr8YeXT6N6ZtEz8UEdBRF3km2IqDe_r1pmWngDuAXiDFHXDlfDzxL4c2v0gD9a2j1nrNpdWnFoNjXKHMT2yISxt5moeukbBM6oA1uCTwxumfMMaZSVJVSbF50xV1ibykgRKmGoK4BhfasAQZE181G1wVs86fm2yU0pVnYqZj5uuFm3BHaANVL354Pp6txnRVYLU9ous9x_sFFKABWEQQPLSC4zLDXRdemig89Iqx0_6suFzYBZ3j_B_WuUFtZWejhLQIE_NHUvl0awNu8x4HM8_yxMdo_Lgr8aGH6D7Ta0SCa=w2067-h719-no)
 
-Other papers and presentations (14):
+Other papers and presentations (15):
 ----
-  * **A Primer of Deep Learning in Genomics** <br>
-  James Zou, Mikael Huss, <span style="text-decoration: underline;">Abubakar Abid</span>, Pejman Mohammadi, Ali Torkamani, Amalio Telenti. <br>
-  _To appear in Nature Genetics 2018_ <br>
+_Machine Learning with Time Series_
   * **Learning a Warping Distance from Unlabeled Time Series Using Sequence Autoencoders** <br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
   _Neural Information Processing Systems (NIPS), 2018_ <br>
+  * **Contrastive Multivariate Singular Spectrum Analysis [[PDF](https://arxiv.org/pdf/1810.13317.pdf)]** <br>
+   Abdi-Hakin Dirie, <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou.  <br>
+  _NIPS Spatiotemporal Workshop, 2018_<br> 
+
+_Deep Learning and Genomics_
+  * **A Primer of Deep Learning in Genomics** <br>
+  James Zou, Mikael Huss, <span style="text-decoration: underline;">Abubakar Abid</span>, Pejman Mohammadi, Ali Torkamani, Amalio Telenti. <br>
+  _To appear in Nature Genetics 2018_ <br>
   * **Mutation-Convolution-Max Layers Enhance Deep Learning of DNA Motifs [[PDF](http://a12d.com/wp-content/uploads/2016/01/Mutation_Convolution_NIPS_Workshop-15.pdf)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _NIPS Workshop on Computational Biology, 2017_ **[Spotlight Talk]** <br> 
-  * **Using AI for Fatwas: A Turing Test for Legal Reasoning [[Slides](https://docs.google.com/presentation/d/1VAccjabgqKGM5kUHlZJBfhWZJCboWjbeDDEPXgeGct4/edit?usp=sharing)]** <br>
-  <span style="text-decoration: underline;">Abubakar Abid\*</span>, Mehmet Efe Akengin\*.  <br>
-  _Cambridge Religion & Science Conference, 2018_<br> 
-  
 
 _Linear Regression with Shuffled Labels_
 
@@ -60,8 +62,7 @@ _Linear Regression with Shuffled Labels_
   _Technical Note, 2018_ <br>
  
 
-_Modeling Capnography_
-
+_Mathematical Modeling of Capnography_
   * **An Enhanced Mechanistic Model for Capnography, with Application to CHF-COPD Discrimination** <br>
   Ekin Karasan, <span style="text-decoration: underline;">Abubakar Abid</span>, Rebecca Mieloszyk, Baruch Krauss, Thomas Heldt, George Verghese. <br>
   _IEEE Engineering in Medicine and Biology Conference, 2018_  <br>  
@@ -73,7 +74,6 @@ _Modeling Capnography_
   <br> _IEEE Engineering in Medicine and Biology Conference, 2015_ <br>
 
 _Resident Medical Devices_
-
   * **3D Printed Gastric Resident Electronics** <br>
 Yong Lin Kong, Xingyu Zou, Caitlin A. McCandler, Shen Ning, Ameya R. Kirtane, Jianlin Zhou, <span style="text-decoration: underline;">Abubakar Abid\*</span>, _et al._ <br>
 *Submitted to Advanced Materials in 2018*
@@ -83,6 +83,12 @@ _Scientific Reports, 2017_ <br>
   * **Chronic Neural Probes for Brain-Computer Interfaces**  <br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, Aalap Dighe, Joel Voldman <br>
   _MIT EECScon Undergraduate Research Conference, 2014._ **[2nd place award]** <br> 
+  
+_Miscellaneous_
+  * **Using AI for Fatwas: A Turing Test for Legal Reasoning [[Slides](https://docs.google.com/presentation/d/1VAccjabgqKGM5kUHlZJBfhWZJCboWjbeDDEPXgeGct4/edit?usp=sharing)]** <br>
+  <span style="text-decoration: underline;">Abubakar Abid\*</span>, Mehmet Efe Akengin\*.  <br>
+  _Cambridge Religion & Science Conference, 2018_<br> 
   * **Toxin Detection Using Nanofabricated Silicon Nitride Microrings at Visible Wavelength** 
   <br> Farshid Ghasemi, Ali Eftekhar, <span style="text-decoration: underline;">Abubakar Abid</span>, _et al_.
   <br> _GT² Symposium at Georgia Tech, 2013_. **[3rd place award]** <br>
+ 
