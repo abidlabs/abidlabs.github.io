@@ -75,7 +75,7 @@ _Mathematical Modeling of Capnography_
 
 _Resident Medical Devices_
   * **3D Printed Gastric Resident Electronics** <br>
-Yong Lin Kong, Xingyu Zou, Caitlin A. McCandler, Shen Ning, Ameya R. Kirtane, Jianlin Zhou, <span style="text-decoration: underline;">Abubakar Abid\*</span>, _et al._ <br>
+Yong Lin Kong, Xingyu Zou, Caitlin A. McCandler, Shen Ning, Ameya R. Kirtane, Jianlin Zhou, <span style="text-decoration: underline;">Abubakar Abid</span>, _et al._ <br>
 *Submitted to Advanced Materials Technologies in 2018*
   * **Wireless Power Transfer to Millimeter-Sized Gastrointestinal Electronics Validated in a Swine Model [[PDF](http://a12d.com/wp-content/uploads/2016/01/srep46745.pdf)]** <br>
    <span style="text-decoration: underline;">Abubakar Abid</span>, Jonathan M. O’Brien, Taylor Bensel, _et al._ <br>
