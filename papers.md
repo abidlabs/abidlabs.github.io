@@ -32,6 +32,14 @@ _Nature Communications, 2018_ <br>
 
 Other papers and presentations (15):
 ----
+_Constrained Unsupervised Learning_
+  * **Concrete Autoencoders for Differentiable Feature Selection and Reconstruction [[PDF](https://arxiv.org/pdf/1901.09346.pdf)]** <br>
+  <span style="text-decoration: underline;">Abubakar Abid\*</span>, Muhammad Fatih Balin\*, James Zou. <br>
+  _Submitted to International Conference on Machine Learning (ICML), 2019_ <br>
+  * **Contrastive Variational Autoencoder Enhances Salient Features** <br>
+  <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
+  _Submitted to International Conference on Machine Learning (ICML), 2019_ <br>
+
 _Machine Learning with Time Series_
   * **Learning a Warping Distance from Unlabeled Time Series Using Sequence Autoencoders [[PDF](https://arxiv.org/pdf/1810.10107.pdf)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
