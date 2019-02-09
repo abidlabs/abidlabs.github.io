@@ -107,7 +107,8 @@ That reminds me to of a joke I heard last night, “What do two bees say to each
 
 **Mrs. Madson**: “Wassup-bee” (Wasabi) [*we both laugh*]
 .
-**Abubakar**: Awesome, thank you for the advice, **Mrs. Madson**. I’d like to ask you now about specific challenges that I run into in TAPS 103, to ask for your suggestions for how to improve my improv skills. 
+
+**Abubakar**: Awesome, thank you for the advice, Mrs. Madson. I’d like to ask you now about specific challenges that I run into in TAPS 103, to ask for your suggestions for how to improve my improv skills. 
 
 One of the challenges I struggle with is getting stuck in a static scene, where it just seems the scene isn’t progressing. Like this morning, I started a scene with my partner where I was hammering on a piece of wood. My partner came in and pretended to be my son, and I was building him a treehouse. I responded by telling him to hand me a piece of wood and a mallet, and I continued hammering. And the scene didn’t really go anywhere from there. What should I do in these kind of situations?
 
