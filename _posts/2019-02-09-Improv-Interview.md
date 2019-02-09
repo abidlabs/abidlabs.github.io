@@ -6,6 +6,10 @@ image: https://abidlabs.github.io/images/posts/2019-02-09/image1.jpg
 published: true
 ---
 
+This past week, I interviewed the author to one of my favorite books, *Improv Wisdom*, Mrs. Patricia Madson, who also happens to be a key figure in the teaching of improv at Stanford. She started teaching improv at Stanford around 1980, and taught my own improv professor, Dan Klein.
+
+---
+
 **Abubakar**: Thank you for taking the time to chat with me, Mrs. Madson, this is such a big honor. 
 
 **Mrs. Madson**: You’re welcome, it’s my pleasure to talk to you.
