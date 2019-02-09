@@ -54,7 +54,7 @@ So, around 1991, the Stanford Improvisers were formed. There was a gaggle of ent
 And then after that, improv just kept growing. The other significant avenue was through the continuing studies program, which started around 1993. You know, when they asked me to teach the class, I didn’t think adults would want to come play silly games, but I started teaching adult classes, with the title, “Everyday Spontaneity.” 
 
 **Abubakar**: You’re still teaching “Everyday Spontaneity”, correct? 
-We
+
 **Mrs. Madson**: That’s right, Monday nights during the winter quarter. I found that adults loved the class! Adults kept coming up to me and saying, “I have a better relationship with my kids, and you should write a book about what you’ve been teaching us. There’s something bigger here, and you should write about it.” I started writing in the early 1990s, and eventually it became a book in 2005. 
 
 That was also the time I retired, when the Drama agreed to hire Dan Klein.
