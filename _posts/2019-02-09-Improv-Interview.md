@@ -89,7 +89,7 @@ So I wrote that, and afterwards, she said, “I think this is too good to self-p
 
 I actually think that there is a crisis in our ability to have conversations. When I was growing up, we didn’t have devices. If you were looking for a good restaurant, you had to talk to somebody. Today, you don’t have to talk to people anymore, you can just Google it.
 
-So in terms of your general conversation, there’s a book that I highly recommend, called Reclaiming Conversation, by Sherry Turkle. I’m walking over to it on my bookshelf now. The subtitle is, “The power of talk in a digital age.” She’s a sociologist who has studied loss of confidence in ourselves, and in our ability to have conversations. 
+So in terms of your general conversation, there’s a book that I highly recommend, called *Reclaiming Conversation*, by Sherry Turkle. I’m walking over to it on my bookshelf now. The subtitle is, “The power of talk in a digital age.” She’s a sociologist who has studied loss of confidence in ourselves, and in our ability to have conversations. 
 
 The first thing I would say to you is that, your problem, if you will call it that, is almost universal. A lot of people won’t admit it. But our venues for conversing are fewer and fewer, because you don’t have to, you don’t have to have face-to-face conversations. You don’t have to deal with this fear.
 
