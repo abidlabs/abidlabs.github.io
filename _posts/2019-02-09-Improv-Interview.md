@@ -22,10 +22,9 @@ This past week, I interviewed the author of one of my favorite books, *Improv Wi
 
 **Mrs. Madson**: Actually, I should mention that earlier this morning, I was walking around and I found some albums, including a scrapbook with articles from the Stanford newspaper from 1995, that included printed material about my early teaching and the Stanford Improvisers. The article was about how improv was started at Stanford. I made a photographic copy of the article, and I’ll send that to you so you can have that along with the interview.
 
-{% include image.html name="image1.jpg" caption="The article from 'Alumni Stanford Magazine' that Mrs. Madson sent me." %}
-
-
 **Abubakar**: Great, thank you! That would be wonderful.  
+
+{% include image.html name="image1.jpg" caption="The article from 'Alumni Stanford Magazine' that Mrs. Madson sent me." %}
 
 So I’d like to start by going back to the year 1977. If I recall correctly, you started teaching at Stanford that year. Can you tell me about how you went about starting to teach improv?
 
