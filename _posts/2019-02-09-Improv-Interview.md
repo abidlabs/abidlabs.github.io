@@ -6,7 +6,7 @@ image: https://abidlabs.github.io/images/posts/2019-02-09/image1.jpg
 published: true
 ---
 
-This past week, I interviewed the author to one of my favorite books, *Improv Wisdom*, Mrs. Patricia Madson, who also happens to be a key figure in the teaching of improv at Stanford. She started teaching improv at Stanford around 1980, and taught my own improv professor, Dan Klein.
+This past week, I interviewed the author of one of my favorite books, *Improv Wisdom*, Mrs. Patricia Madson, who also happens to be a key figure in the teaching of improv at Stanford. She started teaching improv at Stanford around 1980, and taught my own improv professor, Dan Klein.
 
 ---
 
@@ -22,7 +22,7 @@ This past week, I interviewed the author to one of my favorite books, *Improv Wi
 
 **Mrs. Madson**: Actually, I should mention that earlier this morning, I was walking around and I found some albums, including a scrapbook with articles from the Stanford newspaper from 1995, that included printed material about my early teaching and the Stanford Improvisers. The article was about how improv was started at Stanford. I made a photographic copy of the article, and I’ll send that to you so you can have that along with the interview.
 
-{% include image.html name="image1.jpg" caption="The article that Mrs. Madson sent me." %}
+{% include image.html name="image1.jpg" caption="The article from *Alumni Stanford Magazine* that Mrs. Madson sent me." %}
 
 
 **Abubakar**: Great, thank you! That would be wonderful.  
@@ -70,7 +70,7 @@ Because I didn’t know that much about improv, I would hire them to come in and
 
 **Mrs. Madson**: Well, that’s a fabulous question. The book evolved into a small philosophy book that used improv to talk about life. It took a long time to get it into that format. I originally thought that I would write a textbook. I never thought I’d write a self-help book. Who am I to give life advice? But throughout my life, I had been interested in world religion, philosophy, and how to live a good life. And for 10 years, I studied with American psychologist David Reynolds and studied his psychology *constructive living*, which came from a Japanese way of thinking. 
 
-I was studying with him frequently. I did a 10-day training with him. And I came back as an assistant. My husband and I began offering those trainings at home. Students would come for 4- or 5-day trainings. We would do things like living together, cooking together, cleaning together, cleaning the neighborhood. During that 10-year period, I internalized his philosophy, which can be summarized as: know your purpose, accept your feelings, do what needs to be done, and continue to cultivate your feelings of how much you’re receiving from others.
+I was studying with him frequently. I did a 10-day training with him. And I came back as an assistant. My husband and I began offering those trainings at home. Students would come for 10-day trainings. We would do things like living together, cooking together, cleaning together, cleaning the neighborhood. During that 10-year period, I internalized his philosophy, which can be summarized as: know your purpose, accept your feelings, do what needs to be done, and continue to cultivate your feelings of how much you’re receiving from others.
 
 That really became my life philosophy. And I wanted to teach it to others. Clearly, the Improv Wisdom is not just a book about improvising, and how “yes, and” can make you more positive. I mean even maxims like “wake up to the gift” aren’t normally improv principles, but they could be applied as part of improv techniques.
 
