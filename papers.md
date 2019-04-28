@@ -35,10 +35,10 @@ Other papers and presentations (17):
 _Constrained Unsupervised Learning_
   * **Concrete Autoencoders for Differentiable Feature Selection and Reconstruction [[PDF](https://arxiv.org/pdf/1901.09346.pdf), [Code](https://github.com/mfbalin/Concrete-Autoencoders)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Muhammad Fatih Balin\*, James Zou. <br>
-  _Submitted to International Conference on Machine Learning (ICML), 2019_ <br>
+  _International Conference on Machine Learning (ICML), 2019_ <br>
   * **Contrastive Variational Autoencoder Enhances Salient Features [[PDF](https://arxiv.org/pdf/1902.04601), [Code](https://github.com/abidlabs/contrastive_vae)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid</span>, James Zou. <br>
-  _Submitted to International Conference on Machine Learning (ICML), 2019_ <br>
+  _ArXiv Preprint, 2019_ <br>
 
 _Machine Learning with Time Series_
   * **Learning a Warping Distance from Unlabeled Time Series Using Sequence Autoencoders [[PDF](https://arxiv.org/pdf/1810.10107.pdf)]** <br>
@@ -51,7 +51,7 @@ _Machine Learning with Time Series_
 _Deep Learning and Genomics_
   * **A Primer of Deep Learning in Genomics** <br>
   James Zou, Mikael Huss, <span style="text-decoration: underline;">Abubakar Abid</span>, Pejman Mohammadi, Ali Torkamani, Amalio Telenti. <br>
-  _To appear in Nature Genetics 2018_ <br>
+  _Nature Genetics 2018_ <br>
   * **Mutation-Convolution-Max Layers Enhance Deep Learning of DNA Motifs [[PDF](http://a12d.com/wp-content/uploads/2016/01/Mutation_Convolution_NIPS_Workshop-15.pdf)]** <br>
   <span style="text-decoration: underline;">Abubakar Abid\*</span>, Amirata Ghorbani\*, James Zou.  <br>
   _NIPS Workshop on Computational Biology, 2017_ **[Spotlight Talk]** <br> 
