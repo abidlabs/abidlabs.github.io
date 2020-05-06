@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Consulting
+permalink: /consulting/
 ---
 
 I am a 2nd year PhD student at Stanford developing machine learning methods, particularly those with applications to medicine and biology. I am fortunate to have Professor James Zou as my advisor. I am currently thinking about the following kinds of problems:

@@ -3,7 +3,7 @@ layout: post
 title: An Interview with Mrs. Patricia Ryan Madson
 comments: true
 image: https://abidlabs.github.io/images/posts/2019-02-09/image1.jpg
-published: true
+published: false
 ---
 
 This past week, I interviewed the author of one of my favorite books, *Improv Wisdom*, Mrs. Patricia Madson, who also happens to be a key figure in the teaching of improv at Stanford. She started teaching improv at Stanford around 1980, and taught my own improv professor, Dan Klein.
