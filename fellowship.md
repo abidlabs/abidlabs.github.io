@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Fatima Al-Fihri Predoctoral Fellowship 2021
+# title: 
 permalink: /fellowship/
 ---
 
@@ -9,6 +9,10 @@ header{
     display: none !important;
 }
 </style>
+
+<center>
+<h1>Fatima Al-Fihri Predoctoral Fellowship 2021</h1>
+</center>
 
 Application link: [https://airtable.com/shruWIdwHABBRzeoz](https://airtable.com/shruWIdwHABBRzeoz)
 
@@ -40,7 +44,7 @@ When you join the Fellowship, you are paired with a research mentor and project 
 - <a href="https://abidlabs.github.io/" target="_blank">Abubakar Abid</a> (Stanford): model interpretation, machine learning in medicine
 - <a href="https://scholar.google.com/citations?user=xfzbywYAAAAJ&hl=en" target="_blank">Fatih Balin</a> (Georgia Tech): matrix algorithms, high performance computing
 - <a href="https://moinnadeem.com/" target="_blank">Moin Nadeem</a> (MIT): natural language processing, bias in machine learning
-- <a href="https://www.allaban.me/" target="_blank">Anas Abou Allaban</a> (CMU): speech recognition, robotics
+- <a href="https://www.allaban.me/" target="_blank">Anas Abou Allaban</a> (CMU): speech recognition, robotics, reinforcement learning
 
 ### How do I apply?
 Fill out the following application: 
