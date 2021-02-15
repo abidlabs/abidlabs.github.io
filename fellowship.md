@@ -14,7 +14,10 @@ header{
 <h1>Fatima Al-Fihri Predoctoral Fellowship 2021</h1>
 </center>
 
-Application link: [https://airtable.com/shruWIdwHABBRzeoz](https://airtable.com/shruWIdwHABBRzeoz)
+Mentee Application link: [https://airtable.com/shruWIdwHABBRzeoz](https://airtable.com/shruWIdwHABBRzeoz)<br>
+
+Interested in being a mentor? Email [a12d@stanford.edu]() with your background and how you heard about the program.
+
 
 <p style="font-size:16px">Thank you for your interest in the Fatima Fellowship! Keep reading for more information</p>
 
