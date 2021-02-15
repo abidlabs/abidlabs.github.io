@@ -14,12 +14,14 @@ header{
 <h1>Fatima Al-Fihri Predoctoral Fellowship 2021</h1>
 </center>
 
-Mentee Application link: [https://airtable.com/shruWIdwHABBRzeoz](https://airtable.com/shruWIdwHABBRzeoz)<br>
+Thank you for your interest in the Fatima Fellowship! Keep reading for more information
 
-Interested in being a mentor? Email [a12d@stanford.edu]() with your background and how you heard about the program.
+<p style="font-size:16px; font-weight:bold">Mentee Application link: <a href="https://airtable.com/shruWIdwHABBRzeoz">https://airtable.com/shruWIdwHABBRzeoz</a></p>
+
+<p style="font-size:16px">Interested in being a mentor? Email <a href="fatimafellowship2021@gmail.com
+">fatimafellowship2021@gmail.com</a> with your background.</p>
 
 
-<p style="font-size:16px">Thank you for your interest in the Fatima Fellowship! Keep reading for more information</p>
 
 <img src="/images/Fatima Fellowship.png">
 
@@ -50,7 +52,7 @@ When you join the Fellowship, you are paired with a research mentor and project 
 - <a href="https://www.allaban.me/" target="_blank">Anas Abou Allaban</a> (CMU): speech recognition, robotics, reinforcement learning
 
 ### How do I apply?
-Fill out the following application: 
+Fill out the following application: <a href="https://airtable.com/shruWIdwHABBRzeoz">https://airtable.com/shruWIdwHABBRzeoz</a>
 
 <!-- ### Testimonial from a Previous Fellow:
 Fatih Balin from Bogazici University, Istanbul previously collaborated successfully with Abubakar Abid at Stanford, leading to the publication of “Concrete Autoencoders” paper at ICML 2019. Fatih is now a PhD student at Georgia Tech, and  -->
