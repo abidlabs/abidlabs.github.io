@@ -3,7 +3,7 @@ layout: post
 title: What Inception Net Doesn't See
 comments: true
 published: true
-image: 
+image: https://abidlabs.github.io/images/posts/2021-02-12/geese1.png
 excerpt: Deep learning-based comuter vision models like Inception Net have achieved state-of-the-art performance on image recognition. However, that doesn't mean that they don't have blindspots and biases. Here's a few of them, along with interactive aplications for you to try it out yourself.
 ---
 
