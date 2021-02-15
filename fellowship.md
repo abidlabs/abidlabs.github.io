@@ -1,14 +1,8 @@
 ---
-layout: page
+layout: fellowship_page
 # title: 
 permalink: /fellowship/
 ---
-
-<style>
-header{
-    display: none !important;
-}
-</style>
 
 <center>
 <h1>Fatima Al-Fihri Predoctoral Fellowship 2021</h1>
