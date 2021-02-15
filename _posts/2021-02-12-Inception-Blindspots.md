@@ -87,19 +87,23 @@ Everyone knows that deep learning vision models like Inception Net achieve state
 
 * Inception Net wouldn't be good at threat detection as it mistakes these harmless **geese** in the sky for warplanes!
 
-{% include image.html name="geese1.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Credit for this example goes to {}. Explore it in your browser</a>"%}
+{% include image.html name="geese1.png" caption="<a href='https://github.com/hendrycks/natural-adv-examples' target='_blank'>Credit for this example goes to Hendrycks et al.</a> <a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore it in your browser</a>"%}
 
 {% include image.html name="geese2.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
 
-### So what?
+### Takeaways
 
-Deep learning-based image classifiers like Inception Net are believed to be highly accurate, to the point that many companies release them as APIs [1, 2, 3] designed to be used by the *general public*. The release is rarely accompanied by descriptions of *failure points* of the model, so users don't really know when to expect the model to be reliable and when the model is not. 
+So we've found some examples where Inception Net fails... so what? Well, deep learning-based image classifiers like Inception Net are believed to be highly accurate, to the point that many companies release them as APIs [1, 2, 3] designed to be used by the *general public*. The release is rarely accompanied by descriptions of *failure points* of the model, so users don't really know when to expect the model to be reliable and when it will not. 
 
-By simply experimenting with the model via a web interface, I found several blind spots of Inception Net: for example, objects in unusual positions (#1) or items from non-Western cultures (#3) or even images with different artistic styles (#6). These failure points should be thoroughly investigated so that users known when to trust deployed image recognition models.
+By simply experimenting with the model via a web interface, I found several blind spots of Inception Net: for example, objects in unusual positions (#1) or items from non-Western cultures (#3) or even images in non-standard artistic styles (#6). These failure points should be thoroughly investigated and documented so that users known when to trust deployed image recognition models.
 
 It was really easily to try Inception Net with images that were accessible for me (I simply did Google Image searches or tried images from my computer). Try the model yourself (http://www.gradio.app/g/inception) and let everyone know in the comments what other blindspots you find!
 
-1. https://cloud.google.com/vision
-2. https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/
-3. https://imagga.com/
+---
+
+[1] https://cloud.google.com/vision
+
+[2] https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/
+
+[3] https://imagga.com/
 
