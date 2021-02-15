@@ -28,68 +28,68 @@ Everyone knows that deep learning vision models like Inception Net achieve state
 
 * Inception Net doesn't recognize the **car** category at all when the car is upside down
 
-{% include image.html name="car1.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="car1.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#1' target='_blank'>Explore this example in your browser</a>"%}
 
 
-{% include image.html name="car2.png" caption="<a href='http://www.gradio.app/g/inception#2' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="car2.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#2' target='_blank'>Explore this example in your browser</a>"%}
 
 ### 2. Sliced apples
 
 * Although Inception Net recognizes many sliced fruits, it is convinced that sliced **apples** are actually  **cucumbers** or other fruits.
 
-{% include image.html name="apple1.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="apple1.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#3' target='_blank'>Explore this example in your browser</a>"%}
 
-{% include image.html name="apple2.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="apple2.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#4' target='_blank'>Explore this example in your browser</a>"%}
 
 ### 3. Pakistani grooms
 
 * Inception Net can detect Western-dressed **grooms** quite well, but not when they're wearing Pakistani / Indian attire
 
-{% include image.html name="groom1.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="groom1.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#5' target='_blank'>Explore this example in your browser</a>"%}
 
-{% include image.html name="groom2.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="groom2.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#6' target='_blank'>Explore this example in your browser</a>"%}
 
 ### 4. Long balloons
 
 * "If it isn't round, it isn't a **balloon**" -- Inception Net 
 
-{% include image.html name="balloon1.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="balloon1.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#7' target='_blank'>Explore this example in your browser</a>"%}
 
-{% include image.html name="balloon2.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="balloon2.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#8' target='_blank'>Explore this example in your browser</a>"%}
 
 ### 5. Regular surgical masks
 
 * Admittedly, ImageNet was collected way before COVID-19, when these were less common. However, it's strange that even though **masks** and **gas masks** are valid categories, they are not predicted for regular surgical masks.
 
-{% include image.html name="mask1.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="mask1.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#9' target='_blank'>Explore this example in your browser</a>"%}
 
-{% include image.html name="mask2.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="mask2.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#10' target='_blank'>Explore this example in your browser</a>"%}
 
 
 ### 6. Cartoon lions
 
 * Generally Inception Net fails at classifying cartoon versions of images. In my experience, cartoon **lions** were particularly hard for it to classify correctly.
 
-{% include image.html name="lion1.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="lion1.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#11' target='_blank'>Explore this example in your browser</a>"%}
 
-{% include image.html name="lion2.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="lion2.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#12' target='_blank'>Explore this example in your browser</a>"%}
 
 ### 7. Roombas
 
 * It looks like Inception Net doesn't know about the Roomba **vacuum cleaner** as it consistently misidentifies it as another gadget instead
 
-{% include image.html name="roomba1.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="roomba1.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#13' target='_blank'>Explore this example in your browser</a>"%}
 
-{% include image.html name="roomba2.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="roomba2.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#14' target='_blank'>Explore this example in your browser</a>"%}
 
 
 ### 8. Geese in the Sky
 
 * Inception Net wouldn't be good at threat detection as it mistakes these harmless **geese** in the sky for warplanes!
 
-{% include image.html name="geese1.png" caption="<a href='https://github.com/hendrycks/natural-adv-examples' target='_blank'>Credit for this example goes to Hendrycks et al.</a> <a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore it in your browser</a>"%}
+{% include image.html name="geese1.png" caption="<a href='https://github.com/hendrycks/natural-adv-examples' target='_blank'>Credit for this example goes to Hendrycks et al.</a> <a href='https://gradio.app/g/hub-inception-blindspots#15' target='_blank'>Explore it in your browser</a>"%}
 
-{% include image.html name="geese2.png" caption="<a href='http://www.gradio.app/g/inception#1' target='_blank'>Explore this example in your browser</a>"%}
+{% include image.html name="geese2.png" caption="<a href='https://gradio.app/g/hub-inception-blindspots#16' target='_blank'>Explore this example in your browser</a>"%}
 
 ### Takeaways
 
