@@ -10,10 +10,10 @@ permalink: /fellowship/
 
 Thank you for your interest in the Fatima Fellowship! Keep reading for more information
 
-<p style="font-size:16px; font-weight:bold">Mentee Application link: <a href="https://airtable.com/shruWIdwHABBRzeoz">https://airtable.com/shruWIdwHABBRzeoz</a></p>
+<p style="font-size:16px; font-weight:bold">Mentee Application link: <a href="https://airtable.com/shruWIdwHABBRzeoz">https://airtable.com/shruWIdwHABBRzeoz</a> (Closed)</p>
 
 <p style="font-size:16px">Interested in being a mentor? Email <a href="fatimafellowship2021@gmail.com
-">fatimafellowship2021@gmail.com</a> with your background.</p>
+">fatimafellowship2021@gmail.com</a> with your background by **Mar 7th, 2021**.</p>
 
 
 
