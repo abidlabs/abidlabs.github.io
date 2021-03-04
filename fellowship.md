@@ -54,5 +54,5 @@ Fatih Balin from Bogazici University, Istanbul previously collaborated successfu
 ### Timeline
 - Applications Open: February 1st
 - First Fellows selected: Feb 28th (rolling admission)
-- Kickoff Meeting & Projects Start: March 1st
+- Kickoff Meeting & Projects Start: March 14th 12 PM PT
 - Project Presentations: October 1st
