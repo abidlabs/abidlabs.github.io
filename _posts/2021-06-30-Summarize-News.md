@@ -14,13 +14,13 @@ Every now and then, I’m working on a project, when I’m amazed by the sheer p
 1. Translate them to English
 1. Summarize them and display them in a simple web app
 
-<img src="https://i.ibb.co/vYcsxgr/steps.png" width="80%"></img>
+<img src="https://i.ibb.co/vYcsxgr/steps.png" width="80%">
 
 As I started implementing this project, I did some research on what libraries are out there for similar tasks. I quickly realized that I wouldn’t need to write much code at all. Each of these 3 pieces could be abstracted away by an awesome Python library: `newspaper`, `transformers`, and `gradio` respectively.
 
 And indeed, the full app ([available in this colab notebook](https://colab.research.google.com/drive/12ovJmWzA1USQMMh5dKTbHdRh0V9-QsQC#scrollTo=vTKc8nGY-wyt)) is just 15 lines of Python code, and you can see it in action here:
 
-<img src="https://s6.gifyu.com/images/recording-37.gif" width="80%"></img>
+<img src="https://s6.gifyu.com/images/recording-37.gif" width="80%">
 
 Since there’s so little coding to do, what I’d like to do instead is to dive into the three libraries I used and why I think they are incredible libraries. 
 
