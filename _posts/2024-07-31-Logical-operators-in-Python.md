@@ -3,7 +3,6 @@ layout: post
 title: Logical operators don't return boolean values in Python
 comments: true
 published: true
-image: https://homepages.inf.ed.ac.uk/rbf/HIPR2/figs/ttaband.gif
 excerpt: Here's a quick question for you: if you "and" two values in Python, what is the type of the return? A boolean, right? Nope.
 ---
 
