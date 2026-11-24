@@ -25,7 +25,7 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font: 19px/1.65 $serif;
   color: $darkGray;
 }
 
@@ -37,11 +37,11 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $helveticaNeue;
+  font-family: $sans;
   color: $darkerGray;
-  font-weight: bold;
+  font-weight: 500;
 
-  line-height: 1.7;
+  line-height: 1.4;
   margin: 1em 0 15px;
   padding: 0;
 
@@ -51,14 +51,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 28px;
+  letter-spacing: -0.01em;
   a {
     color: inherit;
   }
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 h3 {
@@ -71,7 +72,14 @@ h4 {
 }
 
 p {
-  margin: 15px 0;
+  margin: 20px 0;
+}
+
+// Headings inside posts and pages get a little extra room above them
+.entry {
+  h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+  }
 }
 
 a {
@@ -189,22 +197,28 @@ th {
 .masthead {
   padding: 20px 0;
   border-bottom: 1px solid $lightGray;
+  // Avatar, name and nav share one row, centered vertically
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+
+  // The clearfix pseudo-elements would become empty flex items
+  &::before, &::after { display: none; }
 
   @include mobile {
+    flex-direction: column;
+    row-gap: 8px;
     text-align: center;
   }
 }
 
 .site-avatar {
-  float: left;
+  flex: none;
   width: 70px;
   height: 70px;
-  margin-right: 15px;
 
   @include mobile {
-    float: none;
     display: block;
-    margin: 0 auto;
   }
 
   img {
@@ -213,23 +227,17 @@ th {
 }
 
 .site-info {
-  float: left;
-
-  @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
-  }
+  min-width: 0;
 }
 
 .site-name {
   margin: 0;
   color: $darkGray;
   cursor: pointer;
-  font-family: $helveticaNeue;
-  font-weight: 300;
-  font-size: 28px;
-  letter-spacing: 1px;
+  font-family: $sans;
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: 0;
 }
 
 .site-description {
@@ -243,14 +251,12 @@ th {
 }
 
 nav {
-  float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue;
-  font-size: 16px;
+  margin-left: auto;
+  font-family: $sans;
+  font-size: 15px;
 
   @include mobile {
-    float: none;
-    margin-top: 9px;
+    margin-left: 0;
     display: block;
     font-size: 16px;
   }
@@ -291,6 +297,15 @@ nav {
     color: $gray;
     font-size: 22px;
     font-style: italic;
+  }
+
+  // Small opening quote for a post: add {: .epigraph} after the blockquote
+  blockquote.epigraph {
+    margin: 1.5em 0 2em;
+    border-left: none;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   .comments {
